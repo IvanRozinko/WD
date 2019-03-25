@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Lilita+One');
+
+ 
+    * {
+	  color:#0D322A;
+	  font-family: 'Lilita One', cursive;
+	  text-align: center;
+	  margin-left: 0px;
+	  margin-right: 0px;
+	  margin-top: 0px;
+	  outline: none;
+	  overflow: hidden;
+	}   
+	
+	.header {
+	  display: flex;
+	  height: 60px;
+      background: #EDEDED;	
+      align-items: center;
+	  justify-content: space-between;	
+	  padding-left: 10px;
+	  padding-right: 10px;
+	}
+	
+	.header--logo {
+	  content: url("images/logo.jpg");
+	  height: 100px;  
+	}
+	
+	.header--slogan{
+	  margin-top: 20px;
+	  flex-grow: 3;	
+	}
+  
+    .container {
+	  display: flex;       	  
+	}
+	
+	.container div{
+	  width: 100%;		
+	}
+	
+	.container-left_column--image {
+	  content: url("images/happy2D.jpg");
+	  height: 100vh;
+	}	
+	
+
+	.container--right_column {
+	  display: flex;	  
+	  background-color: #7C837C;
+	  padding-bottom: 10%;
+    
+	}
+	
+	.container-right_column--input_form {	 
+	  margin-left: 10%;
+	  margin-right: 10%;
+	  margin-top: 5%;
+	  margin-bottom: 10%;
+	  border-radius: 5px;
+	  background: rgba(0,0,0,0.1);	
+      padding: 10%;
+	  display:flex;
+	  flex-flow: column nowrap;
+	  justify-content: space-around;
+	  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      color:#F8F8F6;	
+    }	
+	
+	.container-right_column-input_form--text {
+	  display: flex;
+      flex-direction: column;	  
+	}
+	
+	.container-right_column-input_form--input {
+	  background: transparent;
+      border:0;	 
+	  border-bottom: 2px solid #F8F8F6;
+	  padding-bottom: 6px;
+	  color: #F8F8F6;
+	  text-align: left;	 	
+	  margin-bottom: 20px;
+	 }
+	
+	.input_form--agreement {
+	  text-align: bottom;	
+	  display: float;
+      padding: 5px;
+	}
+	
+	.input_form--btn {
+	  height: 30px;
+	  width: 100%;  
+	  background: #0D322A;
+	  color: #F8F8F6;
+	  border-radius: 3px;
+	  border: none;
+	  cursor: pointer; 
+	  text-transform: uppercase;  
+	}
+	
+	::-webkit-input-placeholder {
+	  color: #F8F8F6;	
+	}
+	
+	.input_form--checkmark {
+	  color: #F8F8F6;	
+	}
+	
+	.input_form--gender {
+	  display: flex;
+      justify_content: space-between;	  	
+	}
+	
+	.input_form--dog_size {
+	  background: transparent;
+	  text-transform: uppercase;
+      height: 30px;	  
+	  border: none;
+	  border-bottom: 2px solid;
+	  border-color: #F8F8F6;
+	  color: #F8F8F6;
+	}
+	
+	.input_form--textarea {
+	  background: transparent;	
+	  border: 2px solid;
+	  border-radius: 5px;
+	  border-color: #F8F8F6;
+	  height: 100px;
+	  text-align: left;
+	  color: #F8F8F6;
+	  text-transform: uppercase;
+	}
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+
+	

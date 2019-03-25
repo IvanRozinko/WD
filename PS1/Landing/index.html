@@ -4,68 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Test page</title>
+  <title>Awesome landing page</title>
   <style media="screen"></style>
   <link href="style.css" rel="stylesheet" type="text/css"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
   <div class="header">
-    <div class="header--logo"></div>
-    <div><h1 class="header--slogan">WHERE THE DOGS R HAPPY :)</h1></div>
-	<div><i class="fas fa-paw fa-3x" ></i></div>
-  </div>	
-  <div class="container">
-    <div class="container--left_column">
-      <div class="container-left_column--image"></div>    	
+    <div class="header--logo">
+	  <i class="fas fa-tree fa-5x">ree</i>
+	</div>
+	<div class="header_links--container">
+	  <a href="http://google.com" class="header_links-container--link">PRODUCTS</a>
+	  <a href="http://google.com" class="header_links-container--link">ABOUT US</a>
+	  <a href="http://google.com" class="header_links-container--link">CONTACT US</a>	  
+	</div>
+  </div>
+  <div class="app_container">
+    <div class="app_container--column1">
+	  <span class="column1--iphone"></span>
+	</div>
+	<div class="app_container--column2">
+	  <div><h1>Our aweful app, don't even think!</h1></div>
+	  <br>
+	  <div><p>Text description. Font Awesome icons automatically inherit CSS size and color. This means they blend in with text inline wherever you put them. Font Awesome tries not to be too opinionated, and sets just the basic styling rules icons need to render properly in context.</p></div>
+	  <br>
+	  <div><input type="button" class="column2--button" value="Download"></div>
 	</div>  
-    <div class="container--right_column">
-	 <!--  <div class="container-right_column--input_form">
-		<div class="container-right_column-input_form--text">
-		  <label>Enter your email</label>
-          <input type="text" class="container-right_column-input_form--input" placeholder="Your email">
-          <label>Password</label>		   
-		  <input type="password" class="container-right_column-input_form--input" placeholder="Password">
-		</div>
-		<label class="input_form--agreement">		 
-	      <input type="checkbox">I agree with everything <span class="checkmark"></span>			
-          </label>
-		<input type="button" class="input_form--btn"  value="Sign in">      
-	  </div> -->
-		
-		<div class="container-right_column--input_form">
-		  <div class="container-right_column-input_form--text">
-		    <h3>LET'S GET ACQUAINTED</h3>
-            <input type="text" class="container-right_column-input_form--input" placeholder="DOG'S NAME">
-		    <input type="number" class="container-right_column-input_form--input" placeholder="DOG'S AGE YEARS">
-
-		  </div>
-		  <label class="input_form--gender">
-		    <div>
-		      <input type="checkbox" checked="checked">
-			  <span class="input_form--checkmark"> MALE DOG</span>
-			 
-			</div>
-		    <div>
-		      <input type="checkbox">
-			  <span class="input_form--checkmark">FEMALE DOG</span>
-			  
-			</div>  
-		  </label>
-		  </br>
-		  <h4>CHOOSE YOUR DOG SIZE</h4>
-		  <select class="input_form--dog_size" name="dog-size">
-		    <option value="s">Small</option>
-		    <option value="m">Medium</option>
-		    <option value="l">Large</option>
-		  </select>	
-		  </br>
-		  <h4>TELL US MORE</h4>
-		  <textarea class="input_form--textarea"  placeholder="my lovely dog likes to play with ball ....."></textarea>	      
-          </br> 
-		  <input type="button" class="input_form--btn"  value="Send"> 	   
-	   </div>
-	  </div> 	  
-	</div>  
+  </div>
+  <div class="branch_container">
+    <div class="branch_container--column">
+	  <div><i class="fab fa-youtube-square" style="font-size: 60px; color:#38ada9;"></i></div>
+	  <h3>Web development</h3>
+	  <p>Description some. Text description. Font Awesome icons automatically inherit CSS size and color. This means they blend in with text inline wherever you put them. Font Awesome tries not to be too opinionated, and sets just the basic styling rules icons need to render properly in context.</p>
+	</div>
+	<div class="branch_container--column">
+	  <div><i class="far fa-question-circle" style="font-size: 60px; color:#38ada9; border-radius: 100%;"></i></div>
+	  <h3>Mobile development</h3>
+	  <p>Description some.Text description. Font Awesome icons automatically inherit CSS size and color. This means they blend in with text inline wherever you put them. Font Awesome tries not to be too opinionated, and sets just the basic styling rules icons need to render properly in context.</p>
+	</div>
+	<div class="branch_container--column">
+	  <div><i class="fas fa-crown"style="font-size: 60px; color:#38ada9; border-radius: 100%;"></i></i></div>
+	  <h3>Highload</h3>
+	  <p>Description some. Text description. Font Awesome icons automatically inherit CSS size and color. This means they blend in with text inline wherever you put them. Font Awesome tries not to be too opinionated, and sets just the basic styling rules icons need to render properly in context.</p>
+	</div>
+  </div>
+  <div class="contact_form">
+    <h3>Contact us!</h3>
+	<div class="contact_form--input_container">
+      <input type="text" class="contact_form-input_container--input" placeholder="Name">
+	  <input type="email" class="contact_form-input_container--input" placeholder="Email">
+	  <input type="tel" class="contact_form-input_container--input" placeholder="Phone number">
+      <h4>Choose your gender</h4>
+	  <div class="input_container--radio">	  
+	    <div><input type="radio" class="input-radio--gender" value="Male" checked> Male</div> 
+		<div><input type="radio" class="input-radio--gender" value="Female" > Female</div>
+	  </div>	
+	  <h4>Specify your education</h4>
+	  <div class="input_container--checkbox">
+	    <div><input type="checkbox" class="input-checkbox--checkbox"> Basic education</div>
+	    <div><input type="checkbox" class="input-checkbox--checkbox"> College</div>
+		<div><input type="checkbox" class="input-checkbox--checkbox"> Master degree</div>
+	  </div>
+	  <textarea class="input_container--textarea" placeholder="Write us something"></textarea>
+	  <input type="button" class="input_container--button" value="Send form">
+	</div>	
+  </div>
+  
+ 
+ 
+ 
 </body>
 </html>
