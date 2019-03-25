@@ -2,31 +2,25 @@
     * {
 	  margin: 0;
 	  padding: 0;
-	}
-	
-	.font-style {
 	  color: #0a3d62;
-	  font-family: courier, serif;
-	 
+	  font-family: courier, serif;	 
 	  text-align: center;
 	}
+	
      
 	.header {
 	  background-color:#38ada9;
 	  border: 2px groove;
 	  
 	} 
-    .wrapper { 
-         
-	}
+   
   
     .row {
 	  display: flex;
 	}
 	
 	.column {
-	  display: flex ;
-	  flex: 1;
+	  display: flex ;	 
 	}
 	
 	.first-column {
