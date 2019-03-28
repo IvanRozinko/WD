@@ -6,46 +6,52 @@
 	  font-family: courier, serif;	 
 	  text-align: center;
 	}
-	
-     
+
 	.header {
 	  background-color:#38ada9;
 	  border: 2px groove;
-	  
-	} 
-   
+	}
+
+	body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
   
     .row {
 	  display: flex;
 	}
 	
 	.column {
-	  display: flex ;	 
+	  display: flex ;
+	  flex: 1;
 	}
 	
 	.first-column {
 	  background-color: #82ccdd;
-	  height: 700px;
+	  height: 100%;
 	  border: 1px ridge;
+	  padding: 10px;
 	}
 	
 	.second-column {
 	  background-color: #60a3bc;
-	  height: 700px;
+	  height: 100%;
 	  border: 1px ridge;
+	  padding: 10px;
 	}
 	
 	.third-column {
 	  background-color: #3c6382;
-	  height: 700px;
+	  height: 100%;
 	  border: 1px ridge;
+	  padding: 10px;
 	}
 	
 	.footer {
-	  position: -webkit-sticky;
-	  position: sticky;
-	  bottom: 0;
-	  padding: 10px;
 	  background-color: #079992;
 	  border: 2px groove;
+	  margin: auto auto 0 auto;
+      padding: 20px;
+      width: 100%;
 	}

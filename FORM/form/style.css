@@ -5,9 +5,7 @@
 	  color:#0D322A;
 	  font-family: 'Lilita One', cursive;
 	  text-align: center;
-	  margin-left: 0px;
-	  margin-right: 0px;
-	  margin-top: 0px;
+	  margin: 0;
 	  outline: none;
 	  overflow: hidden;
 	}   
@@ -18,8 +16,7 @@
       background: #EDEDED;	
       align-items: center;
 	  justify-content: space-between;	
-	  padding-left: 10px;
-	  padding-right: 10px;
+	  padding: 0 10px;
 	}
 	
 	.header--logo {
@@ -43,24 +40,19 @@
 	.container-left_column--image {
 	  content: url("images/happy2D.jpg");
 	  height: 100vh;
-	}	
-	
+	}
 
 	.container--right_column {
-	  display: flex;	  
+	  display: flex;
 	  background-color: #7C837C;
 	  padding-bottom: 10%;
-    
 	}
 	
 	.container-right_column--input_form {	 
-	  margin-left: 10%;
-	  margin-right: 10%;
-	  margin-top: 5%;
-	  margin-bottom: 10%;
-	  border-radius: 5px;
-	  background: rgba(0,0,0,0.1);	
+	  margin: 10% 10%;
       padding: 10%;
+	  border-radius: 5px;
+	  background: rgba(0,0,0,0.1);
 	  display:flex;
 	  flex-flow: column nowrap;
 	  justify-content: space-around;
@@ -114,15 +106,31 @@
 	}
 	
 	.input_form--dog_size {
-	  background: transparent;
-	  text-transform: uppercase;
-      height: 30px;	  
-	  border: none;
-	  border-bottom: 2px solid;
-	  border-color: #F8F8F6;
-	  color: #F8F8F6;
+
+      width: 120px;
+      border-radius: 3px;
+      border: 2px solid;
+      border-color: #F8F8F6;
+      overflow: hidden;
+      background: #7C837C url("img/icon-select.png") no-repeat 90% 50%;
+
+
 	}
-	
+
+	.input_form--dog_size select {
+	  text-transform: uppercase;
+	  color: white;
+	  padding: 5px 8px;
+      width: 130%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      background: #7C837C;
+
+	}
+
+	.input_form--dog_size select:focus {
+	  outline: none;
+	}
+
 	.input_form--textarea {
 	  background: transparent;	
 	  border: 2px solid;

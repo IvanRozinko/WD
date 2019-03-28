@@ -13,12 +13,14 @@
 	.header {
 	  background-color:#38ada9;
 	  border: 2px groove;
-	  
-	} 
-    .wrapper { 
-         
 	}
-  
+
+	body {
+	  display: flex;
+	  flex-direction: column;
+	  min-height: 100vh;
+	}
+
     .row {
 	  display: flex;
 	}
@@ -30,22 +32,21 @@
 	
 	.left-column {
 	  background-color: #f6b93b;
-	  height: 700px;
 	  border: 1px ridge;
 	  width: 100%;
+	  padding: 10px;
 	}
 	
 	.right-column {
 	  background-color: #60a3bc;
-	  height: 700px;
 	  border: 1px ridge;
 	  width: 100%;
+	  padding: 10px;
 	}
 	
 	.footer {
-	  position: -webkit-sticky;
-	  position: sticky;
-	  bottom: 0;
-	  padding: 20px;
-	  background-color: #b71540;
+      margin: auto auto 0 auto;
+      background: grey;
+      padding: 20px;
+      width: 100%;
 	}
