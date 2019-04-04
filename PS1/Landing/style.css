@@ -1,165 +1,166 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
 * {
- font-family: 'Poppins', sans-serif;
- margin: 0;
- outline: none;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    outline: none;
 }
 
 .header {
-  display: flex;
-  height: 100px;
-  justify-content: space-between;  
-  align-items: center;
-  margin-left: 20px;
-  margin-right: 20px;
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .header--logo {
-  color: #0a3d62;	
+    color: #0a3d62;
 }
 
 .header_links-container--link {
-  padding: 80px;
-  color: #0a3d62;
+    padding: 80px;
+    color: #0a3d62;
 }
 
 .app_container {
-  background-color: #38ada9;
-  padding: 40px 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;  
+    background-color: #38ada9;
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.column1--iphone{
-  content: url("images/iphone.png")
+.column1--iphone {
+    content: url("images/iphone.png")
 }
 
 .app_container--column2 {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 }
 
 .column2--button {
-  height: 40px;
-  padding: 0 10%;
-  background: white;
-  cursor: pointer;
-  border: none;
-  border-radius: 2px;
+    height: 40px;
+    padding: 0 10%;
+    background: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
 }
 
 .branch_container {
-  padding: 40px 20px;
-  display: flex;
-  justify-content: flex-end;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .branch_container--column {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: space-around; 
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .contact_form {
-  background-color: #38ada9;
-  text-align: center;  
-  padding: 20px;
+    background-color: #38ada9;
+    text-align: center;
+    padding: 20px;
 }
 
 .contact_form--input_container {
-  display: flex;
-  margin: 20px 20px;
+    display: flex;
+    margin: 20px 20px;
 }
 
 .contact_form-input_container--left {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 10px;
 }
 
 .contact_form-input_container--input {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .contact_form-input_container-left--subcol {
-  display: flex;
+    display: flex;
 }
 
 .contact_form-input_container-left-subcol--1 {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .contact_form-input_container-left-subcol-1--label {
-  display: flex;
-  justify-content: flex-left;
-  padding-bottom: 8px;
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 8px;
 }
 
 .contact_form-input_container-left-subcol--2 {
-  display; flex;
-  flex-direction: column;
-  flex: 2;
+    display: flex;
+    flex-direction: column;
+    flex: 2;
 }
 
 .input-radio--gender {
-  display: flex;
-  justify-content: space-around;
-  padding-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 5px;
 }
 
 
 .input_container--checkbox {
-   display: flex;
-   justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 .contact_form-input_container-left-subcol-2--input {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
-  height: 20px;
-  margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 20px;
+    margin-bottom: 10px;
 
 }
 
 .input--date {
-  display: flex;
-  padding-bottom: 10px;
+    display: flex;
+    padding-bottom: 10px;
 
 }
+
 .contact_form-input_container--right {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 10px;
 }
 
 .input_container--textarea {
-  height: 100%;
-  margin-bottom: 30px; 
+    height: 100%;
+    margin-bottom: 30px;
 }
 
 .form-submit {
-  display: flex;
-  justify-content: space-around;
-  padding: 0 40%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 40%;
 }
 
 .input_container--button {
-  height: 40px;
-  display: flex;
-  background: white;
-  cursor: pointer;
-  border: none;
-  border-radius: 2px;
+    height: 40px;
+    display: flex;
+    background: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
 }
 
 

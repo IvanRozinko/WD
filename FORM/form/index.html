@@ -1,70 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="style.css" rel="stylesheet" type="text/css"/>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Test page</title>
-  <style media="screen"></style>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test page</title>
+    <style media="screen"></style>
 </head>
 <body>
-<div class="header">
-  <div class="header--logo"></div>
-  <div><h1 class="header--slogan">WHERE THE DOGS R HAPPY :)</h1></div>
-  <div><i class="fas fa-paw fa-3x"></i></div>
-</div>
+<header>
+    <div class="header--logo"></div>
+    <div><h1 class="header--slogan">WHERE THE DOGS R HAPPY :)</h1></div>
+    <div><i class="fas fa-paw fa-3x"></i></div>
+</header>
 <div class="container">
-  <div class="container--left_column">
-    <div class="container-left_column--image"></div>
-  </div>
-  <div class="container--right_column">
-    <!--  <div class="container-right_column--input_form">
-       <div class="container-right_column-input_form--text">
-         <label>Enter your email</label>
-         <input type="text" class="container-right_column-input_form--input" placeholder="Your email">
-         <label>Password</label>
-         <input type="password" class="container-right_column-input_form--input" placeholder="Password">
-       </div>
-       <label class="input_form--agreement">
-         <input type="checkbox">I agree with everything <span class="checkmark"></span>
-         </label>
-       <input type="button" class="input_form--btn"  value="Sign in">
-     </div> -->
-    <div class="container-right_column--input_form">
-      <div class="container-right_column-input_form--text">
-        <h3>LET'S GET ACQUAINTED</h3>
-        <input type="text" class="container-right_column-input_form--input" placeholder="DOG'S NAME">
-        <input type="number" class="container-right_column-input_form--input" placeholder="DOG'S AGE YEARS">
-      </div>
-      <div class="input_form--gender">
-        <div>
-          <input type="checkbox" checked="checked">
-          <span class="input_form--checkmark"> MALE DOG</span>
-        </div>
-        <div>
-          <input type="checkbox">
-          <span class="input_form--checkmark">FEMALE DOG</span>
-        </div>
-      </div>
-      <br>
-      <h4>CHOOSE YOUR DOG SIZE</h4>
-      <div class="input_form--dog_size">
-        <select>
-          <option value="s">Small</option>
-          <option value="m">Medium</option>
-          <option value="l">Large</option>
-        </select>
-      </div>
-      <br>
-      <h4>TELL US MORE</h4>
-      <textarea class="input_form--textarea" placeholder="my lovely dog likes to play with ball ....."></textarea>
-      <br>
-      <input type="button" class="input_form--btn" value="Send">
+    <div class="container--left_column"></div>
+    <div class="container--right_column">
+        <form class="form">
+            <!--<div>-->
+                <!--<h3>PLEASE LOG IN</h3>-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<label for="email">YOUR EMAIL</label>-->
+                <!--<input id="email" type="text" placeholder="example@gmail.com">-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<label for="pass">PASSWORD</label>-->
+                <!--<input id="pass" type="password" placeholder="Password">-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<input id="agree" type="checkbox">-->
+                <!--<label for="agree">I agree with everything </label>-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<button type="button" class="form&#45;&#45;btn">Sign in</button>-->
+            <!--</div>-->
+
+            <div>
+            <h3>LET'S GET ACQUAINTED</h3>
+            </div>
+            <div>
+            <label for="name">NAME</label>
+            <input id="name" type="text" placeholder="DOG'S NAME">
+            </div>
+            <div>
+            <label for="age">AGE</label>
+            <input id="age" type="number" placeholder="DOG'S AGE YEARS">
+            </div>
+            <div class="form--gender">
+            <div>
+            <input id="male" type="radio" name="gender" checked="checked">
+            <label for="male">MALE DOG</label>
+            </div>
+            <div>
+            <input id="female" type="radio" name="gender">
+            <label for="female">FEMALE DOG</label>
+            </div>
+            </div>
+            <div>
+            <h4>CHOOSE YOUR DOG SIZE</h4>
+            </div>
+            <div class="form--dog_size">
+            <select>
+            <option value="s">Small</option>
+            <option value="m">Medium</option>
+            <option value="l">Large</option>
+            </select>
+            </div>
+            <h4>TELL US MORE</h4>
+            <div><textarea class="input_form--textarea"
+            placeholder="my lovely dog likes to play with ball .."></textarea>
+            </div>
+            <div>
+            <button type="button" class="form--btn">Send</button>
+            </div>
+        </form>
     </div>
-  </div>
 </div>
+<script>
+
+</script>
 </body>
 </html>

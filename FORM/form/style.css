@@ -1,146 +1,128 @@
 @import url('https://fonts.googleapis.com/css?family=Lilita+One');
 
- 
-    * {
-	  color:#0D322A;
-	  font-family: 'Lilita One', cursive;
-	  text-align: center;
-	  margin: 0;
-	  outline: none;
-	  overflow: hidden;
-	}   
-	
-	.header {
-	  display: flex;
-	  height: 60px;
-      background: #EDEDED;	
-      align-items: center;
-	  justify-content: space-between;	
-	  padding: 0 10px;
-	}
-	
-	.header--logo {
-	  content: url("images/logo.jpg");
-	  height: 100px;  
-	}
-	
-	.header--slogan{
-	  margin-top: 20px;
-	  flex-grow: 3;	
-	}
-  
-    .container {
-	  display: flex;       	  
-	}
-	
-	.container div{
-	  width: 100%;		
-	}
-	
-	.container-left_column--image {
-	  content: url("images/happy2D.jpg");
-	  height: 100vh;
-	}
+* {
+    color: #0D322A;
+    font-family: 'Lilita One', cursive;
+    text-align: center;
+    margin: 0;
+    outline: none;
+    overflow: hidden;
+    height: 100%;
+}
 
-	.container--right_column {
-	  display: flex;
-	  background-color: #7C837C;
-	  padding-bottom: 10%;
-	}
-	
-	.container-right_column--input_form {	 
-	  margin: 10% 10%;
-      padding: 10%;
-	  border-radius: 5px;
-	  background: rgba(0,0,0,0.1);
-	  display:flex;
-	  flex-flow: column nowrap;
-	  justify-content: space-around;
-	  box-shadow: 0 0 10px rgba(0,0,0,0.4);
-      color:#F8F8F6;	
-    }	
-	
-	.container-right_column-input_form--text {
-	  display: flex;
-      flex-direction: column;	  
-	}
-	
-	.container-right_column-input_form--input {
-	  background: transparent;
-      border:0;	 
-	  border-bottom: 2px solid #F8F8F6;
-	  padding-bottom: 6px;
-	  color: #F8F8F6;
-	  text-align: left;	 	
-	  margin-bottom: 20px;
-	 }
-	
-	.input_form--agreement {
-	  text-align: bottom;	
-	  display: float;
-      padding: 5px;
-	}
-	
-	.input_form--btn {
-	  height: 30px;
-	  width: 100%;  
-	  background: #0D322A;
-	  color: #F8F8F6;
-	  border-radius: 3px;
-	  border: none;
-	  cursor: pointer; 
-	  text-transform: uppercase;  
-	}
-	
-	::-webkit-input-placeholder {
-	  color: #F8F8F6;	
-	}
-	
-	.input_form--checkmark {
-	  color: #F8F8F6;	
-	}
-	
-	.input_form--gender {
-	  display: flex;
-      justify_content: space-between;	  	
-	}
-	
-	.input_form--dog_size {
+header {
+    display: flex;
+    height: 60px;
+    background: #EDEDED;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
 
-      width: 120px;
-      border-radius: 3px;
-      border: 2px solid;
-      border-color: #F8F8F6;
-      overflow: hidden;
-      background: #7C837C url("img/icon-select.png") no-repeat 90% 50%;
+.header--logo {
+    content: url("images/logo.jpg");
+    height: 100px;
+}
+
+.header--slogan {
+    margin-top: 20px;
+    flex-grow: 3;
+}
+
+.container {
+    display: flex;
+}
+
+.container--left_column {
+    flex: 1;
+    background-image: url("images/happy2D.jpg");
+    background-size: cover;
+    background-position: right;
+}
+
+.container--right_column {
+    flex: 1;
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    height: auto;
+}
+
+.form {
+    margin: 10% 10%;
+    padding: 5%;
+    justify-content: center;
+    max-height: 60%;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    color: #F8F8F6;
+    overflow: auto;
+    height: auto;
+}
+.form div{
+    padding-bottom: 10px;
+}
+
+.form input {
+    height: 20px;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid #F8F8F6;
+    color: #F8F8F6;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.form--btn {
+    height: 30px;
+    width: 80%;
+    margin-bottom: 10px;
+    background: #0D322A;
+    color: #F8F8F6;
+    border-radius: 3px;
+   border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.form--btn:hover{
+    background: #F8F8F6;
+    color: #0D322A;
+}
 
 
-	}
+.form--gender {
+    display: flex;
+    justify-content: space-around;
+}
 
-	.input_form--dog_size select {
-	  text-transform: uppercase;
-	  color: white;
-	  padding: 5px 8px;
-      width: 130%;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-      background: #7C837C;
+.form--dog_size select {
+    text-transform: uppercase;
+    color: white;
+    padding: 5px 8px;
+    width: 90%;
+    border-radius: 5px;
+    border: 2px solid #F8F8F6;
+    background-color: transparent;
+    -webkit-appearance: none;
+}
 
-	}
-
-	.input_form--dog_size select:focus {
-	  outline: none;
-	}
-
-	.input_form--textarea {
-	  background: transparent;	
-	  border: 2px solid;
-	  border-radius: 5px;
-	  border-color: #F8F8F6;
-	  height: 100px;
-	  text-align: left;
-	  color: #F8F8F6;
-	  text-transform: uppercase;
-	}
+.input_form--textarea {
+    background: transparent;
+    border-radius: 5px;
+    border: 2px solid #F8F8F6;
+    height: 100px;
+    width: 90%;
+    text-align: left;
+    color: #F8F8F6;
+    text-transform: uppercase;
+}
 	
 	
 	
