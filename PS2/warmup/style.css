@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+* {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+h3 {
+    padding: 10px 0;
+}
+.wrapper {
+    background: #95afc0;
+}
+.task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #c7ecee;
+    padding: 10px;
+}
+.task input, button, textarea {
+    border-radius: 10px;
+    border: 2px solid #95afc0;
+    background-color: transparent;
+    outline: none;
+    text-align: center;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+button:hover{
+    background: azure;
+}
+.task input:invalid {
+    border: 2px solid red;
+}
+.chessBlockWhite {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    background: white;
+    float: left;
+}
+.chessBlockBlack {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    background: black;
+    float: left;
+}
+textarea {
+    width: 60%;
+    height: 100px;
+    text-align: left;
+    resize: none;
+}
+#links {
+    display: flex;
+    flex-direction: column;
+}
+a {
+    color: #95afc0;
+}
+a:hover {
+    text-decoration: underline;
+    color: black;
+}

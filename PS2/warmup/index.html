@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <title>PS2</title>
+</head>
+<body>
+<div class="wrapper">
+    <h3 align="center">Сумма чисел которые заканчиваются на 2,3, и 7 в заданном диапазоне</h3>
+    <form class="task">
+        <label>Введите начало диапазона</label><input type="text" id="number1" required pattern="[-]*[0-9]+" value="0">
+        <label>Введите конец диапазона</label><input type="text" id="number2" required pattern="[-]*[0-9]+" value="10">
+        <button id="countSum" value="Рассчитать" type="button">Рассчитать</button>
+        <b>Результат : <b id="result"></b> </b>
+    </form>
+</div>
+<div class="wrapper">
+    <h3 align="center">Конвертер секунд в hh:mm:ss</h3>
+    <form class="task">
+        <label>Введите время в секундах</label><input type="text" id="timeSec" required pattern="[^0-][0-9]*"
+                                                      value="60">
+        <button id="secConvertToTime" type="button">Рассчитать</button>
+        <b>Результат: <b id="result1"></b></b>
+        <label>Введите время в формате "hh:mm:ss"</label><input type="text" id="time" required
+                                                                pattern="[0-9]*:[0-5][0-9]:[0-5][0-9]" value="10:22:33">
+        <button id="timeConvertToSec" type="button">Рассчитать</button>
+        <b>Результат : <b id="result2"></b></b>
+    </form>
+</div>
+<div class="wrapper">
+    <h3 align="center">Промежуток времени</h3>
+    <form class="task">
+        <label>Дата отлета</label><input type="datetime-local" id="depDate" value="">
+        <label>Дата прибытия</label><input type="datetime-local" id="arrDate">
+        <button id="tripLength" type="button">Рассчитать</button>
+        <b>Результат : <b id="result3"></b></b>
+    </form>
+</div>
+<div class="wrapper">
+    <h3 align="center">Шахматная доска</h3>
+    <form class="task">
+        <label>Введите размер доски</label>
+        <input type="text" id="chessSize" value="8x8" required pattern="\d+x\d+">
+        <div class="buttonDrawChessBoard">
+            <button type="button" id="drawBoard">Нарисовать</button>
+            <button type="button" id="clearBoard">Очистить</button>
+        </div>
+        <div id="chessContainer">
+            <div id="chessBoard"></div>
+        </div>
+    </form>
+</div>
+<div class="wrapper">
+    <h3 align="center">Textarea</h3>
+    <form class="task">
+        <textarea id="textarea" placeholder="write URL's splitted by comma ','"></textarea>
+        <div id="links"></div>
+    </form>
+</div>
+<div class="wrapper">
+    <h3 align="center">Textarea with RegExp</h3>
+    <form class="task">
+        <textarea id="reg-textarea" placeholder="Write some text"></textarea>
+        <label>Write regex or text</label><input type="text" id="reg-input" placeholder="[a|b|c]">
+        <button type="button" id="reg-button">Show</button>
+        <div id="reg-markedText"></div>
+    </form>
+</div>
+
+</body>
+<script type="text/javascript" src="script.js"></script>
+</html>
