@@ -19,69 +19,28 @@
 <div class="container">
     <div class="container--left_column"></div>
     <div class="container--right_column">
-        <form class="form">
-            <!--<div>-->
-                <!--<h3>PLEASE LOG IN</h3>-->
-            <!--</div>-->
-            <!--<div>-->
-                <!--<label for="email">YOUR EMAIL</label>-->
-                <!--<input id="email" type="text" placeholder="example@gmail.com">-->
-            <!--</div>-->
-            <!--<div>-->
-                <!--<label for="pass">PASSWORD</label>-->
-                <!--<input id="pass" type="password" placeholder="Password">-->
-            <!--</div>-->
-            <!--<div>-->
-                <!--<input id="agree" type="checkbox">-->
-                <!--<label for="agree">I agree with everything </label>-->
-            <!--</div>-->
-            <!--<div>-->
-                <!--<button type="button" class="form&#45;&#45;btn">Sign in</button>-->
-            <!--</div>-->
-
+        <form class="form" method="POST" action="form1.html" onsubmit="return continueOrNot();">
             <div>
-            <h3>LET'S GET ACQUAINTED</h3>
+                <h3>PLEASE LOG IN</h3>
             </div>
             <div>
-            <label for="name">NAME</label>
-            <input id="name" type="text" placeholder="DOG'S NAME">
+                <label for="email">YOUR EMAIL</label>
+                <input id="email" type="text" placeholder="example@gmail.com">
             </div>
             <div>
-            <label for="age">AGE</label>
-            <input id="age" type="number" placeholder="DOG'S AGE YEARS">
-            </div>
-            <div class="form--gender">
-            <div>
-            <input id="male" type="radio" name="gender" checked="checked">
-            <label for="male">MALE DOG</label>
+                <label for="pass">PASSWORD</label>
+                <input id="pass" type="password" placeholder="6-8 signs">
             </div>
             <div>
-            <input id="female" type="radio" name="gender">
-            <label for="female">FEMALE DOG</label>
-            </div>
-            </div>
-            <div>
-            <h4>CHOOSE YOUR DOG SIZE</h4>
-            </div>
-            <div class="form--dog_size">
-            <select>
-            <option value="s">Small</option>
-            <option value="m">Medium</option>
-            <option value="l">Large</option>
-            </select>
-            </div>
-            <h4>TELL US MORE</h4>
-            <div><textarea class="input_form--textarea"
-            placeholder="my lovely dog likes to play with ball .."></textarea>
+                <input id="agree" type="checkbox">
+                <label for="agree">I agree with everything </label>
             </div>
             <div>
-            <button type="button" class="form--btn">Send</button>
+                <button id="submit" type="submit" class="form--btn">Sign in</button>
             </div>
         </form>
     </div>
 </div>
-<script>
-
-</script>
+<script type="text/javascript" src="script.js"></script>
 </body>
 </html>

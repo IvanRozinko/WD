@@ -62,7 +62,8 @@ header {
     overflow: auto;
     height: auto;
 }
-.form div{
+
+.form div {
     padding-bottom: 10px;
 }
 
@@ -87,15 +88,15 @@ input[type=number]::-webkit-inner-spin-button {
     background: #0D322A;
     color: #F8F8F6;
     border-radius: 3px;
-   border: none;
+    border: none;
     cursor: pointer;
     text-transform: uppercase;
 }
-.form--btn:hover{
+
+.form--btn:hover {
     background: #F8F8F6;
     color: #0D322A;
 }
-
 
 .form--gender {
     display: flex;
@@ -117,7 +118,7 @@ input[type=number]::-webkit-inner-spin-button {
     background: transparent;
     border-radius: 5px;
     border: 2px solid #F8F8F6;
-    height: 100px;
+    height: auto;
     width: 90%;
     text-align: left;
     color: #F8F8F6;
