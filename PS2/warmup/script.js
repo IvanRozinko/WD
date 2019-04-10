@@ -1,21 +1,21 @@
 //Sum of numbers alignment
 const countSum = document.getElementById("countSum");
 countSum.addEventListener("click", () => {
-    const number1 = parseInt(document.getElementById("number1").value);
-    const number2 = parseInt(document.getElementById("number2").value);
-    if (number1 >= number2) {
+    const number1 = +document.getElementById("number1").value;
+    const number2 = +document.getElementById("number2").value;
+    if (number1 >= number2 || number1 < -100 || number2 > 100) {
         alert("Проверьте диапазон")
     } else {
         let result = 0;
-        let i;
-        for (i = number1; i <= number2; i++) {
+        for (let i = number1; i <= number2; i++) {
             if (i % 10 === 2 || i % 10 === 3 || i % 10 === 7) {
                 result += i;
             }
         }
-        document.getElementById("result").innerHTML = result;
+        document.getElementById("result").innerHTML = result.toString();
     }
 });
+
 
 //Time converter alignment
 const secConvertToTime = document.getElementById("secConvertToTime");
@@ -73,25 +73,24 @@ const table = document.getElementById("chessBoard");
 const chessContainer = document.getElementById("chessContainer");
 
 document.getElementById("clearBoard").addEventListener("click", () => {
-    document.getElementById("chessBoard").innerHTML = "";
+    table.innerHTML = "";
 });
 
 document.getElementById("drawBoard").addEventListener("click", () => {
+    table.innerHTML = "";
     const dimension = (document.getElementById("chessSize").value).split("x");
     const chessWidth = dimension[0];
     const chessHeight = dimension[1];
     chessContainer.style.width = chessWidth * 22 + "px";
     for (let i = 0; i < chessHeight; i++) {
         for (let j = 0; j < chessWidth; j++) {
+            let block = document.createElement("div");
             if (i % 2 === j % 2) {
-                let block = document.createElement("div");
                 table.appendChild(block);
                 block.className = "chessBlockWhite";
             } else {
-                let block1 = document.createElement("div");
-                table.appendChild(block1);
-                block1.style.color = "black";
-                block1.className = "chessBlockBlack";
+                table.appendChild(block);
+                block.className = "chessBlockBlack";
             }
         }
     }
@@ -110,19 +109,17 @@ textarea.addEventListener("focusout", (event) => {
     event.target.style.background = "";
     let string = textarea.value;
     let links = string.match(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/g);
-    let length = links.length;
-    for (let i = 0; i < length; i++) {
-        links[i] = links[i].replace(/https?:\/\//, "");
-    }
-    links.sort();
+    let iPs = string.match(/([0-9]{1,3}\.){3}[0-9]{1,3}/g);
+    links.push.apply(links, iPs);
+    const linksIPs = links.map((each) => each.replace(/https?:\/\//, ""));
+    linksIPs.sort();
     document.getElementById("links").innerHTML = "";
-    for (let i = 0; i < links.length; i++) {
+    linksIPs.forEach((each) => {
         let link = document.createElement("a");
         link.setAttribute("href", "_blank");
-        link.innerHTML = links[i];
+        link.innerHTML = each;
         document.getElementById("links").appendChild(link);
-    }
-    textarea.value = links.sort();
+    });
 });
 /* Here some testing input for textarea:
  255.212.4, 255.555.999.8,  https://google.com, http://www.abc.in, www.tv.pb,
