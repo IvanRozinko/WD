@@ -4,22 +4,25 @@
     font-family: 'Poppins', sans-serif;
     margin: 0;
     outline: none;
+    overflow-x: hidden;
 }
 
-.header {
+header {
     display: flex;
     height: 100px;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     margin-left: 20px;
     margin-right: 20px;
 }
 
-.header--logo {
+.header__logo {
     color: #0a3d62;
+    min-width: 165px;
 }
 
-.header_links-container--link {
+header a {
     padding: 80px;
     color: #0a3d62;
 }
@@ -30,137 +33,163 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
 }
 
-.column1--iphone {
-    content: url("images/iphone.png")
+.column1__img {
+    content: url("images/iphone.png");
 }
 
-.app_container--column2 {
+.column2 {
     display: flex;
     flex-direction: column;
     width: 50%;
+    align-items: center;
+    padding: 10px;
 }
 
-.column2--button {
+.column2 div {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.column2__button {
     height: 40px;
-    padding: 0 10%;
+    width: 150px;
     background: white;
     cursor: pointer;
     border: none;
     border-radius: 2px;
 }
 
-.branch_container {
+.branch {
     padding: 40px 20px;
     display: flex;
     justify-content: flex-end;
+    width: 100%;
 }
 
-.branch_container--column {
+.branch__column {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    justify-content: space-around;
+    padding-right: 10px;
 }
 
-.contact_form {
+.branch__column span {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.branch__column h3, p {
+    margin-bottom: 20px;
+}
+
+.icon-background {
+    color: #38ada9;
+}
+
+form {
     background-color: #38ada9;
     text-align: center;
     padding: 20px;
 }
 
-.contact_form--input_container {
+.form__container {
     display: flex;
     margin: 20px 20px;
+    width: 100%;
+    height: auto;
 }
 
-.contact_form-input_container--left {
+.form__container__left {
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 10px;
 }
 
-.contact_form-input_container--input {
+.left__input {
     margin-bottom: 10px;
 }
 
-.contact_form-input_container-left--subcol {
+.left__col {
     display: flex;
 }
 
-.contact_form-input_container-left-subcol--1 {
+.col__1 {
     display: flex;
     flex-direction: column;
     flex: 1;
+    font-weight: bold;
 }
 
-.contact_form-input_container-left-subcol-1--label {
+.col__1 label {
     display: flex;
     justify-content: flex-start;
     padding-bottom: 8px;
 }
 
-.contact_form-input_container-left-subcol--2 {
+.col__2 {
     display: flex;
     flex-direction: column;
     flex: 2;
 }
 
-.input-radio--gender {
+.col__2--gender {
     display: flex;
     justify-content: space-around;
     padding-bottom: 5px;
 }
 
-
-.input_container--checkbox {
+.col__2--checkbox {
     display: flex;
     justify-content: space-around;
 }
 
-.contact_form-input_container-left-subcol-2--input {
+.col__2--input {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 100%;
-    height: 20px;
+    width: 90%;
     margin-bottom: 10px;
-
 }
 
-.input--date {
+.col__2--date {
     display: flex;
     padding-bottom: 10px;
-
 }
 
-.contact_form-input_container--right {
+.form__container--right {
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 10px;
 }
 
-.input_container--textarea {
-    height: 100%;
+.form__container--right label {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.right--textarea {
+    height: 300px;
     margin-bottom: 30px;
 }
 
-.form-submit {
+.form--submit {
     display: flex;
-    justify-content: space-around;
-    padding: 0 40%;
+    justify-content: center;
 }
 
-.input_container--button {
+.form--button {
     height: 40px;
     display: flex;
     background: white;
     cursor: pointer;
     border: none;
     border-radius: 2px;
+    margin: 0 40px;
 }
 
 
