@@ -6,40 +6,35 @@
     <title>PS2</title>
 </head>
 <body>
-<div class="wrapper">
+<section>
     <h3>Сумма чисел которые заканчиваются на 2,3, и 7 в заданном диапазоне от -100 до 100</h3>
     <form class="task">
         <label for="number1">Введите начало диапазона</label><input type="text"
-                                                                     id="number1"
-                                                                      required pattern="^[-]*[0-9]+"
-                                                                       value="0">
+                                                                    id="number1"
+                                                                    value="0">
         <label for="number2">Введите конец диапазона</label><input type="text"
-                                                                    id="number2"
-                                                                     required pattern="^[-]*[0-9]+"
-                                                                      value="10">
+                                                                   id="number2"
+                                                                   value="10">
         <button id="countSum" value="Рассчитать" type="button">Рассчитать</button>
         <span class="result-span">Результат : <span id="result"></span></span>
     </form>
-</div>
-<div class="wrapper">
+</section>
+<section>
     <h3>Конвертер секунд в hh:mm:ss</h3>
     <form class="task">
         <label for="timeSec">Введите время в секундах</label><input type="text"
-                                                                     id="timeSec"
-                                                                      required pattern="[^0-][0-9]*"
-                                                                       value="60">
+                                                                    id="timeSec"
+                                                                    value="60">
         <button id="secConvertToTime" type="button">Рассчитать</button>
         <span class="result-span">Результат : <span id="result1"></span></span>
         <label for="time">Введите время в формате "hh:mm:ss"</label><input type="text"
-                                                                            id="time"
-                                                                             required
-                                                                              pattern="[0-9]*:[0-5][0-9]:[0-5][0-9]"
-                                                                               value="10:22:33">
+                                                                           id="time"
+                                                                           value="10:22:33">
         <button id="timeConvertToSec" type="button">Рассчитать</button>
         <span class="result-span">Результат : <span id="result2"></span></span>
     </form>
-</div>
-<div class="wrapper">
+</section>
+<section>
     <h3>Промежуток времени</h3>
     <form class="task">
         <label for="depDate">Дата отлета</label><input type="datetime-local" id="depDate" value="">
@@ -47,12 +42,12 @@
         <button id="tripLength" type="button">Рассчитать</button>
         <span class="result-span">Результат : <span id="result3"></span></span>
     </form>
-</div>
-<div class="wrapper">
+</section>
+<section>
     <h3>Шахматная доска</h3>
     <form class="task">
-        <label for="chessSize" >Введите размер доски</label>
-        <input type="text" id="chessSize" value="8x8" required pattern="\d+x\d+">
+        <label for="chessSize">Введите размер доски</label>
+        <input type="text" id="chessSize" value="8x8">
         <div class="buttonDrawChessBoard">
             <button type="button" id="drawBoard">Нарисовать</button>
             <button type="button" id="clearBoard">Очистить</button>
@@ -61,15 +56,15 @@
             <div id="chessBoard"></div>
         </div>
     </form>
-</div>
-<div class="wrapper">
+</section>
+<section>
     <h3>Textarea</h3>
     <form class="task">
         <textarea id="textarea" placeholder="write URL's split by comma ','"></textarea>
         <div id="links"></div>
     </form>
-</div>
-<div class="wrapper">
+</section>
+<section>
     <h3>Textarea with RegExp</h3>
     <form class="task">
         <textarea id="reg-textarea" placeholder="Write some text"></textarea>
@@ -77,7 +72,7 @@
         <button type="button" id="reg-button">Show</button>
         <div id="reg-markedText"></div>
     </form>
-</div>
+</section>
 <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

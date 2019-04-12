@@ -4,13 +4,17 @@
     margin: 0;
     font-family: 'Raleway', sans-serif;
 }
+
 h3 {
     padding: 10px 0;
     text-align: center;
 }
-.wrapper {
+
+section {
     background: #95afc0;
+    width: 100%;
 }
+
 .task {
     display: flex;
     flex-direction: column;
@@ -18,6 +22,7 @@ h3 {
     background: #c7ecee;
     padding: 10px;
 }
+
 .task input, button, textarea {
     border-radius: 10px;
     border: 2px solid #95afc0;
@@ -28,16 +33,19 @@ h3 {
     cursor: pointer;
     margin-bottom: 5px;
 }
-button:hover{
+
+button:hover {
     background: azure;
 }
+
 .task input:invalid {
     border: 2px solid red;
 }
 
 .result-span {
-   font-weight: bold;
+    font-weight: bold;
 }
+
 .chessBlockWhite {
     width: 20px;
     height: 20px;
@@ -45,6 +53,7 @@ button:hover{
     background: white;
     float: left;
 }
+
 .chessBlockBlack {
     width: 20px;
     height: 20px;
@@ -52,19 +61,23 @@ button:hover{
     background: black;
     float: left;
 }
+
 textarea {
     width: 60%;
     height: 100px;
     text-align: left;
     resize: none;
 }
+
 #links {
     display: flex;
     flex-direction: column;
 }
+
 a {
     color: #95afc0;
 }
+
 a:hover {
     text-decoration: underline;
     color: black;
