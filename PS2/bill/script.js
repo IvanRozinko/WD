@@ -39,12 +39,33 @@ const GOODS = [
 
 const tbody = document.getElementById("tbody");
 const totalPrice = document.getElementById("totalPrice");
-let filteredArray = GOODS;
-let searchedArray = filteredArray;
-buildTable(GOODS);
+let defaultArray = GOODS;
+let filteredArray = defaultArray;
+//building a table when a page loads
+buildTable(defaultArray);
+
+let isSortedByName = false;
+let isSortedByCat = false;
+const sortByNameBtn = document.getElementById("sortByNameBtn");
+sortByNameBtn.addEventListener("click", () => {sortByName(filteredArray)});
+
+const sortByCatBtn = document.getElementById("sortByCatBtn");
+sortByCatBtn.addEventListener("click", () => {sortByCat(filteredArray)});
+
+const categoryInput = document.getElementById("filter");
+const nameInput = document.getElementById("search");
+//filtering  objects by category
+categoryInput.addEventListener("change", () => {
+    filter(categoryInput.value, nameInput.value);
+});
+//filtering objects by name
+nameInput.addEventListener("keyup", () => {
+    filter(categoryInput.value, nameInput.value)
+});
+
 
 /**
- * Method takes as a parameter array of objects and builds a table in HTML document
+ * Method takes as a parameter array of objects and builds a result4 in HTML document
  * where: num of rows equals arrays length and number of columns is a number of
  * object properties
  * @param array contains objects
@@ -77,20 +98,11 @@ function calculateSum(array) {
 }
 
 
-let isSortedByName = false;
-let isSortedByCat = false;
-const sortByNameBtn = document.getElementById("sortByNameBtn");
-sortByNameBtn.addEventListener("click", () => {sortByName(searchedArray)});
-
-const sortByCatBtn = document.getElementById("sortByCatBtn");
-sortByCatBtn.addEventListener("click", () => {sortByCat(searchedArray)});
-
 /**
  * Sorts objects in array by name property.
  * @param array of objects
  */
 function sortByName(array) {
-
     if (!isSortedByName) {
         array.sort(compareByName);
         sortByNameBtn.innerText = "▲";
@@ -101,6 +113,7 @@ function sortByName(array) {
     buildTable(array);
     isSortedByName = !isSortedByName;
 }
+
 
 /**
  * Sorts objects in array by category property.
@@ -117,6 +130,8 @@ function sortByCat(array) {
     isSortedByCat = !isSortedByCat;
     buildTable(array);
 }
+
+
 /**
  * Comparing objects by name
  * @param a object
@@ -127,10 +142,12 @@ function compareByName(a, b) {
         return 1;
     return -1;
 }
+
+
 /**
  * Comparing objects by category
  * @param a object
- * @param b object *
+ * @param b object
  */
 function compareByCat(a, b) {
     if (a.category > b.category)
@@ -138,35 +155,27 @@ function compareByCat(a, b) {
     return -1;
 }
 
-//filter objects by category
-const filterSelect = document.getElementById("filter");
-filterSelect.addEventListener("change", () => {
-    filter(filterSelect.value)
-});
 
 /**
- * Filtering array by value
- * @param value
+ * Filtering array by category and name
+ * @param category
+ * @param name
  */
-function filter(value) {
-    if (value !== "") {
-        filteredArray = GOODS.filter((item) => value === item.category);
-    } else filteredArray = GOODS;
+function filter(category, name) {
+    filteredArray = defaultArray;
+    if (category !== "") {
+        filteredArray = filteredArray.filter((item) => category === item.category);
+    }
+    searchByName(name);
     buildTable(filteredArray);
 }
 
-const searchInput = document.getElementById("search");
-searchInput.addEventListener("keyup", () => {search(searchInput.value)});
 
 /**
  * Searching items by their names
- * @param value
+ * @param name
  */
-function search(value){
-    const regex = new RegExp("^" + value, "i");
-    if (value!== "") {
-      searchedArray = filteredArray.filter((item) => regex.test(item.name));
-    } else searchedArray = filteredArray;
-
-    buildTable(searchedArray);
+function searchByName(name){
+    const nameRegExp = new RegExp("^" + name, "i");
+    filteredArray = filteredArray.filter((item) => nameRegExp.test(item.name));
 }
