@@ -12,15 +12,22 @@
 body {
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+
+.wrapper {
+    height: 100%;
 }
 
 .header {
     background-color: #38ada9;
     border: 2px groove;
+    height: 50px;
 }
 
 .row {
     display: flex;
+    margin-bottom: 50px;
 }
 
 .left-column {
@@ -39,10 +46,10 @@ body {
 
 .footer {
     background: grey;
-    padding: 20px;
     width: 100%;
     position: fixed;
     left: 0;
     bottom: 0;
-
+    height: 50px;
+    border: 2px groove;
 }

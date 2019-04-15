@@ -9,12 +9,15 @@
 
 header {
     display: flex;
-    height: 100px;
-    width: 100%;
+    max-width: 1600px;
     justify-content: space-between;
     align-items: center;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+section {
+    max-width: 1600px;
 }
 
 .header__logo {
@@ -23,7 +26,7 @@ header {
 }
 
 header a {
-    padding: 80px;
+    padding-right: 80px;
     color: #0a3d62;
 }
 
@@ -33,7 +36,6 @@ header a {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
 }
 
 .column1__img {
@@ -66,7 +68,20 @@ header a {
     padding: 40px 20px;
     display: flex;
     justify-content: flex-end;
-    width: 100%;
+}
+
+.circle {
+    background-color: #38ada9;
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+.circle i {
+    vertical-align: middle;
 }
 
 .branch__column {
@@ -76,29 +91,20 @@ header a {
     padding-right: 10px;
 }
 
-.branch__column span {
-    color: white;
-    margin-bottom: 20px;
-}
-
 .branch__column h3, p {
     margin-bottom: 20px;
-}
-
-.icon-background {
-    color: #38ada9;
 }
 
 form {
     background-color: #38ada9;
     text-align: center;
     padding: 20px;
+    max-width: 1600px;
 }
 
 .form__container {
     display: flex;
     margin: 20px 20px;
-    width: 100%;
     height: auto;
 }
 

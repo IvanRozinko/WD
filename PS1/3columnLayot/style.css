@@ -25,6 +25,7 @@ header {
 .column {
     display: flex;
     flex: 1;
+    margin-bottom: 50px;
 }
 
 .first {
@@ -48,9 +49,9 @@ header {
 footer {
     background-color: #079992;
     border: 2px groove;
-    padding: 20px;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
+    height: 50px;
 }
