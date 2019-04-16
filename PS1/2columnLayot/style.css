@@ -9,14 +9,13 @@
     width: 100%;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
+body, html{
     height: 100%;
+    margin: 0;
 }
-
 .wrapper {
-    height: 100%;
+    min-height: 100%;
+    margin-bottom: -50px;
 }
 
 .header {
@@ -27,7 +26,6 @@ body {
 
 .row {
     display: flex;
-    margin-bottom: 50px;
 }
 
 .left-column {
@@ -44,12 +42,10 @@ body {
     padding: 10px;
 }
 
+.footer, .push {
+    height: 50px;
+}
 .footer {
     background: grey;
-    width: 100%;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    height: 50px;
     border: 2px groove;
 }

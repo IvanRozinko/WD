@@ -9,15 +9,18 @@
 
 header {
     display: flex;
-    max-width: 1600px;
     justify-content: space-between;
     align-items: center;
     margin-left: 20px;
     margin-right: 20px;
 }
 
-section {
-    max-width: 1600px;
+.container {
+    display: flex;
+    width: 1520px;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .header__logo {
@@ -80,6 +83,7 @@ header a {
     width: 70px;
     border-radius: 50%;
 }
+
 .circle i {
     vertical-align: middle;
 }
@@ -96,91 +100,37 @@ header a {
 }
 
 form {
+    display: flex;
+    flex-direction: column;
     background-color: #38ada9;
     text-align: center;
-    padding: 20px;
-    max-width: 1600px;
+    align-items: center;
+    max-width: 1520px;
 }
 
 .form__container {
     display: flex;
-    margin: 20px 20px;
-    height: auto;
-}
-
-.form__container__left {
-    display: flex;
+    margin: 20px;
     flex-direction: column;
-    flex: 1;
-    padding: 10px;
+    align-content: space-between;
 }
 
-.left__input {
-    margin-bottom: 10px;
+form input {
+    margin-bottom: 20px;
+    border: 0;
+    border-radius: 3px;
 }
 
-.left__col {
+form label {
     display: flex;
+    justify-content: space-between;
 }
 
-.col__1 {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    font-weight: bold;
-}
-
-.col__1 label {
-    display: flex;
-    justify-content: flex-start;
-    padding-bottom: 8px;
-}
-
-.col__2 {
-    display: flex;
-    flex-direction: column;
-    flex: 2;
-}
-
-.col__2--gender {
-    display: flex;
-    justify-content: space-around;
-    padding-bottom: 5px;
-}
-
-.col__2--checkbox {
-    display: flex;
-    justify-content: space-around;
-}
-
-.col__2--input {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 90%;
-    margin-bottom: 10px;
-}
-
-.col__2--date {
-    display: flex;
-    padding-bottom: 10px;
-}
-
-.form__container--right {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 10px;
-}
-
-.form__container--right label {
-    margin: 10px 0;
-    font-weight: bold;
-}
 
 .right--textarea {
-    height: 300px;
+    height: 100px;
     margin-bottom: 30px;
+    border-radius: 3px;
 }
 
 .form--submit {

@@ -8,9 +8,14 @@
     overflow-x: hidden;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
 }
 
 header {
@@ -46,12 +51,11 @@ header {
     padding: 10px;
 }
 
-footer {
-    background-color: #079992;
-    border: 2px groove;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+.push, footer {
     height: 50px;
+}
+
+footer {
+    background: #079992;
+    border: 2px groove;
 }

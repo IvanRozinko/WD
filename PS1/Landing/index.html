@@ -12,119 +12,125 @@
 </head>
 <body>
 <header>
-    <div class="header__logo">
-        <i class="fas fa-tree fa-5x">ree</i>
+    <div class="container">
+        <div class="header__logo">
+            <i class="fas fa-tree fa-5x">ree</i>
+        </div>
+        <nav class="header__container">
+            <a href="http://google.com">PRODUCTS</a>
+            <a href="http://google.com">ABOUT US</a>
+            <a href="http://google.com">CONTACT US</a>
+        </nav>
     </div>
-    <nav class="header__container">
-        <a href="http://google.com">PRODUCTS</a>
-        <a href="http://google.com">ABOUT US</a>
-        <a href="http://google.com">CONTACT US</a>
-    </nav>
 </header>
 <section class="app_container">
-    <div class="column1">
-        <span class="column1__img"></span>
-    </div>
-    <div class="column2">
-        <div><h1>Our aweful app, don't even think!</h1></div>
-        <div><p>Text description. Font Awesome icons automatically inherit CSS size and color. This means they blend in
-            with
-            text inline wherever you put them. Font Awesome tries not to be too opinionated, and sets just the basic
-            styling
-            rules icons need to render properly in context.</p></div>
-        <div><input type="button" class="column2__button" value="Download"></div>
+    <div class="container">
+        <div class="column1">
+            <span class="column1__img"></span>
+        </div>
+        <div class="column2">
+            <div><h1>Our aweful app, don't even think!</h1></div>
+            <div><p>Text description. Font Awesome icons automatically inherit CSS size and color. This means they blend
+                in
+                with
+                text inline wherever you put them. Font Awesome tries not to be too opinionated, and sets just the basic
+                styling
+                rules icons need to render properly in context.</p></div>
+            <div><input type="button" class="column2__button" value="Download"></div>
+        </div>
     </div>
 </section>
 <section class="branch">
-    <div class="branch__column">
-        <span class="circle">
-            <i class="fab fa-youtube-square"></i>
-        </span>
-        <h3>Web development</h3>
-        <p>Description some. Text description. Font Awesome icons automatically inherit CSS size and color. This means
-            they
-            blend in with text inline wherever you put them. Font Awesome tries not to be too opinionated, and sets just
-            the
-            basic styling rules icons need to render properly in context.</p>
-    </div>
-    <div class="branch__column">
-        <span class="circle">
-            <i class="far fa-question-circle"></i>
-        </span>
-        <h3>Mobile development</h3>
-        <p>Description some.Text description. Font Awesome icons automatically inherit CSS size and color. This means
-            they
-            blend in with text inline wherever you put them. Font Awesome tries not to be too opinionated, and sets just
-            the
-            basic styling rules icons need to render properly in context.</p>
-    </div>
-    <div class="branch__column">
-       <span class="circle">
-             <i class="fas fa-crown"></i>
-        </span>
-        <h3>Highload</h3>
-        <p>Description some. Text description. Font Awesome icons automatically inherit CSS size and color. This means
-            they
-            blend in with text inline wherever you put them. Font Awesome tries not to be too opinionated, and sets just
-            the
-            basic styling rules icons need to render properly in context.</p>
+    <div class="container">
+        <div class="branch__column">
+            <span class="circle">
+               <i class="fab fa-youtube-square"></i>
+            </span>
+            <h3>Web development</h3>
+            <p>Description some. Text description. Font Awesome icons automatically inherit CSS size and color. This
+                means
+                they
+                blend in with text inline wherever you put them. Font Awesome tries not to be too opinionated, and sets
+                just
+                the
+                basic styling rules icons need to render properly in context.</p>
+        </div>
+        <div class="branch__column">
+            <span class="circle">
+                 <i class="far fa-question-circle"></i>
+             </span>
+            <h3>Mobile development</h3>
+            <p>Description some.Text description. Font Awesome icons automatically inherit CSS size and color. This
+                means
+                they
+                blend in with text inline wherever you put them. Font Awesome tries not to be too opinionated, and sets
+                just
+                the
+                basic styling rules icons need to render properly in context.</p>
+        </div>
+        <div class="branch__column">
+            <span class="circle">
+                <i class="fas fa-crown"></i>
+             </span>
+            <h3>Highload</h3>
+            <p>Description some. Text description. Font Awesome icons automatically inherit CSS size and color. This
+                means
+                they
+                blend in with text inline wherever you put them. Font Awesome tries not to be too opinionated, and sets
+                just
+                the
+                basic styling rules icons need to render properly in context.</p>
+        </div>
     </div>
 </section>
 <form>
     <h3>Contact us!</h3>
     <div class="form__container">
-        <div class="form__container__left">
-            <input type="text" class="left__input" placeholder="Name">
-            <input type="email" class="left__input" placeholder="Email">
-            <input type="tel" class="left__input" placeholder="Phone number">
-            <div class="left__col">
-                <div class="col__1">
-                    <label>Choose your gender :</label>
-                    <label>Specify your education:</label>
-                    <label>Choose your fav colour:</label>
-                    <label>Select your b-day :</label>
-                    <label>Select your photo :</label>
-                    <label>Select any number :</label>
-                    <label>Share your profile URL :</label>
-                    <label>How happy you are 0 to 10 :</label><br>
-                    <label>Press if you OK :)</label>
-                </div>
-                <div class="col__2">
-                    <div class="col__2--gender">
-                        <label for="male"> Male <input type="radio" name="gender" id="male" value="Male"
-                                                       checked></label>
-                        <label for="female"> Female <input type="radio" name="gender" id="female"
-                                                           value="Female"></label>
-                    </div>
-                    <div class="col__2--checkbox">
-                        <label for="basic"><input type="checkbox" id="basic"> Basic education</label>
-                        <label for="col"><input type="checkbox" id="col"> College</label>
-                        <label for="md"><input type="checkbox" id="md"> Master Degree</label>
-                    </div>
-                    <input type="color" class="col__2--input" id="color" value="#38ada9">
-                    <div class="col__2--date">
-                        <input type="date" id="date">
-                        <input type="time">
-                    </div>
-                    <input type="file" class="col__2--input" id="file">
-                    <input type="number" class="col__2--input">
-                    <input type="url" class="col__2--input">
-                    <input type="range" class="col__2--input" min="0" max="10">
-                    <input type="image" src="images/ok.png" width="48" height="48" align="left">
-                </div>
-            </div>
-        </div>
-        <div class="form__container--right">
-            <label>Write what you think</label>
-            <textarea class="right--textarea" placeholder="Write us something"></textarea>
-            <label>Did you lost something?</label>
+        <input type="text" class="left__input" placeholder="Name">
+        <input type="email" class="left__input" placeholder="Email">
+        <input type="tel" class="left__input" placeholder="Phone number">
+        <label>Choose your gender :
+            <label for="male">Male<input type="radio" name="gender" id="male" checked></label>
+            <label for="female">Female<input type="radio" name="gender" id="female"></label>
+        </label>
+        <label>Specify your education:
+            <label for="basic"><input type="checkbox" id="basic">Basic</label>
+            <label for="col"><input type="checkbox" id="col">College</label>
+            <label for="md"><input type="checkbox" id="md">Master</label>
+        </label>
+        <label>Choose your fav colour:
+            <input type="color" value="#38ada9">
+        </label>
+        <label>Select your b-day :
+            <input type="date" id="date">
+            <input type="time">
+        </label>
+        <label>Select your photo :
+            <input type="file" id="file">
+        </label>
+        <label>Select any number :
+            <input type="number">
+        </label>
+        <label>Share your profile URL :
+            <input type="url">
+        </label>
+        <label>How happy you are 0 to 10 :
+            <input type="range" min="0" max="10">
+        </label>
+        <label>Press if you OK :)
+            <input type="image" src="images/ok.png" alt="smiley pic" width="48" height="48" align="center">
+        </label>
+        <label>Did you lost something?
             <input type="search">
+        </label>
+        <label>Write what you think </label>
+        <textarea class="right--textarea" placeholder="Write us something"></textarea>
+        <div class="form--submit">
+            <input type="reset" class="form--button" value="Reset form">
+            <input type="submit" class="form--button" value="Send form">
         </div>
     </div>
-    <div class="form--submit">
-        <input type="reset" class="form--button" value="Reset form">
-        <input type="submit" class="form--button" value="Send form">
-    </div>
+
 </form>
 </body>
 </html>
