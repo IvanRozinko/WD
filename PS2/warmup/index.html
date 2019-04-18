@@ -7,14 +7,14 @@
 </head>
 <body>
 <section>
-    <h3>Сумма чисел которые заканчиваются на 2,3, и 7 в заданном диапазоне от -100 до 100</h3>
+    <h3>Сумма чисел которые заканчиваются на 2,3, и 7 в заданном диапазоне от -1000 до 1000. Начало диапазона должно быть меньше конца</h3>
     <form class="task">
         <label for="number1">Введите начало диапазона</label>
         <input type="text" id="number1" value="0">
         <label for="number2">Введите конец диапазона</label>
         <input type="text" id="number2" value="10">
         <button id="countSum" value="Рассчитать" type="button">Рассчитать</button>
-        <span class="result-span">Результат : <span id="result"></span></span>
+        <span class="result-span">Результат : <output id="result"></output></span>
     </form>
 </section>
 <section>
@@ -27,16 +27,16 @@
         <label for="time">Введите время в формате "hh:mm:ss"</label>
         <input type="text" id="time" value="10:22:33">
         <button id="timeConvertToSec" type="button">Рассчитать</button>
-        <span class="result-span">Результат : <span id="result2"></span></span>
+        <span class="result-span">Результат : <output id="result2"></output></span>
     </form>
 </section>
 <section>
-    <h3>Промежуток времени</h3>
+    <h3>Промежуток времени: первая дата должна быть раньше второй</h3>
     <form class="task">
         <label for="depDate">Дата отлета</label><input type="datetime-local" id="depDate" value="">
         <label for="arrDate">Дата прибытия</label><input type="datetime-local" id="arrDate">
         <button id="tripLength" type="button">Рассчитать</button>
-        <span class="result-span">Результат : <span id="result3"></span></span>
+        <span class="result-span">Результат : <output id="result3"></output></span>
     </form>
 </section>
 <section>
@@ -49,7 +49,7 @@
             <button type="button" id="clearBoard">Очистить</button>
         </div>
         <div id="chessContainer">
-            <div id="result4"></div>
+            <output id="result4"></output>
         </div>
     </form>
 </section>
@@ -57,7 +57,7 @@
     <h3>Textarea</h3>
     <form class="task">
         <textarea id="textarea" placeholder="write URL's split by comma ','"></textarea>
-        <div id="result5"></div>
+        <output id="result5"></output>
     </form>
 </section>
 <section>
@@ -66,7 +66,7 @@
         <textarea id="reg-textarea" placeholder="Write some text"></textarea>
         <label for="reg-input">Write regex or text</label><input type="text" id="reg-input" placeholder="[a|b|c]">
         <button type="button" id="reg-button">Show</button>
-        <div id="reg-markedText"></div>
+        <output id="result6"></output>
     </form>
 </section>
 <script type="text/javascript" src="script.js"></script>

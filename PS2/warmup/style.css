@@ -37,6 +37,10 @@ input, button, textarea {
 input:focus{
     background-color: azure;
 }
+textarea:focus{
+    background-color: azure;
+}
+
 button:hover {
     background: azure;
 }
@@ -71,6 +75,7 @@ textarea {
     text-align: left;
     resize: none;
 }
+
 
 #result5 {
     display: flex;

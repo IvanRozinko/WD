@@ -47,10 +47,16 @@ buildTable(defaultArray);
 let isSortedByName = false;
 let isSortedByCat = false;
 const sortByNameBtn = document.getElementById("sortByNameBtn");
-sortByNameBtn.addEventListener("click", () => {sortByName(filteredArray)});
+sortByNameBtn.addEventListener("click", () => {
+    sortByAbc(isSortedByName, compareByName);
+    isSortedByName = !isSortedByName;
+});
 
 const sortByCatBtn = document.getElementById("sortByCatBtn");
-sortByCatBtn.addEventListener("click", () => {sortByCat(filteredArray)});
+sortByCatBtn.addEventListener("click", () => {
+    sortByAbc(isSortedByCat, compareByCat);
+    isSortedByCat = !isSortedByCat;
+});
 
 const categoryInput = document.getElementById("filter");
 const nameInput = document.getElementById("search");
@@ -65,23 +71,25 @@ nameInput.addEventListener("keyup", () => {
 
 
 /**
- * Method takes as a parameter array of objects and builds a result4 in HTML document
- * where: num of rows equals arrays length and number of columns is a number of
+ * Method takes as a parameter array of objects and builds a result in HTML document
+ * where: num of rows equals array length and number of columns is a number of
  * object properties
  * @param array contains objects
  */
 function buildTable(array) {
-    tbody.innerHTML = "";
+    tbody.innerText = "";
+    let fragment = document.createDocumentFragment();
     array.forEach((item) => {
         const row = document.createElement("tr");
         const properties = Object.values(item);
         properties.forEach((itemProperty) => {
             const cell = document.createElement("td");
-            cell.innerHTML = itemProperty;
+            cell.innerText = itemProperty;
             row.appendChild(cell);
         });
-        tbody.appendChild(row);
+        fragment.appendChild(row);
     });
+    tbody.appendChild(fragment);
     calculateSum(array);
 }
 
@@ -90,45 +98,25 @@ function buildTable(array) {
  * @param array of objects
  */
 function calculateSum(array) {
-    let sum = 0;
-    array.forEach((item) => {
-        sum += item.price * item.amount;
-    });
-    totalPrice.innerHTML = sum + " $";
+    const sum = array.reduce(function (sum, current) {
+        return sum + current.amount * current.price;
+    }, 0);
+    totalPrice.innerText = sum + " $";
 }
 
 
 /**
- * Sorts objects in array by name property.
- * @param array of objects
+ * Sorts objects in array by object property.
+ * @param isSorted showing if method already been used
+ * @param compareMethod shows how to compare objects
  */
-function sortByName(array) {
-    if (!isSortedByName) {
-        array.sort(compareByName);
-        sortByNameBtn.innerText = "▲";
+function sortByAbc(isSorted, compareMethod) {
+    if (!isSorted) {
+        filteredArray.sort(compareMethod);
     } else {
-        array.reverse();
-        sortByNameBtn.innerText = "▼";
+        filteredArray.reverse();
     }
-    buildTable(array);
-    isSortedByName = !isSortedByName;
-}
-
-
-/**
- * Sorts objects in array by category property.
- * @param array of objects
- */
-function sortByCat(array) {
-    if (!isSortedByCat) {
-        array.sort(compareByCat);
-        sortByCatBtn.innerText = "▲";
-    } else {
-        array.reverse();
-        sortByCatBtn.innerText = "▼";
-    }
-    isSortedByCat = !isSortedByCat;
-    buildTable(array);
+    buildTable(filteredArray);
 }
 
 
@@ -163,7 +151,7 @@ function compareByCat(a, b) {
  */
 function filter(category, name) {
     filteredArray = defaultArray;
-    if (category !== "") {
+    if (category) {
         filteredArray = filteredArray.filter((item) => category === item.category);
     }
     searchByName(name);
@@ -173,9 +161,9 @@ function filter(category, name) {
 
 /**
  * Searching items by their names
- * @param name
+ * @param name input by user
  */
-function searchByName(name){
-    const nameRegExp = new RegExp("^" + name, "i");
+function searchByName(name) {
+    const nameRegExp = new RegExp(name, "i");
     filteredArray = filteredArray.filter((item) => nameRegExp.test(item.name));
 }
