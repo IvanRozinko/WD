@@ -9,21 +9,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Awesome landing page</title>
     <style media="screen"></style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
 <header>
+    <div id="back-to-top"></div>
     <div class="container">
         <div class="header__logo">
             <i class="fas fa-tree fa-5x">ree</i>
         </div>
         <nav class="header__container">
-            <a href="http://google.com">PRODUCTS</a>
-            <a href="http://google.com">ABOUT US</a>
-            <a href="http://google.com">CONTACT US</a>
+            <a class="jumper" href="#products">PRODUCTS</a>
+            <a class="jumper" href="#about-us">ABOUT US</a>
+            <a class="jumper" href="#contact-us">CONTACT US</a>
         </nav>
     </div>
 </header>
-<section class="app_container">
+<section id="products" class="app_container">
     <div class="container">
         <div class="column1">
             <span class="column1__img"></span>
@@ -40,7 +43,7 @@
         </div>
     </div>
 </section>
-<section class="branch">
+<section id="about-us" class="branch">
     <div class="container">
         <div class="branch__column">
             <span class="circle">
@@ -83,7 +86,7 @@
         </div>
     </div>
 </section>
-<form>
+<form id="contact-us">
     <h3>Contact us!</h3>
     <div class="form__container">
         <input type="text" class="left__input" placeholder="Name">
