@@ -39,24 +39,30 @@ const GOODS = [
 
 const tbody = document.getElementById("tbody");
 const totalPrice = document.getElementById("totalPrice");
-let defaultArray = GOODS;
-let filteredArray = defaultArray;
+let filteredArray = GOODS;
 //building a table when a page loads
-buildTable(defaultArray);
+buildTable(GOODS);
 
-let isSortedByName = false;
-let isSortedByCat = false;
-const sortByNameBtn = document.getElementById("sortByNameBtn");
-sortByNameBtn.addEventListener("click", () => {
-    sortByAbc(isSortedByName, compareByName);
-    isSortedByName = !isSortedByName;
+//sorting of array by object property
+const propComparator = (prop) =>
+    (a, b) => a[prop] === b[prop] ? 0 : a[prop] > b[prop] ? 1 : -1;
+const compareByCat = propComparator("category");
+const compareByName = propComparator("name");
+
+let isSorted = false;
+const sortButtons = document.getElementsByClassName("sortButton");
+Array.from(sortButtons).forEach((button) => {
+    button.addEventListener("click", (event) => {
+        if (!isSorted) {
+            filteredArray.sort(event.target.id === "name" ? compareByName : compareByCat);
+        } else {
+            filteredArray.reverse();
+        }
+        isSorted = !isSorted;
+        buildTable(filteredArray);
+    });
 });
 
-const sortByCatBtn = document.getElementById("sortByCatBtn");
-sortByCatBtn.addEventListener("click", () => {
-    sortByAbc(isSortedByCat, compareByCat);
-    isSortedByCat = !isSortedByCat;
-});
 
 const categoryInput = document.getElementById("filter");
 const nameInput = document.getElementById("search");
@@ -78,7 +84,7 @@ nameInput.addEventListener("keyup", () => {
  */
 function buildTable(array) {
     tbody.innerText = "";
-    let fragment = document.createDocumentFragment();
+    const fragment = document.createDocumentFragment();
     array.forEach((item) => {
         const row = document.createElement("tr");
         const properties = Object.values(item);
@@ -111,36 +117,7 @@ function calculateSum(array) {
  * @param compareMethod shows how to compare objects
  */
 function sortByAbc(isSorted, compareMethod) {
-    if (!isSorted) {
-        filteredArray.sort(compareMethod);
-    } else {
-        filteredArray.reverse();
-    }
-    buildTable(filteredArray);
-}
 
-
-/**
- * Comparing objects by name
- * @param a object
- * @param b object
- */
-function compareByName(a, b) {
-    if (a.name > b.name)
-        return 1;
-    return -1;
-}
-
-
-/**
- * Comparing objects by category
- * @param a object
- * @param b object
- */
-function compareByCat(a, b) {
-    if (a.category > b.category)
-        return 1;
-    return -1;
 }
 
 
@@ -150,7 +127,7 @@ function compareByCat(a, b) {
  * @param name
  */
 function filter(category, name) {
-    filteredArray = defaultArray;
+    filteredArray = GOODS;
     if (category) {
         filteredArray = filteredArray.filter((item) => category === item.category);
     }

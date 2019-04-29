@@ -89,33 +89,56 @@ tripLength.addEventListener("click", () => {
         result3.innerText = resultInvalid;
         return;
     }
-    const secPerMinute = 60;
-    const minPerHour = 60;
-    const hourPerDay = 24;
+    const dateArray1 = getDateArray(date1);
+    const dateArray2 = getDateArray(date2);
+    let timeBetweenDates = new Array(dateArray1.length).fill(0);
     const dayPerMonth = 30;
     const monthPerYear = 12;
-    //difference between 2 dates in seconds
-    let trip = (date2-date1) / 1000;
-
-    const sec = trip % secPerMinute;
-    trip = Math.floor(trip / secPerMinute);
-    const min = trip % minPerHour;
-    trip = Math.floor(trip / minPerHour);
-    const hour = trip % hourPerDay;
-    trip = Math.floor(trip / hourPerDay);
-    const day = trip %  dayPerMonth;
-    trip = Math.floor(trip / dayPerMonth);
-    const month = trip % monthPerYear;
-    trip = Math.floor(trip / monthPerYear);
-    result3.innerText = trip + " year(s), "
-                          + month + " month(s), "
-                           + day + " day(s), "
-                            + hour + " hour(s), "
-                             + min + " minute(s), "
-                              + sec + " second(s).";
+    const hourPerDay = 24;
+    const minPerHour = 60;
+    const secPerMinute = 60;
+    for (let i = 0; i < dateArray1.length; i++) {
+        let difference = dateArray2[i] - dateArray1[i] + timeBetweenDates[i];
+        if (difference < 0) {
+            switch (i) {
+                case 0: {
+                    difference += secPerMinute ;
+                    break;
+                }case 1: {
+                    difference += minPerHour ;
+                    break;
+                }case 2: {
+                    difference += hourPerDay;
+                    break;
+                }case 3: {
+                    difference += dayPerMonth;
+                    break;
+                }case 4: {
+                    difference += monthPerYear;
+                    break;
+                }
+            }
+            timeBetweenDates[i+1]--;
+        }
+        timeBetweenDates[i] = difference;
+    }
+    result3.innerText = timeBetweenDates[5] + " year(s), "
+                          + timeBetweenDates[4] + " month(s), "
+                           + timeBetweenDates[3] + " day(s), "
+                            + timeBetweenDates[2] + " hour(s), "
+                             + timeBetweenDates[1] + " minute(s), "
+                              + timeBetweenDates[0] + " second(s).";
 });
 
-
+/**
+ * Converting date object to array
+ * @param date date object
+ * @returns {array}
+ */
+function getDateArray(date){
+    return [date.getSeconds(), date.getMinutes(), date.getHours(),
+        date.getDate(), date.getMonth(), date.getFullYear()];
+}
 
 //Chessboard alignment
 const result4 = document.getElementById("result4");
@@ -165,7 +188,7 @@ textarea.addEventListener("focusout", () => {
     let linkContainer = [];
     links.forEach((each) => {
         let link = document.createElement("a");
-        link.setAttribute("href", each);
+        link.setAttribute("href", /https?:\/\//.test(each) ? each : "//" + each);
         link.setAttribute("target", "_blank");
         link.innerText = each.replace(/https?:\/\//, "");
         linkContainer.push(link);
@@ -175,7 +198,8 @@ textarea.addEventListener("focusout", () => {
 });
 /* Here some testing input for textarea:
  255.212.4, 255.555.999.8,  https://google.com, http://www.abc.in, www.tv.pb,
- zooby.in, UKR>NET, Uuk.net, cbc.com, www.audit.ua, 127.0.128.255, 123256123789,
+ zooby.in, UKR>NET, ukr.net, cbc.com, www.audit.ua, 127.0.128.255, 123256123789,
+ 209.185.108.135, 216.58.193.78
 */
 
 
@@ -187,7 +211,7 @@ regButton.addEventListener("click", () => {
     let userText = textInput.value;
     const userInput = regexInput.value;
     const userRegex = new RegExp(userInput, "gi");
-    document.getElementById("result6").innerText = userText.replace(userRegex,"<mark>$&</mark>");
+    document.getElementById("result6").innerHTML = userText.replace(userRegex,"<mark>$&</mark>");
 });
 
 
