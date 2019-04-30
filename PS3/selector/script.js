@@ -3,59 +3,63 @@ $(document).ready(function () {
     const $breeds = [
         {
             name: "dalmatian",
-            icon: "<i class='flaticon-dog'></i>"
+            icon: "flaticon-dog"
         },
         {
             name: "jack russel",
-            icon: "<i class='flaticon-dog-1'></i>"
+            icon: "flaticon-dog-1"
         },
         {
             name: "basset hound",
-            icon: "<i class='flaticon-basset-houd'></i>"
+            icon: "flaticon-basset-houd"
         },
         {
             name: "boxer",
-            icon: "<i class='flaticon-boxer'></i>"
+            icon: "flaticon-boxer"
         },
         {
             name: "collie",
-            icon: "<i class='flaticon-collie'></i>"
+            icon: "flaticon-collie"
         },
         {
             name: "poodle",
-            icon: "<i class='flaticon-poodle'></i>"
+            icon: "flaticon-poodle"
         },
         {
             name: "akitas",
-            icon: "<i class='flaticon-akitas'></i>"
+            icon: "flaticon-akitas"
         },
         {
             name: "bullterrier",
-            icon: "<i class='flaticon-bullterrier'></i>"
+            icon: "flaticon-bullterrier"
         }];
 
     const $select = $("<div>", {id: "options"});
 
     $breeds.forEach((breed) => {
         const $option = $("<div>", {class: "option", text: breed.name});
-        $option.append(breed.icon);
+        const $icon = $("<i>", {class: breed.icon});
+        $option.append($icon);
         $select.append($option);
     });
     $select.appendTo("#select");
     $select.hide();
 
-    $("#title").click((event) => {
-        $select.slideToggle();
+    $("#title").on("click",(event) => {
+        $("#title").stop(true, true);
         event.stopPropagation();
+        $select.slideToggle();
     });
 
-    $(".option").click(function() {             //why if I replace with () => it returns other
-       const content = $(this).text();
-       $("#breed").text(content);
+    $(".option").on("click",function() {
+        $(this).stop(true, true);
+       const content = $(this).html();
+       $("#breed").html(content);
         $select.slideUp();
     });
 
-    $(window).click(function() {
+    $(window).on("click",function() {
+        $(this).stop(true, true);
         $select.slideUp();
     });
 

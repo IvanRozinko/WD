@@ -1,5 +1,5 @@
 .container {
-    width: 200px;
+    max-width: 220px;
     min-height: 25px;
     background: #0D322A;
     text-align: center;
@@ -11,13 +11,19 @@
 }
 
 #title {
-    height: 25px;
+    height: 30px;
     border-radius: 3px;
-    line-height: 25px;
+    line-height: 30px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     padding: 0 5px 0 10px;
+    margin: 2px;
+}
+
+#breed{
+    display:flex;
+    flex-direction: row-reverse;
 }
 
 #title:hover {
@@ -38,7 +44,8 @@
     align-items: center;
 }
 
-.option [class^="flaticon-"]:before {
+.option [class^="flaticon-"]:before,
+#breed [class^="flaticon-"]:before {
     margin: 0 10px;
     font-size: 30px;
 }
