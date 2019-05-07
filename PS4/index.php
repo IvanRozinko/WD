@@ -47,8 +47,19 @@ Select file to upload: <br>
 </form>
 </body>
 </html>
+<style type="text/css">
+    .image_box {
+        display: inline-block;
+        text-align: center;
+        margin: 5px 15px;
+    }
+
+</style>
 <?php
-//displayFiles();
+
+$directory = "uploads/";
+$files = array_diff(scandir($directory,  SCANDIR_SORT_NONE), array(".", ".."));
+displayFiles($files);
 
 if (isset($_POST["submit"])) {
     upload();
@@ -56,22 +67,36 @@ if (isset($_POST["submit"])) {
 
 
 function upload() {
-    if ($_FILES["file"]["name"] != "") {
+    if ($_FILES["file"]["name"] == "") {
+        echo "No file specified!<br>";            //wrong place for message
+    } else {
         $path = $_FILES["file"]["name"];
         $pathTo = "uploads/" . $path;
         move_uploaded_file($_FILES["file"]["tmp_name"], $pathTo);
-    } else {
-        echo "No file specified!<br>";
+        $uploadingFile = array($path);
+        displayFiles($uploadingFile);               //displaying same file again if upload...
     }
-    displayFiles();
 }
 
-function displayFiles() {
-    $dir = "uploads/";
-    $files = array_diff(scandir($dir), array(".", ".."));
+function displayFiles($files) {
     foreach ($files as $file) {
-        echo "<a href='download.php?file=" . $file . "'>$file</a> : " . humanSize($dir . $file) . "<br>" ;
+        global $directory;
+        $fileName = "$directory$file";
+        //check if file is image than add small icon
+        $image = isImage($fileName) ? "<img src='$fileName' alt='$fileName' width='200' height='120'>" : "";
+        echo "<div class='image_box'>";
+        echo "$image\n";
+        echo "<p><a href='$fileName' download>$file</a><br>\n";
+        echo  humanSize($fileName) . "</p>";
+        echo "</div>";
     }
+
+}
+
+function isImage($filename) {
+    $extension = preg_split("/[.]/", $filename);
+    $imagExtensions = array("jpeg", "jpg", "png", "gif", "bmp");
+    return in_array($extension[1], $imagExtensions);
 }
 
 function humanSize($file) {
@@ -97,7 +122,7 @@ function humanSize($file) {
             $value = $values[$i];
         }
     }
-    return round($humanSize, 1) . " ($value)";
+    return round($humanSize, 1) . "($value)";
 }
 ?>
 
