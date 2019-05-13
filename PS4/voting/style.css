@@ -1,0 +1,14 @@
+body {
+    display: flex;
+    justify-content: space-around;
+}
+section {
+    width: 300px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+input {
+    margin: 5px 0;
+}
