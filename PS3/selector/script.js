@@ -46,20 +46,17 @@ $(document).ready(function () {
     $select.hide();
 
     $("#title").on("click",(event) => {
-        $("#title").stop(true, true);
         event.stopPropagation();
-        $select.slideToggle();
+        $select.stop().slideToggle();
     });
 
     $(".option").on("click",function() {
-        $(this).stop(true, true);
        const content = $(this).html();
        $("#breed").html(content);
         $select.slideUp();
     });
 
     $(window).on("click",function() {
-        $(this).stop(true, true);
         $select.slideUp();
     });
 
