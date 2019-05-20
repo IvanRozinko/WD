@@ -36,7 +36,7 @@ $(document).ready(function () {
 
     const $select = $("<div>", {id: "options"});
 
-    $breeds.forEach((breed) => {
+    $breeds.forEach(function(breed) {
         const $option = $("<div>", {class: "option", text: breed.name});
         const $icon = $("<i>", {class: breed.icon});
         $option.append($icon);
@@ -45,7 +45,7 @@ $(document).ready(function () {
     $select.appendTo("#select");
     $select.hide();
 
-    $("#title").on("click",(event) => {
+    $("#title").on("click",function(event) {
         event.stopPropagation();
         $select.stop().slideToggle();
     });
