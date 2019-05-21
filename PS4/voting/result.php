@@ -15,24 +15,30 @@
 
 
         function drawChart() {
-            const file = "json/results";
+            const data = new google.visualization.DataTable();
+            data.addColumn("string", "Breed");
+            data.addColumn("number", "Rating");
 
-            var data = $.ajax({
-                url: "json/results",
-                dataType: "json",
-                async: false,
-            }).responseText;
+            let breeds = [];
+            $.getJSON("json/results.json", function(jsonData){
+                $.each(jsonData, function (key, val) {
+                    // data.addRows(key, val);
+                    breeds.push(key )
+                    console.log(key + " " + val);
+                });
 
-               console.log(data);
+            });
 
-                var options = {
-                    "title": "Most popular breeds",
-                    "width": 500,
-                    "height": 600
-                };
+            //https://stackoverflow.com/questions/4825899/how-to-push-both-key-and-value-into-an-array-in-jquery
 
-                var chart = new google.visualization.PieChart(document.getElementById("chart_div"));
-                chart.draw(data, options);
+            var options = {
+                "title": "Most popular breeds",
+                "width": 500,
+                "height": 600
+            };
+
+            const chart = new google.visualization.PieChart(document.getElementById("chart_div"));
+            chart.draw(data, options);
 
 
         }
