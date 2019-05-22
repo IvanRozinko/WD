@@ -12,3 +12,7 @@ form {
 input {
     margin: 5px 0;
 }
+#chart_div {
+    top: 50%;
+    left: 50%;
+}
