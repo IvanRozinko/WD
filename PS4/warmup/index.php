@@ -110,7 +110,8 @@ echo "<hr>";
  * @param $text
  * @return string
  */
-function showStats($text) {
+function showStats($text)
+{
     $stringAmount = sizeof(preg_split("/\n/", $text));
     $whitespaceAmount = substr_count($text, " ");
     $charAmount = iconv_strlen($text) - $whitespaceAmount;
@@ -122,7 +123,8 @@ function showStats($text) {
 /**
  * Counting amount of visiting to web page using sessions
  */
-function counter(){
+function counter()
+{
     if (!isset($_SESSION["counter"])){
         $_SESSION["counter"] = 0;
     } else {
@@ -151,7 +153,8 @@ function generateArray() {
  * @param $number
  * @return int  - sum of digits
  */
-function calculateSum ($number) {
+function calculateSum($number)
+{
     return array_sum(preg_split("//",$number));
 }
 
@@ -159,7 +162,7 @@ function calculateSum ($number) {
  * @param $number - checking number
  * @return bool
  */
-function isFit ($number) {
+function isFit($number) {
     $nums = array(2, 3, 7);
     $lastDigit = abs($number) % 10;
     return in_array($lastDigit, $nums);
@@ -168,7 +171,8 @@ function isFit ($number) {
 /**
  * Drawing chessboard 8x8 blocks
  */
-function drawChessboard() {
+function drawChessboard()
+{
     $boardSize = 8;
     echo "<div class='container_board'>";
     for($i = 0; $i < $boardSize; $i++) {
@@ -194,7 +198,8 @@ function upload($file) {
  * Displaying files from array received as a parameter. If file is image, than shows small preview
  * @param $files array of files to be displayed
  */
-function displayFiles($files) {
+function displayFiles($files)
+{
     foreach ($files as $file) {
         global $directory;
         $fileName = "$directory$file";
@@ -225,7 +230,8 @@ function isImage($filename) {
  * @param $file
  * @return string
  */
-function humanSize($file) {
+function humanSize($file)
+{
     $humanSize = floatval(filesize($file));
     $value = "";
     $sizes = array(
