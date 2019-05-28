@@ -1,7 +1,11 @@
 <?php
 session_start();
 if (isset($_POST["submit"])) {
-    print_r($_POST);
+print_r($_SESSION);
+   $valid = true;
+
+   if (!preg_match());
+
 }
 
 ?>
@@ -17,11 +21,14 @@ if (isset($_POST["submit"])) {
 </head>
 <body>
 
-
+<h1>Easy Chat</h1>
+<!--<h3>--><?php //echo $name; ?><!--</h3>-->
 <form action="">
-    <textarea name="textarea" id="" cols="80" rows="30"></textarea>
-    <input name="message" type="text">
+    <textarea name="textarea" id="" cols="70" rows="15"></textarea>
+    <div class="message_block">
+    <input name="message" type="text" id="message" placeholder="message...">
     <input name="send" type="submit" value="Send">
+    </div>
 </form>
 </body>
 </html>
