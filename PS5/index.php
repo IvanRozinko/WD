@@ -18,7 +18,7 @@ if (isset($_POST["submit"])) {
     $pass = $_POST["pass"];
 
 
-    if (!preg_match("/^[A-Z|a-z]*$/", $name)) {
+    if (!preg_match("/^[A-Z|a-z]+$/", $name)) {
         $valid = false;
         $error_name = "Your name should consist if letters A-z only";
     }
@@ -37,17 +37,15 @@ if (isset($_POST["submit"])) {
             $users = array();
         }
 
-        if (!array_key_exists($name, $users)){
-            array_push($users, array($name => $pass));
-            print_r($users);
-            echo "answer " . file_exists("users/users.json");  //here some bug
+        if (!array_key_exists($name, $users)) {
+            $users[$name] = $pass;
             $json_obj = json_encode($users);
-            file_put_contents($file, $json_obj);
-
-//            header("Location: chat.php");
+            file_put_contents($path, $json_obj);
+            header("Location: chat.php");
         } else if ($users[$name] === $pass) {
             header("Location: chat.php");
         }
+        $_SESSION["user_name"] = $name;
         $error_user_exist = "Wrong password";
 
     }
