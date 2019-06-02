@@ -1,9 +1,6 @@
 <?php
 session_start();
 $name = $_SESSION["user_name"];
-
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -16,11 +13,10 @@ $name = $_SESSION["user_name"];
     <title>Easy chat</title>
 </head>
 <body>
-
 <h1>Easy Chat</h1>
 <h3><?php echo "Hey, " . $name . " !"; ?></h3>
+<div  id="chat_window"></div>
 <form action="">
-    <textarea name="textarea" id="msg_history" cols="70" rows="15"></textarea>
     <div class="message_block">
     <input name="msg_input" type="text" id="msg_input" placeholder="Type here...">
     <input id="btn_send" name="btn_send" type="submit" value="Send">
