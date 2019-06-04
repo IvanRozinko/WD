@@ -57,15 +57,18 @@ input[type="submit"] {
     height: 27px;
 }
 
-textarea {
+#chat_window {
+    display: block;
+    width: 530px;
+    height: 300px;
     background-color: #fffecd;
     margin-bottom: 10px;
-    border: none;
-    outline: none;
     color: #635960;
+    overflow-y: scroll;
+    padding: 5px;
 }
 
-#message {
+#msg_input {
     width: 440px;
     margin-right: 10px;
 }

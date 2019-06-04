@@ -1,13 +1,6 @@
 <?php
 session_start();
-if (isset($_POST["submit"])) {
-print_r($_SESSION);
-   $valid = true;
-
-   if (!preg_match());
-
-}
-
+$name = $_SESSION["user_name"];
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,15 +13,16 @@ print_r($_SESSION);
     <title>Easy chat</title>
 </head>
 <body>
-
 <h1>Easy Chat</h1>
-<!--<h3>--><?php //echo $name; ?><!--</h3>-->
+<h3><?php echo "Hey, " . $name . " !"; ?></h3>
+<div  id="chat_window"></div>
 <form action="">
-    <textarea name="textarea" id="" cols="70" rows="15"></textarea>
     <div class="message_block">
-    <input name="message" type="text" id="message" placeholder="message...">
-    <input name="send" type="submit" value="Send">
+    <input name="msg_input" type="text" id="msg_input" placeholder="Type here...">
+    <input id="btn_send" name="btn_send" type="submit" value="Send">
     </div>
 </form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
