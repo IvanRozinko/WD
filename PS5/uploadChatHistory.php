@@ -6,6 +6,10 @@ if (!file_exists($path)) {
     fopen($path, "w");
     return;
 }
+
+function getLastHourMsg($msg) {
+    return null;
+}
 // TODO: upload only last  1 hour messages
 //$msg_full_history = file_get_contents($path);
 //$time_array = preg_split(":", $time);
@@ -15,9 +19,9 @@ if (!file_exists($path)) {
 //$msg_last_hour = strstr($msg_full_history, )
 $json = file_get_contents($path);
 $msg_full_history = json_decode($json, true);
-foreach ($msg_full_history as $key => $value) {
+//$msg_last_hour = array_filter($msg_full_history, )
     
-}
 
-echo "just" ;
+
+print_r(json_encode($json)) ;
 

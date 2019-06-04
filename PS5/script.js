@@ -1,14 +1,13 @@
 $(document).ready(function () {
     const msg_input = $("#msg_input");
 
-     setInterval(uploadChatHistory, 1000);
-    // uploadChatHistory();
+     // setInterval(uploadChatHistory, 1000);
+     uploadChatHistory();
 
     $("#btn_send").bind("click", (event) => {
         event.preventDefault();
-        // const time = getTime();
         const input = msg_input.val();
-        sendMessages(Date.now(), input);
+        sendMessages( getTime(), input);
         msg_input.val("");
     });
 });
@@ -26,10 +25,10 @@ function sendMessages(time, input) {
         url: "sendMsg.php",
         type: "POST",
         data: {send_time: time, input: input},
-        success: function (key, value) {
+        success: function (newMsg) {
             const $chat_window = $("#chat_window");
-            const newMsg = key + insertSmiles(value);
-            $chat_window.append(newMsg);
+            const msg = formatMsg(JSON.parse(newMsg));
+            $chat_window.append("<p>" + msg + "</p>");
             $chat_window.scrollTop($chat_window.prop("scrollHeight") - $chat_window.height());
         }
     });
@@ -43,10 +42,9 @@ function uploadChatHistory() {
         success: function(history) {
             const $chat_window = $("#chat_window");
             $chat_window.empty();
-             history = JSON.parse(history);
-            // history = insertSmiles(msg);
-            for (let msg in history) {
-                $chat_window.append(msg + " " + history[msg]);
+             const obj = JSON.parse(history);
+            for (let msg in obj) {
+                $chat_window.append(formatMsg(msg));
             }
             // $chat_window.scrollTop($chat_window.prop("scrollHeight") - $chat_window.height());
         }
@@ -66,6 +64,10 @@ function insertSmiles(msg) {
 
 function formatT(value) {
     return value > 9 ? value : "0" + value;
+}
+
+function formatMsg(obj) {
+    return "[" + obj.time + "] " + "<strong>" + obj.from + "</strong>" + insertSmiles(obj.msg);
 }
 
 
