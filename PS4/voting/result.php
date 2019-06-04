@@ -26,8 +26,8 @@ function writeToJSON($breed)
     $json_object = file_get_contents($file);
     $data = json_decode($json_object, true);
     if ($data == null) {
-        $data = array();
-    }
+    $data = array();
+}
     array_key_exists($breed, $data) ? $data[$breed]++ : $data[$breed] = 1;
     $json_object = json_encode($data);
     file_put_contents($file, $json_object);
