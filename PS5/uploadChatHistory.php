@@ -18,10 +18,11 @@ function getLastHourMsg($msg) {
 //$sec = $time[2];
 //$msg_last_hour = strstr($msg_full_history, )
 $json = file_get_contents($path);
+
 $msg_full_history = json_decode($json, true);
 //$msg_last_hour = array_filter($msg_full_history, )
     
 
 
-print_r(json_encode($json)) ;
+echo $json;
 
