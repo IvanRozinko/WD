@@ -1,0 +1,31 @@
+<?php
+
+$name = "name1";
+$time = "time";
+$input = "input";
+$path = "msg/history.json";
+//    $msg = "<p>[" . $time . "] <strong>" . $name. ":</strong> ". $input . "</p>";
+$chat_history = file_get_contents($path);
+$temp_array = json_decode($chat_history, true);
+echo "temp";
+print_r($temp_array);
+echo "<br>";
+$msg = array ("time" => $time, "from" => $name . ": ", "input" => $input);
+print_r($msg);
+echo "<br>";
+array_push($temp_array, $msg);
+$newar = $temp_array + $msg;
+echo "newar";
+print_r($newar);
+echo "<br>";
+echo "push";
+print_r($temp_array);
+echo "<br>";
+$json_object = json_encode($newar);
+echo "after merge";
+print_r($json_object);
+echo "<br>";
+file_put_contents($path, $json_object);
+print_r(file_get_contents($path));
+echo "<br>";
+echo json_encode($msg);
