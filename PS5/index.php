@@ -47,10 +47,8 @@ if (isset($_POST["submit"])) {
         }
         $_SESSION["user_name"] = $name;
         $error_user_exist = "Wrong password";
-
     }
 }
-
 ?>
 
 <h1>Easy Chat</h1>

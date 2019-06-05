@@ -1,27 +1,32 @@
 <?php
 session_start();
-$time = $_POST["time"];
 $path = "msg/history.json";
+
 if (!file_exists($path)) {
     fopen($path, "w");
     return;
 }
 
+/**
+ * Filtering history.json content and returning messages sent not earlier than 1 hour ago
+ * @param $msg - message from database
+ * @return bool is it was sent earlier than 1 hour ago
+ */
 function getLastHourMsg($msg) {
-    return null;
+
+    $time = $_POST["time"];
+    $time_array = preg_split("/:/", $time);
+    $hour = $time_array[0];
+    $min = $time_array[1];
+    $sec = $time_array[2];
+    // strcasecmp() - function comparing strings in alphabetical order
+    return  strcasecmp(($hour - 1) . ":" . $min . ":" . $sec, $msg->time) < 0;
 }
-// TODO: upload only last  1 hour messages
-//$msg_full_history = file_get_contents($path);
-//$time_array = preg_split(":", $time);
-//$hour = $time[0];
-//$min = $time[1];
-//$sec = $time[2];
-//$msg_last_hour = strstr($msg_full_history, )
+
 $json = file_get_contents($path);
-$msg_full_history = json_decode($json, true);
-//$msg_last_hour = array_filter($msg_full_history, )
-    
-
-
-print_r(json_encode($json)) ;
+$msg_full_history = json_decode($json);
+//filter file content to get only last hour messages
+$msg_last_hour = array_filter($msg_full_history, "getLastHourMsg");
+//send to user site last hour messages
+echo json_encode($msg_last_hour);
 
