@@ -13,9 +13,10 @@ $sum = 0;
 for ($i = -1000; $i <= 1000; $i++) {
     $sum += $i;
 }
-echo "<p>Sum of numbers in range -1000 to 1000: <b>$sum</b></p>";
-echo "<hr>";
 ?>
+<label>Sum of numbers in range -1000 to 1000: </label>
+<output><b><?php echo $sum?></b></output>
+<hr>
 
 <?php
 //Sum of numbers ends with 2, 3 or 7 in range -1000 to 1000
@@ -25,27 +26,28 @@ for ($i = -1000; $i <= 1000; $i++) {
         $sum1 += $i;
     }
 }
-echo "<p>Sum of numbers in range -1000 to 1000: <b>$sum1</b></p>";
-echo "<hr>";
 ?>
+<label>Sum of numbers in range -1000 to 1000: </label>
+<output><b><?php echo $sum1?></b></output>
+<hr>
 
 <p>Select file to upload:</p>
 <form method="post" enctype="multipart/form-data">
     <input type="file" name="file"/>
-    <input type="submit" value="Upload file" name="submit"/>
+    <input type="submit" value="Upload file" name="upload"/>
     <input type="submit" value="Display files" name="display"/>
 </form>
 <?php
 $directory = "uploads/";
 $files = array_diff(scandir($directory,  SCANDIR_SORT_NONE), array(".", ".."));
-if (isset($_POST["submit"])) {
+if (isset($_POST["upload"])) {
     $file = $_FILES["file"]["name"];
      if ($file == "") {
         echo "No file specified!<br>";
     } else {
          upload($file);
     }
-} elseif (isset($_POST["display"])) {
+} else if (isset($_POST["display"])) {
     displayFiles($files);
 }
 echo "<hr>";
@@ -206,11 +208,9 @@ function displayFiles($files)
         //check if file is image than add small icon
         $image = isImage($fileName) ? "<img src='$fileName' alt='$fileName'>" :
                                         "<img src='img/file.png' alt='file_image3'>";
-        echo "<div class='image_box'>";
-        echo "$image\n";
-        echo "<p><a href='$fileName' download>$file</a><br>\n";
-        echo  humanSize($fileName) . "</p>";
-        echo "</div>";
+        $humanSize = humanSize($fileName);
+        $icon = "<div class='image_box'>$image<p><a href='$fileName' download>$file</a><br>$humanSize</p></div>";
+        echo $icon;
     }
 }
 
@@ -254,7 +254,7 @@ function humanSize($file)
             $value = $values[$i];
         }
     }
-    return round($humanSize, 1) . "($value)";
+    return round($humanSize, 1) . ($value);
 }
 
 
