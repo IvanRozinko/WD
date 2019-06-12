@@ -1,6 +1,7 @@
 body, html {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 .chart_wrap {
     display: flex;
@@ -14,8 +15,7 @@ form {
 input {
     margin: 5px 0;
 }
-#chart_div {
-    top: 50%;
-    left: 50%;
-}
 
+input[type=button] {
+    margin: 50px;
+}
