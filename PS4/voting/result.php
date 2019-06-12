@@ -11,9 +11,11 @@
 <body>
 <?php
 session_start();
-echo session_id();
+ session_id();
+
 if (isset($_POST["submit"])) {
-    if (isset($_POST["breed"])) {
+
+    if (isset($_POST["breed"]) && isNotVoted(session_id()) ) {
         writeToJSOn($_POST["breed"]);
     }
 }
@@ -35,9 +37,20 @@ function writeToJSON($breed)
     file_put_contents($file, $json_object);
 }
 
+function isNotVoted($id)
+{
+    $file = "json/voted.json";
+    if (!file_exists($file)) {
+        file_put_contents($file); //here continue
+    }
+    $json_object = file_get_contents($file);
+    $IDs = json_decode($json_object);
+    return in_array($id, $IDs);
+}
+
 ?>
 <div>
-    <input type="button" name="return" value="Return">
+    <input type="button" name="return" value="<< Return">
 </div>
 <div class="chart_wrap">
     <div id="chart_div"></div>
