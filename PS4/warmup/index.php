@@ -50,30 +50,30 @@ if (isset($_POST["upload"])) {
 } else if (isset($_POST["display"])) {
     displayFiles($files);
 }
-echo "<hr>";
 ?>
-
-<form method="post" >
+<hr>
+<form method="post">
        <input type="submit" value="Draw chessboard" name="draw_chess"/>
 </form>
 <?php
 if(isset($_POST["draw_chess"])) {
     drawChessboard();
 }
-echo "<hr>";
 ?>
-
+<hr>
 <form method="post">
-    <input type="number" name="number">
+    <input type="text" name="number">
     <input type="submit" value="Calculate" name="calculateSum">
 </form>
 <?php
+$sumOfDigits = "";
 if (isset($_POST["calculateSum"])) {
     $number = $_POST["number"];
-    echo "<p>Sum of digits in '$number'   = <b>" . calculateSum($number) . "</b></p>";
+    $sumOfDigits = calculateSum($number);
 }
-echo "<hr>";
 ?>
+<label>Sum of digits = <b><?php echo $sumOfDigits?></b></label>
+<hr>
 
 <form method="post">
     <input type="submit" value="Generate array" name="array_gen">
@@ -83,29 +83,28 @@ if (isset($_POST["array_gen"])){
     echo "Resulted array : ";
     print_r(generateArray());
 }
-echo "<hr>";
 ?>
+<hr>
 
 <?php
 counter();
 echo "<p>This is your visit № " . $_SESSION["counter"] . "</p>";
-echo "<hr>";
 ?>
-
+<hr>
 <form method="post">
-    <textarea name="textarea" cols="30" rows="10"></textarea>
+    <textarea name="textarea" cols="30" rows="10"><?php if (isset($_POST["textarea"])) echo $_POST["textarea"]?></textarea>
     <input type="submit" name="count_chars" value="Count chars">
 </form>
 </body>
 </html>
 <?php
+
 if (isset($_POST["count_chars"])) {
     $text = $_POST["textarea"];
     echo showStats($text);
 }
-echo "<hr>";
 ?>
-
+<hr>
 <?php
 /**
  * Printing amount of strings, characters and whitespaces in textarea
@@ -142,7 +141,9 @@ function generateArray() {
     for ($i = 0; $i < 100; $i++){
         $array[$i] = rand(1, 10);
     }
-    $arrayUnique = array_reverse(array_unique($array));
+    $arrayUnique = array_unique($array);
+    sort( $arrayUnique);
+    $arrayUnique = array_reverse($arrayUnique);
     array_walk($arrayUnique, function(&$value) {
         $value *= 2;
     });
@@ -157,7 +158,7 @@ function generateArray() {
  */
 function calculateSum($number)
 {
-    return array_sum(preg_split("//",$number));
+    return array_sum(preg_split("//", $number));
 }
 
 /**Checking is array contain number

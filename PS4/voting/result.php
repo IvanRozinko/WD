@@ -10,6 +10,8 @@
 </head>
 <body>
 <?php
+session_start();
+echo session_id();
 if (isset($_POST["submit"])) {
     if (isset($_POST["breed"])) {
         writeToJSOn($_POST["breed"]);
@@ -26,15 +28,21 @@ function writeToJSON($breed)
     $json_object = file_get_contents($file);
     $data = json_decode($json_object, true);
     if ($data == null) {
-    $data = array();
-}
+        $data = array();
+    }
     array_key_exists($breed, $data) ? $data[$breed]++ : $data[$breed] = 1;
     $json_object = json_encode($data);
     file_put_contents($file, $json_object);
 }
 
 ?>
-<div id="chart_div"></div>
+<div>
+    <input type="button" name="return" value="Return">
+</div>
+<div class="chart_wrap">
+    <div id="chart_div"></div>
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="script.js"></script>

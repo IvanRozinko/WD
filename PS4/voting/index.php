@@ -9,7 +9,7 @@
     <title>Voting</title>
 </head>
 <body>
-<section>
+<section class="chart_wrap">
     <form action="result.php" method="post">
         <h3>What is you favorite dog breed?</h3>
         <label for="boxer">
