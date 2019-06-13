@@ -11,18 +11,14 @@
 <body>
 <?php
 session_start();
-session_regenerate_id();
-$total_votes = 0;
- $_SESSION["total_votes"];
 
-if (isset($_POST["submit"])) {
+if (isset($_POST["submit"]) && isset($_POST["breed"])) {
 
-    if (isset($_POST["breed"]) && hasNotVoted(session_id()) ) {
+    if (hasNotVoted(session_id())) {
+        $counted = " Your vote counted!";
         writeToJSOn($_POST["breed"]);
-//        header("Location: result.php");
-    }
-    else {
-        echo "You are trying to cheat!";
+    } else {
+        header("Location: fail.php");
     }
 }
 /**
@@ -33,46 +29,57 @@ if (isset($_POST["submit"])) {
 function writeToJSON($breed)
 {
     $file = "json/results.json";
+
+    if (!file_exists($file)) {
+        file_put_contents($file, json_encode(array($breed => 1)));
+        return;
+    }
     $json_object = file_get_contents($file);
     $data = json_decode($json_object, true);
+
     if ($data == null) {
         $data = array();
     }
+
     array_key_exists($breed, $data) ? $data[$breed]++ : $data[$breed] = 1;
     $json_object = json_encode($data);
     file_put_contents($file, $json_object);
 }
 
+/**Checking has user with this session id already gave his vote, if not than saving
+ * session id to json file
+ * @param $id - of current session
+ * @return bool
+ */
 function hasNotVoted($id)
 {
-
     $file = "json/voted.json";
-    if (!file_exists($file)) {
-        file_put_contents($file, json_encode(array($_SESSION["total_votes"]++ => $id)));
 
+    if (!file_exists($file)) {
+        file_put_contents($file, json_encode(array($id)));
         return true;
     }
     $json_object = file_get_contents($file);
     $IDs = json_decode($json_object, true);
-    print_r($IDs);
-    echo $_SESSION["total_votes"];
 
     if (in_array($id, $IDs)) {
         return false;
     }
-   $IDs[$_SESSION["total_votes"]++] = $id;
+
+    array_push($IDs, $id);
     file_put_contents($file, json_encode($IDs));
     return true;
 }
 
 ?>
-<div>
-    <input type="button" name="return" value="<< Return">
-</div>
+<form method="post" action="index.php">
+    <div>
+        <input type="submit" name="return" value="<< Return"><?php if (isset($counted)) echo $counted ?>
+    </div>
+</form>
 <div class="chart_wrap">
     <div id="chart_div"></div>
 </div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="script.js"></script>
