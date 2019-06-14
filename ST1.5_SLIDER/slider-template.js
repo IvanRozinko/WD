@@ -14,22 +14,23 @@ const IMAGES = [
 
 $(document).ready(function () {
 
-    moveFrameTo($(".slider-previews li:first"));
 
-    const $preview = $(".slider-previews");
+
+    const $previewListItems = $(".slider-previews");
 
     IMAGES.forEach(function (img_path) {
-        const $img = $("<li>", {class: "slider-previews"});
-        const $img_preview = $("<img>", {src: API_URL + SMALL_SIZE + img_path, alt: "image"});
-        $img.append($img_preview);
-        $preview.append($img);
+        const $previewListItem = $("<li>", {class: "slider-preview"});
+        const $imgPreview = $("<img>", {src: API_URL + SMALL_SIZE + img_path, alt: "image"});
+        $previewListItem.append($imgPreview);
+        $previewListItems.append($previewListItem);
     });
 
+    moveFrameTo($(".slider-previews li:first"));
 
-    const $big_img = $(".slider-current img");
-    const $prev_img = $(".slider-previews li img");
+    const $currentImg = $(".slider-current img");
+    const $previewImg = $(".slider-previews li img");
 
-    $prev_img.on("click", function () {
+    $previewImg.on("click", function () {
         changeSlideTo($(this));
         moveFrameTo($(this).parent("li"));
     });
@@ -37,15 +38,15 @@ $(document).ready(function () {
 
     $(document).on("keydown", function (event) {
         const current = $(".current");
+
         if (event.which === 37) {
-            const left = current.prev().length === 0 ? $(".slider-previews li:last")
-                                                        : current.prev();
+            console.log( $previewListItems.last());
+            const left = current.is(":first-child") ? $previewListItems.children().last : current.prev();
             moveFrameTo(left);
             changeSlideTo(left.find("img"));
         }
         if (event.which === 39) {
-            const right = current.next().length === 0 ? $(".slider-previews li:first")
-                                                         : current.next();
+            const right = current.is(":last-child") ? $previewListItems.first() : current.next();
             moveFrameTo(right);
             changeSlideTo(right.find("img"));
         }
@@ -53,13 +54,13 @@ $(document).ready(function () {
     });
 
     function moveFrameTo(elem) {
-        $(".slider-previews li").removeClass("current");
+        $(".slider-previews li.current").removeClass("current");
         elem.addClass("current");
     }
 
     function changeSlideTo(elem) {
-        const img = elem.attr("src").replace(SMALL_SIZE, BIG_SIZE);
-        $big_img.attr("src", img);
+        const imgURL = elem.attr("src").replace(SMALL_SIZE, BIG_SIZE);
+        $currentImg.attr("src", imgURL);
     }
 
 
