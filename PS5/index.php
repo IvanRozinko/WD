@@ -18,9 +18,9 @@ if (isset($_POST["submit"])) {
     $pass = $_POST["pass"];
 
 
-    if (!preg_match("/^[A-Z|a-z]+$/", $name)) {
+    if (!preg_match("/^\w{1,20}$/", $name)) {
         $valid = false;
-        $error_name = "Your name should consist if letters A-z only";
+        $error_name = "Your name should consist max of 20 letters A-z";
     }
 
     if (!preg_match("/^[\w]{8,16}$/", $pass)) {
@@ -51,7 +51,7 @@ if (isset($_POST["submit"])) {
 }
 ?>
 
-<h1>Easy Chat</h1>
+<header>Easy Сhat</header>
 <div class="container">
     <form action="" method="post">
         <?php if(isset($error_user_exist)) echo "<p class='invalid'>$error_user_exist</p>" ?>

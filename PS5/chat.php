@@ -13,7 +13,7 @@ $name = $_SESSION["user_name"];
     <title>Easy chat</title>
 </head>
 <body>
-<h1>Easy Chat</h1>
+<header>Easy Chat</header>
 <h3><?php echo "Hey, " . $name . " !"; ?></h3>
 <div  id="chat_window"></div>
 <form action="">
