@@ -14,8 +14,6 @@ const IMAGES = [
 
 $(document).ready(function () {
 
-
-
     const $previewListItems = $(".slider-previews");
 
     IMAGES.forEach(function (img_path) {
@@ -40,13 +38,12 @@ $(document).ready(function () {
         const current = $(".current");
 
         if (event.which === 37) {
-            console.log( $previewListItems.last());
-            const left = current.is(":first-child") ? $previewListItems.children().last : current.prev();
+            const left = current.is(":first-child") ? $previewListItems.children().last() : current.prev();
             moveFrameTo(left);
             changeSlideTo(left.find("img"));
         }
         if (event.which === 39) {
-            const right = current.is(":last-child") ? $previewListItems.first() : current.next();
+            const right = current.is(":last-child") ? $previewListItems.children().first() : current.next();
             moveFrameTo(right);
             changeSlideTo(right.find("img"));
         }
