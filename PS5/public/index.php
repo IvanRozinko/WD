@@ -13,6 +13,7 @@
 <?php
 if (isset($_POST["submit"])) {
     session_start();
+    $_SESSION['session_id'] = session_id();
     $valid = true;
     $name = $_POST["name"];
     $pass = $_POST["pass"];
@@ -29,7 +30,7 @@ if (isset($_POST["submit"])) {
     }
 
     if ($valid) {
-        $path = "users/users.json";
+        $path = "../private/users/users.json";
         $file = file_get_contents($path);
 
         $users = json_decode($file, true);
@@ -41,9 +42,9 @@ if (isset($_POST["submit"])) {
             $users[$name] = $pass;
             $json_obj = json_encode($users);
             file_put_contents($path, $json_obj);
-            header("Location: private/chat.php");
+            header("Location: ../private/src/chat.php");
         } else if ($users[$name] === $pass) {
-            header("Location: private/chat.php");
+            header("Location: ../private/src/chat.php");
         }
         $_SESSION["user_name"] = $name;
         $error_user_exist = "Wrong password";

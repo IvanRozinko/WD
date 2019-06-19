@@ -57,11 +57,12 @@ function uploadChatHistory(scroll) {
     $.ajax({
         url: "uploadChatHistory.php",
         type: "POST",
-        data: "time=" + getTime(),
+        data: {time: getTime()},
         success: function (history) {
             if (history === "") {
                 return;
             }
+            console.log(history);
             //clear chat window
             $chat_window.empty();
             const json_history = JSON.parse(history);
@@ -82,8 +83,8 @@ function uploadChatHistory(scroll) {
  */
 function insertSmiles(msg) {
     const smiles = {
-        ":\\)": "<img alt='happy.png' src='../public/img/happy.png' class='smile'>",
-        ":\\(": "<img alt='sad.png' src='../public/img/sad.png' class='smile'>"
+        ":\\)": "<img alt='happy.png' src='../../public/img/happy.png' class='smile'>",
+        ":\\(": "<img alt='sad.png' src='../../public/img/sad.png' class='smile'>"
     };
     for (let key in smiles) {
         msg = msg.replace(new RegExp(key, "g"), smiles[key]);
