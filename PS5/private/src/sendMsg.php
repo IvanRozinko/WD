@@ -13,7 +13,7 @@ if (isset($_POST["send_time"])) {
     $msg = array (
         "time" => $time,
         "from" => $name . ": ",
-        "input" => $input
+        "input" => strip_tags($input)
     );
     $temp_array[] = $msg;
     //saving message to database file - "msg/history.json"

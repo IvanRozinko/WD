@@ -9,25 +9,18 @@ if (!file_exists($path)) {
     fopen($path, "w");
     return;
 }
-print_r($_POST);
 
+$time = $_POST["time"];
 /**
  * Filtering history.json content and returning messages sent not earlier than 1 hour ago
  * @param $msg - message from database
  * @return bool is it was sent earlier than 1 hour ago
  */
 function getLastHourMsg($msg) {
-
-    $time = $_POST["time"];
-    echo "time " . $time;
+    global $time;
     $time_array = preg_split("/:/", $time);
-
-    print_r($time_array);
-    $hour = $time_array[0];
-    $min = $time_array[1];
-    $sec = $time_array[2];
     // strcasecmp() - function comparing strings in alphabetical order
-    return  strcasecmp(($hour - 1) . ":" . $min . ":" . $sec, $msg->time) < 0;
+    return  strcasecmp((intval($time_array[0])- 1) . ":" . $time_array[1] . ":" . $time_array[2], $msg -> time) < 0;
 }
 
 $json = file_get_contents($path);
