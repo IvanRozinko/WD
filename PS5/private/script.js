@@ -4,7 +4,8 @@ $(document).ready(function () {
     $("#btn_send").bind("click", (event) => {
         event.preventDefault();
         const input = msg_input.val();
-        sendMessages(getTime(), input);
+        const sendTime = msgTime();
+        sendMessages(sendTime[0], sendTime[1], input);
         msg_input.val("");
     });
 });
@@ -12,7 +13,7 @@ $(document).ready(function () {
 const $chat_window = $("#chat_window");
 
 uploadChatHistory(true);
-//upload chat history every 1 sec
+// upload chat history every 1 sec
 setInterval(function () {
     uploadChatHistory(false)
 }, 1000);
@@ -21,23 +22,33 @@ setInterval(function () {
  * Returning current time in format hh:mm:ss
  * @returns {string}
  */
-function getTime() {
+function msgTime() {
     const today = new Date();
-    return formatT(today.getHours()) + ":"
-        + formatT(today.getMinutes()) + ":"
-        + formatT(today.getSeconds());
+    const time = formatT(today.getHours()) + ":"
+                   + formatT(today.getMinutes()) + ":"
+                      + formatT(today.getSeconds());
+    const date = today.getDate() + "-"
+                    + (today.getMonth() + 1) + "-"
+                        + today.getFullYear();
+    return [date, time];
 }
 
 /**
  * Sending message to database, using ajax request
+ * @param date
  * @param time
  * @param input
  */
-function sendMessages(time, input) {
+function sendMessages(date, time, input) {
     $.ajax({
         url: "sendMsg.php",
         type: "POST",
-        data: {send_time: time, input: input},
+        data: {
+                  send_date: date,
+                  send_time: time,
+                  input: input,
+               },
+
         success: function (newMsg) {
             if (newMsg === "") {
                 return;
@@ -54,10 +65,10 @@ function sendMessages(time, input) {
  * @param scroll
  */
 function uploadChatHistory(scroll) {
+
     $.ajax({
         url: "uploadChatHistory.php",
         type: "POST",
-        data: {time: getTime()},
         success: function (history) {
             if (history === "") {
                 return;

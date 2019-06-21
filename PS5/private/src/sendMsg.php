@@ -5,12 +5,14 @@ if ($_SESSION['session_id'] !== session_id()) {
 }
 if (isset($_POST["send_time"])) {
     $name = $_SESSION["user_name"];
+    $date = $_POST["send_date"];
     $time = $_POST["send_time"];
     $input = $_POST["input"];
     $path = "../msg/history.json";
 
     $temp_array = json_decode(file_get_contents($path));
     $msg = array (
+        "date" => $date,
         "time" => $time,
         "from" => $name . ": ",
         "input" => strip_tags($input)
