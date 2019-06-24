@@ -1,8 +1,12 @@
 <?php
-if ($_SESSION['session_id'] !== session_id()) {
-    header('Location: ../../public/index.php');
-}
+session_start();
+$_SESSION['session_id'] = session_id();
+//if (isset($_SERVER['HTTP_REFERER']) ) {
+//    echo($_SERVER['HTTP_REFERER']);
+//}
+//if ($_SERVER['HTTP_REFERER']);
 if (isset($_POST['submit'])) {
+    $_SESSION['user_name'] = $name;
     $valid = true;
     $name = $_POST['name'];
     $pass = $_POST['pass'];
@@ -17,26 +21,9 @@ if (isset($_POST['submit'])) {
         $valid = false;
         $error_pass = 'Your password should be 8 to 16 chars';
     }
-    if ($valid) {
-        $path = '../private/users/users.json';
-        $file = file_get_contents($path);
-
-        $users = json_decode($file, true);
-        if ($users == null) {
-            $users = array();
-        }
-
-        if (!array_key_exists($name, $users)) {
-            $users[$name] = $pass;
-            $json_obj = json_encode($users);
-            file_put_contents($path, $json_obj);
-            header('Location: ../private/src/chat.php');
-        } else if ($users[$name] === $pass) {
-            header('Location: ../private/src/chat.php');
-        }
-        $_SESSION['user_name'] = $name;
-        $error_user_exist = 'Wrong password';
-    }
+//    if ($valid) {
+//       header('Location: ../private/src/login.php');
+//    }
 }
 ?>
 <!doctype html>
@@ -59,7 +46,7 @@ if (isset($_POST['submit'])) {
     <div class='spacing'></div>
     <div class='container'>
     <form action='' method='post'>
-        <?php if(isset($error_user_exist)) echo '<p class="invalid">$error_user_exist</p>'?>
+        <p class="invalid"><?php if(isset($error_user_exist)) echo $error_user_exist ?></p>
         Enter your name
         <p class="invalid"><?php if(isset($error_name)) echo $error_name ?></p>
         <input name='name' id='name' type='text' value='<?php if(isset($name)) echo $name ?>'>
@@ -71,5 +58,7 @@ if (isset($_POST['submit'])) {
     </form>
 </div>
 </section>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='../private/isValid.js'></script>
 </body>
 </html>

@@ -11,10 +11,10 @@ if (!file_exists($path)) {
     exit();
 }
 
-//get last time of changing file and if its differs from time saved in SESSION -> read all messages from file and
-// send last hour messages to chat.php
-//todo: before sending new msg not showing history
-
+/*
+get last time of changing file and if its differs from time saved in SESSION -> read all messages from file and
+send last hour messages to chat.php
+*/
 if ($_SESSION['chat_modified_time'] == ($chat_modified_time = filemtime($path))) {
     echo '';
     exit();
