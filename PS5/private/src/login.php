@@ -4,7 +4,7 @@ if ($_SESSION['session_id'] !== session_id()) {
     header('Location: ../../public/index.php');
 }
 
-$path = '../private/users/users.json';
+$path = '../users/users.json';
 $file = file_get_contents($path);
 $name = $_POST['name'];
 $pass = $_POST['pass'];
@@ -17,12 +17,12 @@ if (!array_key_exists($name, $users)) {
     $users[$name] = $pass;
     $json_obj = json_encode($users);
     file_put_contents($path, $json_obj);
-    echo ""
+    echo 'new';
+    exit;
 } else if ($users[$name] === $pass) {
-    header('Location: chat.php');
+    echo 'exist';
     exit;
 }
-
-header('Location: ../../public/index.php');
+echo 'fail';
 
 

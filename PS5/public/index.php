@@ -46,19 +46,18 @@ if (isset($_POST['submit'])) {
     <div class='spacing'></div>
     <div class='container'>
     <form action='' method='post'>
-        <p class="invalid"><?php if(isset($error_user_exist)) echo $error_user_exist ?></p>
         Enter your name
-        <p class="invalid"><?php if(isset($error_name)) echo $error_name ?></p>
+        <p id="name_error" class="hidden invalid">Your name should consist max of 20 letters A-z</p>
         <input name='name' id='name' type='text' value='<?php if(isset($name)) echo $name ?>'>
         Enter your password
-        <p class="invalid"><?php if(isset($error_pass))  echo $error_pass ?></p>
+        <p  id="pass_error" class="hidden invalid">Your password should be 8 to 16 chars</p>
         <input name='pass' id='pass' type='password' value='<?php if(isset($pass)) echo $pass ?>'>
         <input name='submit' type='submit' value='Log in'>
         <div class='shadow'></div>
     </form>
 </div>
 </section>
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src='../private/isValid.js'></script>
 </body>
 </html>

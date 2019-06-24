@@ -1,37 +1,39 @@
 $(document).ready(function () {
     $('form').on('submit', (event) => {
         event.preventDefault();
-        const name = $('name');
-        const pass = $('pass');
+        const name = $('#name');
+        const pass = $('#pass');
 
-        if (isValid(name) && isValid(pass)) {
-            $.ajax({
-                url: 'private/src/login.php',
-                type: 'POST',
-                data: {
-                    name: name,
-                    pass: pass,
-                },
+        const isValidName = isValid(name, /^\w{1,20}$/);
+        const isValidPass = isValid(pass,/^\w{8,16}$/);
 
-                success: function (newMsg) {
-                    if (newMsg === '') {
-                        return;
-                    }
-                    const msg = formatMsg(JSON.parse(newMsg));
-                    $chat_window.append('<p>' + msg + '</p>');
-                    scrollTextWindow($chat_window);
-                }
-            });
+        if (isValidName && isValidPass) {
+            login(name, pass);
          }
     })
-
-})
+});
 
 function isValid(input, regExp) {
     if (regExp.test(input.val())) {
-        input.removeClass('invalid');
+        input.removeClass('invalid');   //TODO: show validation error, name on chat page, config.php, 
         return true;
     }
     input.addClass('invalid');
     return false;
+}
+
+function login(name, pass) {
+    $.ajax({
+        url: '../private/src/login.php',
+        type: 'POST',
+        data: {
+            name: name.val(),
+            pass: pass.val(),
+        },
+        success: function (msg) {
+            if (msg === 'new' || msg === 'exist') {
+                window.location = '../private/src/chat.php'
+            }
+        }
+    });
 }

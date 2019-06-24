@@ -128,9 +128,16 @@ input[type='submit'] {
     width: 440px;
     margin-right: 10px;
 }
-
-p.invalid {
+p .invalid {
     font-size: 8px;
+}
+
+.hidden {
+    display: none;
+}
+
+.invalid {
     color: red;
     margin: 0;
+    border: 1px solid red;
 }
