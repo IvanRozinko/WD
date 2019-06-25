@@ -25,11 +25,11 @@ setInterval(function () {
 function msgTime() {
     const today = new Date();
     const time = formatT(today.getHours()) + ':'
-                   + formatT(today.getMinutes()) + ':'
-                      + formatT(today.getSeconds());
+                + formatT(today.getMinutes()) + ':'
+                 + formatT(today.getSeconds());
     const date = today.getDate() + '-'
-                    + (today.getMonth() + 1) + '-'
-                        + today.getFullYear();
+                + (today.getMonth() + 1) + '-'
+                 + today.getFullYear();
     return [date, time];
 }
 
@@ -44,10 +44,10 @@ function sendMessages(date, time, input) {
         url: 'sendMsg.php',
         type: 'POST',
         data: {
-                  send_date: date,
-                  send_time: time,
-                  input: input,
-               },
+            send_date: date,
+            send_time: time,
+            input: input,
+        },
 
         success: function (newMsg) {
             if (newMsg === '') {
@@ -108,7 +108,7 @@ function insertSmiles(msg) {
  * @returns {string}
  */
 function formatT(value) {
-    return value > 9 ? value : '0' + value;
+    return value.toString().padStart(2, '0');
 }
 
 /**

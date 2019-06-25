@@ -128,16 +128,16 @@ input[type='submit'] {
     width: 440px;
     margin-right: 10px;
 }
-p .invalid {
-    font-size: 8px;
+.invalid_msg {
+    font-size: 10px;
+    color: red;
+    margin: 0;
 }
 
 .hidden {
     display: none;
 }
 
-.invalid {
-    color: red;
-    margin: 0;
-    border: 1px solid red;
+.invalid_input {
+    box-shadow: inset 0 0 5px red;
 }

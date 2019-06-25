@@ -1,13 +1,13 @@
 <?php
+include_once('../../public/config.php');
 session_start();
 if ($_SESSION['session_id'] !== session_id()) {
     header('Location: ../../public/index.php');
 }
 date_default_timezone_set('Europe/Kiev');
-$path = '../msg/history.json';
 
-if (!file_exists($path)) {
-    fopen($path, 'w');
+if (!file_exists(CHAT_HISTORY)) {
+    fopen(CHAT_HISTORY, 'w');
     exit();
 }
 
@@ -15,12 +15,12 @@ if (!file_exists($path)) {
 get last time of changing file and if its differs from time saved in SESSION -> read all messages from file and
 send last hour messages to chat.php
 */
-if ($_SESSION['chat_modified_time'] == ($chat_modified_time = filemtime($path))) {
+if ($_SESSION['chat_modified_time'] == ($chat_modified_time = filemtime(CHAT_HISTORY))) {
     echo '';
     exit();
 }
 
-$msg_full_history = json_decode(file_get_contents($path));
+$msg_full_history = json_decode(file_get_contents(CHAT_HISTORY));
 if (empty($msg_full_history)) {
     echo '';
     exit();
