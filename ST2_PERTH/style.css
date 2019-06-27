@@ -12,7 +12,7 @@ html, body {
     margin: 0;
 }
 section {
-    width: 1300px;
+    width: 1260px;
     height: 650px;
 }
 section.first {
@@ -38,24 +38,24 @@ section.first {
 .menu {
     position: absolute;
     top: 40px;
-    right: 200px;
+    right: 160px;
 }
 .menu .fa-bars:before {
     color: #fff;
     font-size: 30px;
 }
-.article {
+.article1 {
     position: absolute;
     top: 160px;
     height: 300px;
     width: 750px;
-    right: 200px;
+    right: 160px;
 }
 .greeting {
     font-family: 'BlackJack', sans-serif;
     position: absolute;
     right: 0;
-    top: 0;
+    top: -5px;
     font-size: 70px;
     color: #fff;
 }
@@ -67,22 +67,26 @@ section.first {
     font-size: 30px;
     color: #fff;
 }
-.button {
+.button_download {
+    width: 170px;
+    bottom: 38px;
+    height: 54px;
     position: absolute;
     right: 0;
-    width: 170px;
-    bottom: 35px;
-    height: 54px;
     border: 2px solid #fff;
     color: #fff;
+    border-radius: 2px;
+
 }
 input[type=button] {
-    font-size: 14px;
+    font-size: 15px;
     margin-left: 20px;
     text-transform: uppercase;
     height: 100%;
     background-color: transparent;
     border: none;
+}
+input[value=download] {
     color: #fff;
 }
 .iphone {
@@ -95,8 +99,9 @@ section.second {
     position: relative;
     background-color: #F4F4F4;
     font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
 }
-.article1 {
+.article2 {
     position: absolute;
     width: 555px;
     height: 400px;
@@ -104,24 +109,212 @@ section.second {
     top: 150px;
 }
 .header {
-    font-size: 34px;
-    margin-top: 50px;
-}
+    font-size: 36px;
+    line-height: 30px;
+    letter-spacing: -0.01em;
+ }
 .description {
+    margin: 30px 0 25px 0;
     font-size: 15px;
+}
+.description span {
+    line-height: 25px;
 }
 .vertical_bar {
     width: 15px;
     height: 70px;
-    background-color: #00C3E9;
+    background-color: #089fe9;
     margin-right: 20px;
 }
-.description2 {
+.article2 .description2 {
+    color: #424e5e;
     display: flex;
     font-size: 15px;
     font-style: italic;
 }
-.description2 .text {
+.description2 span {
+    line-height: 25px;
+}
+.button_say {
+    position: absolute;
+    left: 0;
+    border: 2px solid #00C3AD;
+    width: 170px;
+    bottom: 38px;
+    height: 54px;
+    color: #00C3AD;
+    border-radius: 2px;
+}
+input[value='say hello'] {
+    color: #00C3AD;
+}
+.ipad {
+    position: absolute;
+    content: url("mockup/ipad.png");
+    left: 920px;
+    top: 152px;
+}
+section.third {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+.article3 {
+    position: absolute;
+    width: 400px;
+    height: 345px;
+    left: 705px;;
+    top: 105px;
+}
+.article3 .description {
+    margin-top: 40px;
+    font-weight: bold;
+    font-style: italic;
+}
+.article3 .description2 {
+    font-size: 15px;
+}
+.button_view {
+    position: absolute;
+    left: 0;
+    border: 2px solid deeppink;
+    width: 220px;
+    bottom: 38px;
+    height: 54px;
+    color: deeppink;
+    border-radius: 2px;
+}
+input[value='view on dribble'] {
+    color: deeppink;
+}
+.gadgets {
+    position: absolute;
+    content: url("mockup/devices.png");
+    left: -78px;
+    bottom: -62px;
+}
+section.forth {
+    height: 325px;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    background-image: url('mockup/green-pattern.jpg');
+}
+.article4 {
+    position: absolute;
+    width: 400px;
+    height: 165px;
+    top: 100px;
+    left: 460px;
+    color: #fff;
+}
+.button_buy {
+    position: absolute;
+    left: 58px;
+    border: 2px solid #fff;
+    width: 220px;
+    bottom: 38px;
+    height: 54px;
+    color: #fff;
+    border-radius: 2px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+.button_buy div {
+    font-size: 14px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    height: 40px;
+    color: #fff;
+    width: 130px;
+}
+section.fifth {
+    position: relative;
+    background-color: #F4F4F4;
+    font-family: 'Montserrat', sans-serif;
+}
+.article5 {
+    position: absolute;
+    top: 240px;
+    left: 420px;
+    width: 500px;
+    height: 300px;
+}
+.social {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 380px;
+    display: flex;
+    justify-content: space-around;
 }
 
+.social .ball {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #424e5e;
+    border-radius: 50%;
+    background-color: transparent;
+    text-align: center;
+    vertical-align: center;
+    line-height: 60px;
+}
+.social i {
+    font-size: 1.5rem;
+}
+.subscription {
+    position: relative;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bolder;
+    margin-top: 75px;
+}
+.subscription input {
+    margin-left: 20px;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 14px;
+    border: none;
+    padding-left: 15px;
+    color: gray;
+    font-style: italic;
+}
+.subscription .fa-envelope {
+    position: relative;
+    z-index: 2;
+    color: #00b2c3;
+    right: 40px;
+}
+.copyright {
+    position: relative;
+    height: 150px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-style: italic;
+}
+.article6 {
+    position: absolute;
+    top: 50px;
+    left: 480px;
+    width: 300px;
+    height: 100px;
+}
+.blue {
+    color: #00b2c3;
+}
+.scrollup {
+    width: 40px;
+    height: 40px;
+    background-color: #F4F4F4;
+    border-radius: 5px;
+    position: absolute;
+    right: 100px;
+    top: 35px;
+    text-align: center;
+    line-height: 40px;
+    vertical-align: center;
+
+
+}
 
