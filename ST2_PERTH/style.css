@@ -6,26 +6,21 @@
     font-family: 'BlackJack';
     src: url('mockup/black_jack_font/BLACKJAR.TTF');
 }
-
 html, body {
     width: 100%;
     height: 100%;
     margin: 0;
 }
-
 section {
     width: 1300px;
     height: 650px;
 }
-
 section.first {
     font-family: 'Kaushan Script', cursive;
     background-image: url('mockup/blue-pattern.jpg');
     position: relative;
     overflow: hidden;
 }
-
-
 .logo {
     position: absolute;
     left: 160px;
@@ -34,25 +29,21 @@ section.first {
     height: 100px;
     box-shadow: 15px 15px 0 0 rgba(5, 178, 246, 0.75);
 }
-
 .logo_text {
     padding-left: 35px;
     color: #00C3E9;
     font-family: 'Kaushan Script', cursive;
     font-size: 50px;
 }
-
 .menu {
     position: absolute;
     top: 40px;
     right: 200px;
 }
-
 .menu .fa-bars:before {
     color: #fff;
     font-size: 30px;
 }
-
 .article {
     position: absolute;
     top: 160px;
@@ -60,7 +51,6 @@ section.first {
     width: 750px;
     right: 200px;
 }
-
 .greeting {
     font-family: 'BlackJack', sans-serif;
     position: absolute;
@@ -69,7 +59,6 @@ section.first {
     font-size: 70px;
     color: #fff;
 }
-
 .slogan {
     font-family: 'Montserrat', sans-serif;
     position: absolute;
@@ -78,7 +67,6 @@ section.first {
     font-size: 30px;
     color: #fff;
 }
-
 .button {
     position: absolute;
     right: 0;
@@ -87,9 +75,7 @@ section.first {
     height: 54px;
     border: 2px solid #fff;
     color: #fff;
-
 }
-
 input[type=button] {
     font-size: 14px;
     margin-left: 20px;
@@ -99,21 +85,43 @@ input[type=button] {
     border: none;
     color: #fff;
 }
-
 .iphone {
     position: absolute;
     content: url("mockup/iphone.png");
     left: 230px;
     top: 380px;
 }
-
 section.second {
+    position: relative;
     background-color: #F4F4F4;
-
+    font-family: 'Montserrat', sans-serif;
 }
-
+.article1 {
+    position: absolute;
+    width: 555px;
+    height: 400px;
+    left: 160px;;
+    top: 150px;
+}
 .header {
-
+    font-size: 34px;
+    margin-top: 50px;
+}
+.description {
+    font-size: 15px;
+}
+.vertical_bar {
+    width: 15px;
+    height: 70px;
+    background-color: #00C3E9;
+    margin-right: 20px;
+}
+.description2 {
+    display: flex;
+    font-size: 15px;
+    font-style: italic;
+}
+.description2 .text {
 }
 
 
