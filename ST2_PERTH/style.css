@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap');
+@import url("mockup/black_jack_font");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400&display=swap');
+
+@font-face {
+    font-family: 'BlackJack';
+    src: url('mockup/black_jack_font/BLACKJAR.TTF');
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+section {
+    width: 1300px;
+    height: 650px;
+}
+
+section.first {
+    font-family: 'Kaushan Script', cursive;
+    background-image: url('mockup/blue-pattern.jpg');
+    position: relative;
+    overflow: hidden;
+}
+
+
+.logo {
+    position: absolute;
+    left: 160px;
+    background-color: #fff;
+    width: 100px;
+    height: 100px;
+    box-shadow: 15px 15px 0 0 rgba(5, 178, 246, 0.75);
+}
+
+.logo_text {
+    padding-left: 35px;
+    color: #00C3E9;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 50px;
+}
+
+.menu {
+    position: absolute;
+    top: 40px;
+    right: 200px;
+}
+
+.menu .fa-bars:before {
+    color: #fff;
+    font-size: 30px;
+}
+
+.article {
+    position: absolute;
+    top: 160px;
+    height: 300px;
+    width: 750px;
+    right: 200px;
+}
+
+.greeting {
+    font-family: 'BlackJack', sans-serif;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 70px;
+    color: #fff;
+}
+
+.slogan {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    right: 0;
+    top: 120px;
+    font-size: 30px;
+    color: #fff;
+}
+
+.button {
+    position: absolute;
+    right: 0;
+    width: 170px;
+    bottom: 35px;
+    height: 54px;
+    border: 2px solid #fff;
+    color: #fff;
+
+}
+
+input[type=button] {
+    font-size: 14px;
+    margin-left: 20px;
+    text-transform: uppercase;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+}
+
+.iphone {
+    position: absolute;
+    content: url("mockup/iphone.png");
+    left: 230px;
+    top: 380px;
+}
+
+section.second {
+    background-color: #F4F4F4;
+
+}
+
+.header {
+
+}
+
+
