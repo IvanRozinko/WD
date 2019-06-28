@@ -6,78 +6,92 @@
     font-family: 'BlackJack';
     src: url('mockup/black_jack_font/BLACKJAR.TTF');
 }
+
 html, body {
     width: 100%;
     height: 100%;
     margin: 0;
+    overflow-x: hidden;
 }
+
 section {
-    width: 1260px;
+    width: 100%;
+    max-width: 1280px;
     height: 650px;
 }
+
 section.first {
     font-family: 'Kaushan Script', cursive;
     background-image: url('mockup/blue-pattern.jpg');
     position: relative;
     overflow: hidden;
+    display: flex;
 }
+
+header {
+    height: 150px;
+}
+
 .logo {
     position: absolute;
-    left: 160px;
+    left: 13%;
     background-color: #fff;
     width: 100px;
     height: 100px;
     box-shadow: 15px 15px 0 0 rgba(5, 178, 246, 0.75);
 }
+
 .logo_text {
     padding-left: 35px;
     color: #00C3E9;
     font-family: 'Kaushan Script', cursive;
     font-size: 50px;
 }
+
 .menu {
     position: absolute;
     top: 40px;
-    right: 160px;
+    right: 12%;
 }
+
 .menu .fa-bars:before {
     color: #fff;
     font-size: 30px;
 }
+
 .article1 {
     position: absolute;
     top: 160px;
-    height: 300px;
+    height: 260px;
     width: 750px;
-    right: 160px;
+    right: 13%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
 }
+
 .greeting {
     font-family: 'BlackJack', sans-serif;
-    position: absolute;
-    right: 0;
-    top: -5px;
     font-size: 70px;
     color: #fff;
 }
+
 .slogan {
     font-family: 'Montserrat', sans-serif;
-    position: absolute;
-    right: 0;
-    top: 120px;
     font-size: 30px;
     color: #fff;
 }
+
 .button_download {
     width: 170px;
-    bottom: 38px;
     height: 54px;
-    position: absolute;
-    right: 0;
     border: 2px solid #fff;
     color: #fff;
     border-radius: 2px;
-
+    margin-top: 20px;
 }
+
 input[type=button] {
     font-size: 15px;
     margin-left: 20px;
@@ -86,134 +100,162 @@ input[type=button] {
     background-color: transparent;
     border: none;
 }
+
 input[value=download] {
     color: #fff;
 }
+
 .iphone {
     position: absolute;
     content: url("mockup/iphone.png");
-    left: 230px;
+    left: 18%;
     top: 380px;
 }
+
 section.second {
     position: relative;
     background-color: #F4F4F4;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
 }
+
 .article2 {
     position: absolute;
     width: 555px;
     height: 400px;
-    left: 160px;;
+    left: 13%;;
     top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
+
 .header {
     font-size: 36px;
     line-height: 30px;
     letter-spacing: -0.01em;
- }
+}
+
 .description {
     margin: 30px 0 25px 0;
     font-size: 15px;
 }
+
 .description span {
     line-height: 25px;
 }
+
 .vertical_bar {
     width: 15px;
     height: 70px;
     background-color: #089fe9;
     margin-right: 20px;
 }
+
 .article2 .description2 {
     color: #424e5e;
     display: flex;
     font-size: 15px;
     font-style: italic;
 }
+
 .description2 span {
     line-height: 25px;
 }
+
 .button_say {
-    position: absolute;
-    left: 0;
+    margin-top: 70px;
     border: 2px solid #00C3AD;
     width: 170px;
-    bottom: 38px;
     height: 54px;
     color: #00C3AD;
     border-radius: 2px;
 }
+
 input[value='say hello'] {
     color: #00C3AD;
 }
+
 .ipad {
     position: absolute;
     content: url("mockup/ipad.png");
-    left: 920px;
-    top: 152px;
+    right: -6%;
+    top: 23%;
 }
+
 section.third {
     position: relative;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
 }
+
 .article3 {
     position: absolute;
     width: 400px;
-    height: 345px;
-    left: 705px;;
+    height: 315px;
+    right: 12%;
     top: 105px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
+
 .article3 .description {
     margin-top: 40px;
     font-weight: bold;
     font-style: italic;
 }
+
 .article3 .description2 {
     font-size: 15px;
 }
+
 .button_view {
-    position: absolute;
-    left: 0;
+    margin-top: 60px;
     border: 2px solid deeppink;
     width: 220px;
-    bottom: 38px;
     height: 54px;
     color: deeppink;
     border-radius: 2px;
 }
+
 input[value='view on dribble'] {
     color: deeppink;
 }
+
 .gadgets {
     position: absolute;
     content: url("mockup/devices.png");
     left: -78px;
     bottom: -62px;
 }
+
 section.forth {
     height: 325px;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
     background-image: url('mockup/green-pattern.jpg');
 }
+
 .article4 {
-    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     width: 400px;
     height: 165px;
-    top: 100px;
-    left: 460px;
     color: #fff;
 }
+
 .button_buy {
-    position: absolute;
-    left: 58px;
     border: 2px solid #fff;
     width: 220px;
-    bottom: 38px;
     height: 54px;
     color: #fff;
     border-radius: 2px;
@@ -221,6 +263,7 @@ section.forth {
     align-items: baseline;
     justify-content: center;
 }
+
 .button_buy div {
     font-size: 14px;
     margin-top: 20px;
@@ -229,18 +272,24 @@ section.forth {
     color: #fff;
     width: 130px;
 }
+
 section.fifth {
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #F4F4F4;
     font-family: 'Montserrat', sans-serif;
 }
+
 .article5 {
-    position: absolute;
-    top: 240px;
-    left: 420px;
-    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 500px;
     height: 300px;
 }
+
 .social {
     margin-left: 20px;
     margin-right: 20px;
@@ -259,9 +308,11 @@ section.fifth {
     vertical-align: center;
     line-height: 60px;
 }
+
 .social i {
     font-size: 1.5rem;
 }
+
 .subscription {
     position: relative;
     font-size: 15px;
@@ -269,9 +320,10 @@ section.fifth {
     font-weight: bolder;
     margin-top: 75px;
 }
+
 .subscription input {
     margin-left: 20px;
-    width: 200px;
+    min-width: 200px;
     height: 40px;
     border-radius: 10px;
     font-size: 14px;
@@ -280,41 +332,155 @@ section.fifth {
     color: gray;
     font-style: italic;
 }
+
 .subscription .fa-envelope {
     position: relative;
     z-index: 2;
     color: #00b2c3;
     right: 40px;
 }
+
 .copyright {
-    position: relative;
-    height: 150px;
+    display: flex;
+    align-items: center;
+    height: 100px;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     font-style: italic;
 }
+
 .article6 {
-    position: absolute;
-    top: 50px;
-    left: 480px;
-    width: 300px;
-    height: 100px;
+    flex-grow: 9;
 }
+
+.article6 div {
+    display: flex;
+    justify-content: center;
+}
+
 .blue {
     color: #00b2c3;
 }
+
+.scroll_container {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
 .scrollup {
+    margin-right: 20px;
+    top: 40%;
+    right: 50px;
     width: 40px;
     height: 40px;
     background-color: #F4F4F4;
     border-radius: 5px;
-    position: absolute;
-    right: 100px;
-    top: 35px;
     text-align: center;
     line-height: 40px;
-    vertical-align: center;
-
-
 }
 
+@media screen and (min-width: 1280px) {
+    section {
+        max-width: 1600px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    section {
+        width: 100%;
+    }
+
+    .article1, .article2, .article3, .article4, .article5 {
+        width: 45%;
+    }
+
+    .iphone {
+        width: 30%;
+    }
+
+    .ipad {
+        width: 30%;
+        top: 50%;
+    }
+
+    .gadgets {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .article1, .article2, .article3, .article4, .article5 {
+        width: 60%;
+    }
+
+    .ipad {
+        width: 35%;
+        top: 70%;
+    }
+
+    .gadgets {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .article1, .article2, .article3, .article4, .article5 {
+        width: 90%;
+        left: 20px;
+    }
+
+    .iphone {
+        width: 30%;
+    }
+
+    .ipad {
+        width: 35%;
+        top: 65%;
+    }
+
+    .gadgets {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .article1, .article2, .article3, .article4, .article5 {
+        width: 80%;
+        margin: 0 20px;
+        height: auto;
+
+    }
+
+    .article2 {
+        top: 50px;
+    }
+
+    .iphone {
+        width: 30%;
+        top: 550px;
+        left: 20px;
+    }
+
+    .ipad {
+        width: 35%;
+        top: 80%;
+    }
+
+    .vertical_bar {
+        height: 140px;
+    }
+
+    .gadgets {
+        width: 80%;
+        bottom: 0;
+    }
+
+    .header {
+        font-size: 30px;
+    }
+
+    .subscription {
+        width: 280px;
+    }
+}
