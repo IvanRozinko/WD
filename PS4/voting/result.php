@@ -13,8 +13,8 @@
 session_start();
 
 if (isset($_POST["submit"]) && isset($_POST["breed"])) {
-
-    if (hasNotVoted(session_id())) {
+    $hasVote = hasNotVoted(session_id());
+    if ($hasVote) {
         $counted = " Your vote counted!";
         writeToJSOn($_POST["breed"]);
     } else {
@@ -29,7 +29,7 @@ if (isset($_POST["submit"]) && isset($_POST["breed"])) {
  */
 function writeToJSON($breed)
 {
-    $file = "json/results.json";
+    $file = 'json/results.json';
 
     if (!file_exists($file)) {
         file_put_contents($file, json_encode(array($breed => 1), JSON_NUMERIC_CHECK));
@@ -43,7 +43,7 @@ function writeToJSON($breed)
     }
 
     if (array_key_exists($breed, $data)) {
-        $data[$breed]++; 
+        $data[$breed]++;
     } else {
         $data[$breed] = 1;
     }
@@ -58,7 +58,7 @@ function writeToJSON($breed)
  */
 function hasNotVoted($id)
 {
-    $file = "json/voted.json";
+    $file = 'json/voted.json';
 
     if (!file_exists($file)) {
         file_put_contents($file, json_encode([$id]));
