@@ -1,9 +1,11 @@
 <?php
-//session_start();
+session_start();
 $vote_error = '';
+
 if (isset($_SESSION['vote_error'])) {
     $vote_error = $_SESSION['vote_error'];
 }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -16,25 +18,22 @@ if (isset($_SESSION['vote_error'])) {
     <title>Voting</title>
 </head>
 <body>
-<h4><?=$vote_error?></h4>
+<h4><?= $vote_error ?></h4>
 <section class="chart_wrap">
-    <form action="result.php" method="post">
+    <form action="save_vote.php" method="post">
         <h3>What is you favorite dog breed?</h3>
-        <label for="boxer">
-            <input id="boxer" type="radio" name="breed" value="boxer"> Boxer
-        </label>
-        <label for="collie">
-            <input id="collie" type="radio" name="breed" value="collie"> Collie
-        </label>
-        <label for="akita">
-            <input id="akita" type="radio" name="breed" value="akita"> Akita
-        </label>
-        <label for="poodle">
-            <input id="poodle" type="radio" name="breed" value="poodle"> Poodle
-        </label>
-        <label for="jack">
-            <input id="jack" type="radio" name="breed" value="Jack-russel-terrier"> Jack-russel-terrier
-        </label>
+        <?php
+            $breeds = [
+                    'boxer' => 'Boxer',
+                    'collie' => 'Collie',
+                    'akita' => 'Akita',
+                    'poodle' => 'Poodle',
+                    'jack' => 'Jack-russel-terrier',
+            ];
+            foreach ($breeds as $key => $value) {
+               echo  '<label for="'. $key . '"><input id="'. $key .'" type="radio" name="breed" value="' . $key .'">    ' . $value .'</label>';
+            }
+        ?>
         <input type="submit" value="Vote" name="submit">
     </form>
 </section>

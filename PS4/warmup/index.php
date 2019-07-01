@@ -41,10 +41,10 @@ for ($i = -1000; $i <= 1000; $i++) {
 </form>
 <?php
 $directory = 'uploads/';
-$files = array_diff(scandir($directory,  SCANDIR_SORT_NONE), array(".", ".."));
+$files = array_diff(scandir($directory,  SCANDIR_SORT_NONE), ['.', '..']);
 if (isset($_POST['upload'])) {
     $file = $_FILES['file']['name'];
-     if ($file == "") {
+     if ($file == '') {
         echo 'No file specified!<br>';
     } else {
          upload($file, $directory);
@@ -155,13 +155,11 @@ function generate_array() {
 function draw_chessboard()
 {
    echo '<div class="container_board">';
-    $div_s = '<div class="block ';
-    $div_f = '"></div>';
     $boardSize = 8;
     for($i = 0; $i < $boardSize; $i++) {
         for($j = 0; $j < $boardSize; $j++) {
             $color = ($i % 2 == $j % 2) ? 'white' : 'black';
-            echo  $div_s . $color . $div_f ;
+            echo  '<div class="block ' . $color . '"></div>' ;
         }
     }
     echo '</div>';
