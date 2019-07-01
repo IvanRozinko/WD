@@ -22,7 +22,7 @@ for ($i = -1000; $i <= 1000; $i++) {
 //Sum of numbers ends with 2, 3 or 7 in range -1000 to 1000
 $sum1 = 0;
 for ($i = -1000; $i <= 1000; $i++) {
-    if(isFit($i)){
+    if(is_fit($i)){
         $sum1 += $i;
     }
 }
@@ -45,10 +45,10 @@ if (isset($_POST["upload"])) {
      if ($file == "") {
         echo "No file specified!<br>";
     } else {
-         upload($file);
+         upload($file, $directory);
     }
 } else if (isset($_POST["display"])) {
-    displayFiles($files);
+    display_files($files, $directory);
 }
 ?>
 <hr>
@@ -57,7 +57,7 @@ if (isset($_POST["upload"])) {
 </form>
 <?php
 if(isset($_POST["draw_chess"])) {
-    drawChessboard();
+    draw_chessboard();
 }
 ?>
 <hr>
@@ -69,7 +69,7 @@ if(isset($_POST["draw_chess"])) {
 $sumOfDigits = "";
 if (isset($_POST["calculateSum"])) {
     $number = $_POST["number"];
-    $sumOfDigits = calculateSum($number);
+    $sumOfDigits = array_sum(str_split( $number));
 }
 ?>
 <label>Sum of digits = <b><?php echo $sumOfDigits?></b></label>
@@ -81,7 +81,7 @@ if (isset($_POST["calculateSum"])) {
 <?php
 if (isset($_POST["array_gen"])){
     echo "Resulted array : ";
-    print_r(generateArray());
+    print_r(generate_array());
 }
 ?>
 <hr>
@@ -101,7 +101,7 @@ echo "<p>This is your visit № " . $_SESSION["counter"] . "</p>";
 
 if (isset($_POST["count_chars"])) {
     $text = $_POST["textarea"];
-    echo showStats($text);
+    echo show_stats($text);
 }
 ?>
 <hr>
@@ -111,9 +111,9 @@ if (isset($_POST["count_chars"])) {
  * @param $text
  * @return string
  */
-function showStats($text)
+function show_stats($text)
 {
-    $stringAmount = sizeof(preg_split("/\n/", $text));
+    $stringAmount = count(preg_split("/\n/", $text));
     $whitespaceAmount = substr_count($text, " ");
     $charAmount = iconv_strlen($text) - $whitespaceAmount;
     return "Amount of strings : " . $stringAmount . "<br>" .
@@ -136,10 +136,10 @@ function counter()
  * Generating array of 100 elements, delete repeating elements,
  * reverse it and doubling each
  */
-function generateArray() {
+function generate_array() {
     $array = array();
     for ($i = 0; $i < 100; $i++){
-        $array[$i] = rand(1, 10);
+        $array[$i] = mt_rand(1, 10);
     }
     $arrayUnique = array_unique($array);
     sort( $arrayUnique);
@@ -151,21 +151,11 @@ function generateArray() {
 }
 
 
-/**
- * Calculating sum of digits in number
- * @param $number
- * @return int  - sum of digits
- */
-function calculateSum($number)
-{
-    return array_sum(preg_split("//", $number));
-}
-
 /**Checking is array contain number
  * @param $number - checking number
  * @return bool
  */
-function isFit($number) {
+function is_fit($number) {
     $nums = array(2, 3, 7);
     $lastDigit = abs($number) % 10;
     return in_array($lastDigit, $nums);
@@ -174,7 +164,7 @@ function isFit($number) {
 /**
  * Drawing chessboard 8x8 blocks
  */
-function drawChessboard()
+function draw_chessboard()
 {
     $boardSize = 8;
     echo "<div class='container_board'>";
@@ -186,12 +176,13 @@ function drawChessboard()
     }
     echo "</div>";
 }
+
 /**
  * Uploading chosen file to directory uploads/ or shows message to specify file
  * @param $file - uploading file
+ * @param $directory
  */
-function upload($file) {
-    global $directory;
+function upload($file, $directory) {
     $pathTo = $directory . $file;
     move_uploaded_file($_FILES["file"]["tmp_name"], $pathTo);
     echo "File uploaded!";
@@ -200,16 +191,16 @@ function upload($file) {
 /**
  * Displaying files from array received as a parameter. If file is image, than shows small preview
  * @param $files array of files to be displayed
+ * @param $directory
  */
-function displayFiles($files)
+function display_files($files, $directory)
 {
     foreach ($files as $file) {
-        global $directory;
-        $fileName = "$directory$file";
+        $fileName = $directory . $file;
         //check if file is image than add small icon
-        $image = isImage($fileName) ? "<img src='$fileName' alt='$fileName'>" :
+        $image = is_image($fileName) ? "<img src='$fileName' alt='$fileName'>" :
                                         "<img src='img/file.png' alt='file_image3'>";
-        $humanSize = humanSize($fileName);
+        $humanSize = human_size($fileName);
         $icon = "<div class='image_box'>$image<p><a href='$fileName' download>$file</a><br>$humanSize</p></div>";
         echo $icon;
     }
@@ -220,7 +211,7 @@ function displayFiles($files)
  * @param $filename
  * @return bool
  */
-function isImage($filename) {
+function is_image($filename) {
     $extension = preg_split("/[.]/", $filename);
     $imagExtensions = array("jpeg", "jpg", "png", "gif", "bmp");
     return in_array($extension[1], $imagExtensions);
@@ -231,7 +222,7 @@ function isImage($filename) {
  * @param $file
  * @return string
  */
-function humanSize($file)
+function human_size($file)
 {
     $humanSize = floatval(filesize($file));
     $value = "";

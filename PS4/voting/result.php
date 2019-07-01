@@ -18,7 +18,7 @@ if (isset($_POST["submit"]) && isset($_POST["breed"])) {
         $counted = " Your vote counted!";
         writeToJSOn($_POST["breed"]);
     } else {
-        header("Location: fail.php");
+        header("Location: index.php");
     }
 }
 /**
