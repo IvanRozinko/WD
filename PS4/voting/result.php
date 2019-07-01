@@ -31,7 +31,7 @@ function writeToJSON($breed)
     $file = "json/results.json";
 
     if (!file_exists($file)) {
-        file_put_contents($file, json_encode(array($breed => 1)));
+        file_put_contents($file, json_encode(array($breed => 1), JSON_NUMERIC_CHECK));
         return;
     }
     $json_object = file_get_contents($file);
@@ -42,7 +42,7 @@ function writeToJSON($breed)
     }
 
     array_key_exists($breed, $data) ? $data[$breed]++ : $data[$breed] = 1;
-    $json_object = json_encode($data);
+    $json_object = json_encode($data, JSON_NUMERIC_CHECK);
     file_put_contents($file, $json_object);
 }
 
