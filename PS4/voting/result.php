@@ -18,6 +18,7 @@ if (isset($_POST["submit"]) && isset($_POST["breed"])) {
         $counted = " Your vote counted!";
         writeToJSOn($_POST["breed"]);
     } else {
+        $_SESSION['vote_error'] = 'You can vote only once';
         header("Location: index.php");
     }
 }
@@ -31,18 +32,22 @@ function writeToJSON($breed)
     $file = "json/results.json";
 
     if (!file_exists($file)) {
-        file_put_contents($file, json_encode(array($breed => 1)));
+        file_put_contents($file, json_encode(array($breed => 1), JSON_NUMERIC_CHECK));
         return;
     }
     $json_object = file_get_contents($file);
     $data = json_decode($json_object, true);
 
     if ($data == null) {
-        $data = array();
+        $data = [];
     }
 
-    array_key_exists($breed, $data) ? $data[$breed]++ : $data[$breed] = 1;
-    $json_object = json_encode($data);
+    if (array_key_exists($breed, $data)) {
+        $data[$breed]++; 
+    } else {
+        $data[$breed] = 1;
+    }
+    $json_object = json_encode($data, JSON_NUMERIC_CHECK);
     file_put_contents($file, $json_object);
 }
 
@@ -56,7 +61,7 @@ function hasNotVoted($id)
     $file = "json/voted.json";
 
     if (!file_exists($file)) {
-        file_put_contents($file, json_encode(array($id)));
+        file_put_contents($file, json_encode([$id]));
         return true;
     }
     $json_object = file_get_contents($file);
@@ -66,7 +71,7 @@ function hasNotVoted($id)
         return false;
     }
 
-    array_push($IDs, $id);
+    $IDs[] = $id;
     file_put_contents($file, json_encode($IDs));
     return true;
 }

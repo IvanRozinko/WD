@@ -1,3 +1,10 @@
+<?php
+//session_start();
+$vote_error = '';
+if (isset($_SESSION['vote_error'])) {
+    $vote_error = $_SESSION['vote_error'];
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,6 +16,7 @@
     <title>Voting</title>
 </head>
 <body>
+<h4><?=$vote_error?></h4>
 <section class="chart_wrap">
     <form action="result.php" method="post">
         <h3>What is you favorite dog breed?</h3>
