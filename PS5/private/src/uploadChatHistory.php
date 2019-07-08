@@ -8,7 +8,7 @@ date_default_timezone_set('Europe/Kiev');
 
 if (!file_exists(CHAT_HISTORY)) {
     fopen(CHAT_HISTORY, 'w');
-    exit();
+    exit('');
 }
 
 /*
@@ -16,14 +16,12 @@ get last time of changing file and if its differs from time saved in SESSION -> 
 send last hour messages to chat.php
 */
 if ($_SESSION['chat_modified_time'] == ($chat_modified_time = filemtime(CHAT_HISTORY))) {
-    echo '';
-    exit();
+    exit('');
 }
 
 $msg_full_history = json_decode(file_get_contents(CHAT_HISTORY));
 if (empty($msg_full_history)) {
-    echo '';
-    exit();
+    exit('');
 }
 
 //filter array with file content to get only last hour messages

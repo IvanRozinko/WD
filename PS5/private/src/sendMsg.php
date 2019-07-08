@@ -12,15 +12,15 @@ if (isset($_POST['send_time'])) {
 
 
     $temp_array = json_decode(file_get_contents(CHAT_HISTORY));
-    $msg = array(
+    $msg = [
         'date' => $date,
         'time' => $time,
         'from' => $name . ': ',
-        'input' => strip_tags($input)
-    );
+        'input' => htmlspecialchars($input)
+        ];
     $temp_array[] = $msg;
     //saving message to database file - 'msg/history.json'
-    file_put_contents(CHAT_HISTORY, json_encode($temp_array));
+    file_put_contents(CHAT_HISTORY, json_encode($temp_array, JSON_PRETTY_PRINT));
     //sending message to user site
     echo json_encode($msg);
 }

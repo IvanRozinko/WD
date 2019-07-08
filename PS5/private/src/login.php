@@ -11,7 +11,7 @@ $pass = $_POST['pass'];
 
 //validate input values
 if (!preg_match('/^[A-Za-z]{1,20}$/', $name)) {
-    echo "fail";
+    echo 'fail';
     exit;
 }
 
@@ -24,12 +24,12 @@ $_SESSION['user_name'] = $name;
 
 $users = json_decode($file, true);
 if ($users == null) {
-    $users = array();
+    $users = [];
 }
 
 if (!array_key_exists($name, $users)) {
     $users[$name] = $pass;
-    $json_obj = json_encode($users);
+    $json_obj = json_encode($users, JSON_PRETTY_PRINT);
     file_put_contents(USERS_LIST, $json_obj);
     echo 'new';
     exit;

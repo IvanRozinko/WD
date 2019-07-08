@@ -39,7 +39,6 @@ function validate(input, regExp, error) {
  * @param pass
  */
 function login(name, pass) {
-    console.log("yes");
     $.ajax({
         url: '../private/src/login.php',
         type: 'POST',
@@ -48,9 +47,8 @@ function login(name, pass) {
             pass: pass.val(),
         },
         success: function (msg) {
-            console.log(msg);
             if (msg === 'new' || msg === 'exist') {
-                window.location = '../private/src/chat.php' //TODO: put to constants
+                window.location = '../private/src/chat.php'
             } else {
                 $('#wrong_pass').show();
             }
