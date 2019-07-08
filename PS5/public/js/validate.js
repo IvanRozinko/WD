@@ -46,12 +46,14 @@ function login(name, pass) {
             name: name.val(),
             pass: pass.val(),
         },
-        success: function (msg) {
-            if (msg === 'new' || msg === 'exist') {
-                window.location = '../private/src/chat.php'
-            } else {
-                $('#wrong_pass').show();
+        success: function (data) {
+            if (data === 'exist' || data === 'new_user') {
+                window.location = 'chat.php';
             }
+            const errors = JSON.parse(data);
+            $('#wrong_pass').text(errors.name_error);
+            $('#name_error').text(errors.pass_error);
+            $('#pass_error').text(errors.wrong_pass);
         }
     });
 }
@@ -60,8 +62,8 @@ function login(name, pass) {
  * Clearing all error fields
  */
 function clearErrors() {
-    $('#wrong_pass').hide();
-    $('#name_error').hide();
-    $('#pass_error').hide();
+    $('#wrong_pass').text();
+    $('#name_error').text();
+    $('#pass_error').text();
 
 }

@@ -1,5 +1,5 @@
 <?php
-include_once('../../public/config.php');
+include_once('config.php');
 session_start();
 if ($_SESSION['session_id'] !== session_id()) {
     header('Location: ../../public/index.php');
@@ -19,7 +19,7 @@ if (isset($_POST['send_time'])) {
         'input' => htmlspecialchars($input)
         ];
     $temp_array[] = $msg;
-    //saving message to database file - 'msg/history.json'
+    //saving message to database file - 'json/history.json'
     file_put_contents(CHAT_HISTORY, json_encode($temp_array, JSON_PRETTY_PRINT));
     //sending message to user site
     echo json_encode($msg);

@@ -41,7 +41,7 @@ function msgTime() {
  */
 function sendMessages(date, time, input) {
     $.ajax({
-        url: 'sendMsg.php',
+        url: '../private/src/sendMsg.php',
         type: 'POST',
         data: {
             send_date: date,
@@ -67,7 +67,7 @@ function sendMessages(date, time, input) {
 function uploadChatHistory(scroll) {
 
     $.ajax({
-        url: 'uploadChatHistory.php',
+        url: '../private/src/uploadChatHistory.php',
         type: 'POST',
         success: function (history) {
             if (history === '') {
@@ -93,8 +93,8 @@ function uploadChatHistory(scroll) {
  */
 function insertSmiles(msg) {
     const smiles = {
-        ':\\)': '<img alt=happy.png src=../../public/img/happy.png class=smile>',
-        ':\\(': '<img alt=sad.png src=../../public/img/sad.png class=smile>'
+        ':\\)': '<img alt=happy.png src=img/happy.png class=smile>',
+        ':\\(': '<img alt=sad.png src=img/sad.png class=smile>'
     };
     for (let key in smiles) {
         msg = msg.replace(new RegExp(key, 'g'), smiles[key]);
