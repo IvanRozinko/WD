@@ -5,7 +5,9 @@ if ($_SESSION['session_id'] !== session_id()) {
     header('Location: ../../public/index.php');
 }
 
+
 $file = file_get_contents(USERS_LIST);
+
 $name = $_POST['name'];
 $pass = $_POST['pass'];
 
@@ -44,3 +46,18 @@ if ($is_valid) {
 
 echo json_encode($errors, JSON_PRETTY_PRINT);
 
+//
+//$con = mysqli_connect('localhost', 'root', '', 'testsql');
+//
+//if (mysqli_connect_errno()) {
+//    echo 'Failed to connect SQL ' . mysqli_connect_error();
+//}
+////
+////$user = 'INSERT INTO users (name, pass) VALUES ("Ivan", "22222222")';
+////mysqli_query($con, $user);
+//
+//
+//$sql = "SELECT * FROM users";
+//$result = mysqli_query($con, $sql);
+//$data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//print_r($data);
