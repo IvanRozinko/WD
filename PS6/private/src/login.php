@@ -1,12 +1,11 @@
 <?php
 include_once('config.php');
+include_once('create_db.php');
+include_once('get_users_from_db.php');
 session_start();
 if ($_SESSION['session_id'] !== session_id()) {
     header('Location: ../../public/index.php');
 }
-
-
-$file = file_get_contents(USERS_LIST);
 
 $name = $_POST['name'];
 $pass = $_POST['pass'];
@@ -26,18 +25,15 @@ if (!preg_match('/^[\w]{8,16}$/', $pass)) {
 }
 
 $_SESSION['user_name'] = $name;
-$users = json_decode($file, true);
-if ($users == null) {
-    $users = [];
-}
-
 
 if ($is_valid) {
+    //if it is new user add him to database
     if (!array_key_exists($name, $users)) {
-        $users[$name] = $pass;
-        $json_obj = json_encode($users, JSON_PRETTY_PRINT);
-        file_put_contents(USERS_LIST, $json_obj);
+        $sql_insert_user = "INSERT INTO users (name, pass)
+                             VALUES ('" . $name . "', '" . $pass . "')";
+        mysqli_query($con, $sql_insert_user);
         exit('new_user');
+        //if it is existing user, check entered password
     } else if ($users[$name] === $pass) {
         exit('exist');
     }
