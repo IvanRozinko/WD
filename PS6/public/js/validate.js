@@ -47,6 +47,7 @@ function login(name, pass) {
             pass: pass.val(),
         },
         success: function (data) {
+            console.log(data);
             if (data === 'exist' || data === 'new_user') {
                 window.location = 'chat.php';
             } else {

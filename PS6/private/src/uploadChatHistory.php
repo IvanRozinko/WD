@@ -7,10 +7,10 @@ if ($_SESSION['session_id'] !== session_id()) {
 }
 
 
-if (!file_exists(CHAT_HISTORY)) {
-    fopen(CHAT_HISTORY, 'w');
-    exit('');
-}
+//if (!file_exists(CHAT_HISTORY)) {
+//    fopen(CHAT_HISTORY, 'w');
+//    exit('');
+//}
 
 /*
 get last time of changing file and if its differs from time saved in SESSION -> read all messages from file and
@@ -20,7 +20,14 @@ if ($_SESSION['chat_modified_time'] == ($chat_modified_time = filemtime(CHAT_HIS
     exit('');
 }
 
-$msg_full_history = json_decode(file_get_contents(CHAT_HISTORY));
+//$msg_full_history = json_decode(file_get_contents(CHAT_HISTORY));
+$msg_full_history = 'SELECT * msg';
+//sql_users = mysqli_query($con, $sql_get_users);
+$temp_users = mysqli_fetch_all($sql_users, MYSQLI_ASSOC);
+$users = [];
+foreach ($temp_users as $item) {
+    $users[$item['name']] = $item['pass'];
+}
 if (empty($msg_full_history)) {
     exit('');
 }

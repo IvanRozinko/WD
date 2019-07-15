@@ -50,6 +50,7 @@ function sendMessages(date, time, input) {
         },
 
         success: function (newMsg) {
+
             if (newMsg === '') {
                 return;
             }
@@ -70,6 +71,7 @@ function uploadChatHistory(scroll) {
         url: '../private/src/uploadChatHistory.php',
         type: 'POST',
         success: function (history) {
+            console.log(history);
             if (history === '') {
                 return;
             }
