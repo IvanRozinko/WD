@@ -27,9 +27,9 @@ function msgTime() {
     const time = formatT(today.getHours()) + ':'
                 + formatT(today.getMinutes()) + ':'
                  + formatT(today.getSeconds());
-    const date = today.getDate() + '-'
+    const date = today.getFullYear() + '-'
                 + (today.getMonth() + 1) + '-'
-                 + today.getFullYear();
+                 + today.getDate();
     return [date, time];
 }
 
@@ -40,6 +40,7 @@ function msgTime() {
  * @param input
  */
 function sendMessages(date, time, input) {
+    console.log(date);
     $.ajax({
         url: '../private/src/sendMsg.php',
         type: 'POST',
@@ -50,7 +51,7 @@ function sendMessages(date, time, input) {
         },
 
         success: function (newMsg) {
-
+console.log(newMsg);
             if (newMsg === '') {
                 return;
             }
@@ -119,7 +120,7 @@ function formatT(value) {
  * @returns {string}
  */
 function formatMsg(obj) {
-    return '[' + obj.time + '] ' + '<strong>' + obj.from + '</strong>' + insertSmiles(obj.input);
+    return '[' + obj.time + '] ' + '<strong>' + obj.msg_from + '</strong>' + insertSmiles(obj.input);
 }
 
 /**

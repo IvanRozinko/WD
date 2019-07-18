@@ -6,34 +6,34 @@ if ($_SESSION['session_id'] !== session_id()) {
     header('Location: ../../public/index.php');
 }
 
-
-//if (!file_exists(CHAT_HISTORY)) {
-//    fopen(CHAT_HISTORY, 'w');
-//    exit('');
-//}
-
 /*
 get last time of changing file and if its differs from time saved in SESSION -> read all messages from file and
 send last hour messages to chat.php
 */
+
+$con = mysqli_connect('localhost', 'root', '', 'chat_db');
+if ($error = mysqli_connect_errno()) {
+    exit('Can`t connect database' . $error);
+}
+$dates = mysqli_query($con, 'SELECT date, time FROM msg');
+$temp = mysqli_fetch_all($dates, MYSQLI_ASSOC);
+
+
 if ($_SESSION['chat_modified_time'] == ($chat_modified_time = filemtime(CHAT_HISTORY))) {
     exit('');
 }
 
-//$msg_full_history = json_decode(file_get_contents(CHAT_HISTORY));
-$msg_full_history = 'SELECT * msg';
-//sql_users = mysqli_query($con, $sql_get_users);
-$temp_users = mysqli_fetch_all($sql_users, MYSQLI_ASSOC);
-$users = [];
-foreach ($temp_users as $item) {
-    $users[$item['name']] = $item['pass'];
-}
-if (empty($msg_full_history)) {
+$sql_msg = mysqli_query($con, 'SELECT * FROM msg');
+$full_history = mysqli_fetch_all($sql_msg, MYSQLI_ASSOC);
+//print_r($full_history);
+
+
+if (empty($full_history)) {
     exit('');
 }
 
 //filter array with file content to get only last hour messages
-$msg_last_hour = array_filter($msg_full_history, 'getLastHourMsg');
+$msg_last_hour = array_filter($full_history, 'getLastHourMsg');
 $_SESSION['chat_modified_time'] = $chat_modified_time;
 //send to user site last hour messages
 echo json_encode($msg_last_hour);

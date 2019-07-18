@@ -9,6 +9,6 @@ function getLastHourMsg($msg)
     date_default_timezone_set('Europe/Kiev');
     $sec_per_hour = 3600;
     $time_from = time() - $sec_per_hour;
-    $msg_time = strtotime($msg->date . $msg->time);
+    $msg_time = strtotime($msg['date'] . $msg['time']);
     return $msg_time > $time_from;
 }

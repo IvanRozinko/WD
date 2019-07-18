@@ -1,11 +1,14 @@
 <?php
-include_once('config.php');
-include_once('create_db.php');
-include_once('get_users_from_db.php');
 session_start();
 if ($_SESSION['session_id'] !== session_id()) {
     header('Location: ../../public/index.php');
 }
+
+include_once('config.php');
+include_once('create_db.php');
+include_once('get_users_from_db.php');
+
+
 
 $name = $_POST['name'];
 $pass = $_POST['pass'];
@@ -30,7 +33,7 @@ if ($is_valid) {
     //if it is new user add him to database
     if (!array_key_exists($name, $users)) {
         $sql_insert_user = "INSERT INTO users (name, pass)
-                             VALUES ('" . $name . "', '" . $pass . "')";
+                             VALUES ($name, $pass)";
         mysqli_query($con, $sql_insert_user);
         exit('new_user');
         //if it is existing user, check entered password
