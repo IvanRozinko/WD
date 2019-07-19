@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+
+/*font-family: 'Squada One', cursive;*/
+/*font-family: 'Russo One', sans-serif;*/
+
+
+body, html {
+    /*margin: 0;*/
+    height: 100%;
+    width: 485px;
+}
+
+header {
+    height: 15%;
+    background-color: #36ACE9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo-container .logo {
+    margin: 5px;
+    width: 20%;
+    height: 45px;
+    background-image: url("http://civildiplomat.com/wp-content/themes/twentysixteen/images/logo_footer.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.header-container .description {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+header .title {
+    color: white;
+    font-family: 'Russo One', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 30px;
+
+}
+
+header .info {
+    text-align: center;
+    font-family: 'Russo One', sans-serif;
+    color: black;
+}
+
+main {
+    width: 100%;
+    height: 50%;
+    background-image: url("./Flat-Leadership-Concept.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+
+.fa-comment:before {
+    content: "\f075";
+    font-size: 50px;
+    color: white;
+
+}
+.corrector {
+    position: absolute;
+    width: 485px;
+    height: 80px;
+    top: 550px;
+    background-color: #36ACE9;
+    display: flex;
+    justify-content: center;
+
+
+}
+.slogan-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.slogan {
+    color: black;
+    text-transform: uppercase;
+    width: 25%;
+    font-family: 'Fredoka One', cursive;
+    font-weight: bold;
+    font-size: 20px;
+}
+.fr {
+}
+.slogan.sc {
+    align-self: center;
+}
+.slogan.th {
+    align-self: flex-end;
+}
+
+footer {
+    height: 15%;
+    background-color: #36ACE9;
+    display: flex;
+    justify-content: center;
+
+}
+
+.footer-container {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.logo_kowo {
+    width: 100px;
+    height: 80px;
+    background-image: url('http://kowo.me/img/kowo.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+
+.logo-container {
+    font-family: 'Press Start 2P', cursive;
+    text-transform: uppercase;
+    /*color: #d5d5d5;*/
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.adress {
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Russo One', sans-serif;
+
+}
