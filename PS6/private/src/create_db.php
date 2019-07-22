@@ -2,7 +2,7 @@
 
 //create connection to database
 $con = mysqli_connect('localhost', 'root', '');
-$_SESSION['connection'] = $con;
+
 if ($error = mysqli_connect_errno()) {
     echo 'Can`t connect database' . $error;
 }

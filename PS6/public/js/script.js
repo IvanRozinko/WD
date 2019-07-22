@@ -19,8 +19,8 @@ setInterval(function () {
 }, 1000);
 
 /**
- * Returning current time in format hh:mm:ss
- * @returns {string}
+ * Returning array with current date and time in format  [yyyy-mm-dd, hh:mm:ss]
+ * @returns array : [date, time]
  */
 function msgTime() {
     const today = new Date();
@@ -40,9 +40,9 @@ function msgTime() {
  * @param input
  */
 function sendMessages(date, time, input) {
-    console.log(date);
+    // console.log(date);
     $.ajax({
-        url: '../private/src/sendMsg.php',
+        url: '../private/src/send_msg.php',
         type: 'POST',
         data: {
             send_date: date,
@@ -51,7 +51,7 @@ function sendMessages(date, time, input) {
         },
 
         success: function (newMsg) {
-console.log(newMsg);
+            // console.log(newMsg);
             if (newMsg === '') {
                 return;
             }
@@ -69,10 +69,10 @@ console.log(newMsg);
 function uploadChatHistory(scroll) {
 
     $.ajax({
-        url: '../private/src/uploadChatHistory.php',
+        url: '../private/src/upload_chat_history.php',
         type: 'POST',
         success: function (history) {
-            console.log(history);
+            // console.log(history);
             if (history === '') {
                 return;
             }

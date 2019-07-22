@@ -1,13 +1,12 @@
 <?php
 session_start();
 if ($_SESSION['session_id'] !== session_id()) {
-    header('Location: ../../public/index.php');
+    header('Location:' . STARTING_PAGE);
 }
 
 include_once('config.php');
 include_once('create_db.php');
 include_once('get_users_from_db.php');
-
 
 
 $name = $_POST['name'];
@@ -28,16 +27,16 @@ if (!preg_match('/^[\w]{8,16}$/', $pass)) {
 }
 
 $_SESSION['user_name'] = $name;
+$hash_pass = password_hash($pass, PASSWORD_DEFAULT);
 
 if ($is_valid) {
     //if it is new user add him to database
     if (!array_key_exists($name, $users)) {
-        $sql_insert_user = "INSERT INTO users (name, pass)
-                             VALUES ($name, $pass)";
+        $sql_insert_user = "INSERT INTO users (name, pass) VALUES ('".$name."', '". $hash_pass."')";
         mysqli_query($con, $sql_insert_user);
         exit('new_user');
         //if it is existing user, check entered password
-    } else if ($users[$name] === $pass) {
+    }else if (password_verify($pass, $users[$name])) {
         exit('exist');
     }
     $errors['wrong_pass'] = 'Wrong password';
