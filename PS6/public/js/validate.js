@@ -40,11 +40,12 @@ function validate(input, regExp, error) {
  */
 function login(name, pass) {
     $.ajax({
-        url: '../private/src/login.php',
+        url: 'router.php',
         type: 'POST',
         data: {
             name: name.val(),
             pass: pass.val(),
+            route: 'login'
         },
         success: function (data) {
             console.log(data);

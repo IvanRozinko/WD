@@ -1,5 +1,4 @@
 <?php
-
 //create connection to database
 $con = mysqli_connect('localhost', 'root', '');
 

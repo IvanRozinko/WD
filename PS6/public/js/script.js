@@ -40,18 +40,17 @@ function msgTime() {
  * @param input
  */
 function sendMessages(date, time, input) {
-    // console.log(date);
-    $.ajax({
-        url: '../private/src/send_msg.php',
+      $.ajax({
+        url: 'router.php',
         type: 'POST',
         data: {
             send_date: date,
             send_time: time,
             input: input,
+            route: 'send_message'
         },
 
         success: function (newMsg) {
-            // console.log(newMsg);
             if (newMsg === '') {
                 return;
             }
@@ -69,10 +68,13 @@ function sendMessages(date, time, input) {
 function uploadChatHistory(scroll) {
 
     $.ajax({
-        url: '../private/src/upload_chat_history.php',
+        url: 'router.php',
         type: 'POST',
+        data: {
+            route: 'upload_chat_history'
+        },
+
         success: function (history) {
-            // console.log(history);
             if (history === '') {
                 return;
             }

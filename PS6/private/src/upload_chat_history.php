@@ -1,11 +1,7 @@
 <?php
-include_once('config.php');
 include_once('get_last_hour_msg.php');
 session_start();
 
-if ($_SESSION['session_id'] !== session_id()) {
-    header('Location:' . STARTING_PAGE);
-}
 /*
 get  time of last message in msc table db_chat if its differs from time saved in SESSION -> read all messages from file and
 send last hour messages to chat.php

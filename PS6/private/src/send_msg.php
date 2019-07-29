@@ -1,10 +1,5 @@
 <?php
-include_once('config.php');
 session_start();
-if ($_SESSION['session_id'] !== session_id()) {
-    header('Location:' . STARTING_PAGE);
-}
-
 $name = $_SESSION['user_name'] . ': ';
 $date = $_POST['send_date'];
 $time = $_POST['send_time'];

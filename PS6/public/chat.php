@@ -1,8 +1,5 @@
 <?php
 session_start();
-if ($_SESSION['session_id'] !== session_id()) {
-    header('Location: ../../public/index.php');
-}
 $name = $_SESSION['user_name'];
 $_SESSION['chat_modified_time'] = time();
 ?>
