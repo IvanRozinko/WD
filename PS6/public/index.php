@@ -13,19 +13,22 @@ session_start();
     <title>User Auth</title>
 </head>
 <body>
-
 <div class='frame'></div>
 <section>
-    <div class='spacing'></div>
     <header>Easy Сhat</header>
-    <div class='spacing'></div>
     <div class='container'>
-        <form action='' method='post'>
-            Enter your name
+        <form>
+            <div class="input_tip">
+                <span class="tip_text">Your name should be 1-20 latin letters</span>
+                <label for='name'>Enter your name</label>
+            </div>
             <p id='wrong_pass' class='invalid_msg'></p>
             <p id='name_error' class='invalid_msg'></p>
             <input name='name' id='name' type='text' value='<?php if (isset($name)) echo $name ?>'>
-            Enter your password
+            <div class="input_tip">
+                <span class="tip_text">Your password should be 8-16 characters length, latin letters, numbers or underscope  </span>
+                <label for='pass'>Enter your password</label>
+            </div>
             <p id='pass_error' class='invalid_msg'></p>
             <input name='pass' id='pass' type='password' value='<?php if (isset($pass)) echo $pass ?>'>
             <input name='submit' type='submit' value='Log in'>
@@ -34,6 +37,6 @@ session_start();
     </div>
 </section>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-<script src='js/validate.js'></script>
+<script src='js/login_script.js'></script>
 </body>
 </html>

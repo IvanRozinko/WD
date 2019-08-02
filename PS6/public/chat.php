@@ -16,12 +16,10 @@ $_SESSION['chat_modified_time'] = time();
 <body>
 <div class='frame'></div>
 <section>
-    <div class='spacing'></div>
     <header>Easy Chat</header>
-    <div class='spacing'></div>
-    <h3>Hey, <?php echo $name ?> !</h3>
+    <h3>Hey, <?=$name ?> !</h3>
     <div id='chat_window'></div>
-    <form action=''>
+    <form>
         <div class='message_block'>
             <input name='msg_input' type='text' id='msg_input' placeholder='Type here...'>
             <input id='btn_send' name='btn_send' type='submit' value='Send'>
@@ -29,6 +27,6 @@ $_SESSION['chat_modified_time'] = time();
     </form>
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src='js/script.js'></script>
+<script src='js/chat_script.js'></script>
 </body>
 </html>

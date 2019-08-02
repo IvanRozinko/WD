@@ -1,15 +1,15 @@
-$(document).ready(function () {
+$(() => {
     $('form').on('submit', (event) => {
 
         event.preventDefault();
-        const name = $('#name');
-        const pass = $('#pass');
+        const $name = $('#name');
+        const $pass = $('#pass');
         clearErrors();
-        const isValidName = validate(name, /^[A-Za-z]{1,20}$/, $('#name_error'));
-        const isValidPass = validate(pass, /^\w{8,16}$/, $('#pass_error'));
+        const isValidName = validate($name, /^[A-Za-z]{1,20}$/, $('#name_error'));
+        const isValidPass = validate($pass, /^\w{8,16}$/, $('#pass_error'));
 
         if (isValidName && isValidPass) {
-            login(name, pass);
+            login($name, $pass);
         }
     })
 });
@@ -47,8 +47,7 @@ function login(name, pass) {
             pass: pass.val(),
             route: 'login'
         },
-        success: function (data) {
-            console.log(data);
+        success:  data => {
             if (data === 'exist' || data === 'new_user') {
                 window.location = 'chat.php';
             } else {

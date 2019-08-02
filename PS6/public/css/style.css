@@ -36,6 +36,7 @@ header {
     font-family: Pacifico, cursive;
     font-size: 3.5em;
     font-weight: lighter;
+    margin: 70px 0;
 }
 
 form {
@@ -44,10 +45,6 @@ form {
     justify-content: space-around;
     font-size: medium;
     font-weight: bold;
-}
-
-.spacing {
-    height: 50px;
 }
 
 .container {
@@ -63,6 +60,31 @@ input {
     outline: none;
     color: #635960;
     padding-left: 3px;
+}
+
+.input_tip {
+    position: relative;
+    display: inline-block;
+}
+
+.input_tip .tip_text {
+    visibility: hidden;
+    width: 180px;
+    font-size: small;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    left: -100%;
+    top: -100%;
+
+}
+
+.input_tip:hover .tip_text {
+    visibility: visible;
 }
 
 input[type='submit']:hover {
@@ -128,6 +150,7 @@ input[type='submit'] {
     width: 440px;
     margin-right: 10px;
 }
+
 .invalid_msg {
     font-size: 10px;
     color: red;

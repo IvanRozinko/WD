@@ -1,12 +1,11 @@
-$(document).ready(function () {
-    const msg_input = $('#msg_input');
-
-    $('#btn_send').bind('click', (event) => {
+$(() => {
+    const $msg_input = $('#msg_input');
+    $('#btn_send').bind('click', event => {
         event.preventDefault();
-        const input = msg_input.val();
+        const input = $msg_input.val();
         const sendTime = msgTime();
         sendMessages(sendTime[0], sendTime[1], input);
-        msg_input.val('');
+        $msg_input.val('');
     });
 });
 
@@ -14,7 +13,7 @@ const $chat_window = $('#chat_window');
 
 uploadChatHistory(true);
 // upload chat history every 1 sec
-setInterval(function () {
+setInterval( () => {
     uploadChatHistory(false)
 }, 1000);
 
@@ -50,7 +49,7 @@ function sendMessages(date, time, input) {
             route: 'send_message'
         },
 
-        success: function (newMsg) {
+        success: newMsg => {
             if (newMsg === '') {
                 return;
             }
@@ -70,19 +69,23 @@ function uploadChatHistory(scroll) {
     $.ajax({
         url: 'router.php',
         type: 'POST',
+        datatype: 'JSON',
         data: {
             route: 'upload_chat_history'
         },
 
-        success: function (history) {
+        success: history => {
+            console.log(history);
             if (history === '') {
                 return;
             }
             //clear chat window
             $chat_window.empty();
             const json_history = JSON.parse(history);
-            for (const key of Object.keys(json_history)) {
-                $chat_window.append('<p>' + formatMsg(json_history[key]) + '</p>');
+            for (const key of Object.keys(history)) {
+               
+                console.log(msg);
+                $chat_window.append('<p>' + formatMsg(history[key]) + '</p>');
             }
             if (scroll) {
                 scrollTextWindow($chat_window);
