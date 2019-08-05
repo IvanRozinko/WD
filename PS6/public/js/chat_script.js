@@ -13,7 +13,7 @@ const $chat_window = $('#chat_window');
 
 uploadChatHistory(true);
 // upload chat history every 1 sec
-setInterval( () => {
+setInterval(() => {
     uploadChatHistory(false)
 }, 1000);
 
@@ -24,11 +24,11 @@ setInterval( () => {
 function msgTime() {
     const today = new Date();
     const time = formatT(today.getHours()) + ':'
-                + formatT(today.getMinutes()) + ':'
-                 + formatT(today.getSeconds());
+        + formatT(today.getMinutes()) + ':'
+        + formatT(today.getSeconds());
     const date = today.getFullYear() + '-'
-                + (today.getMonth() + 1) + '-'
-                 + today.getDate();
+        + (today.getMonth() + 1) + '-'
+        + today.getDate();
     return [date, time];
 }
 
@@ -39,9 +39,10 @@ function msgTime() {
  * @param input
  */
 function sendMessages(date, time, input) {
-      $.ajax({
+    $.ajax({
         url: 'router.php',
         type: 'POST',
+        dataType: 'json',
         data: {
             send_date: date,
             send_time: time,
@@ -53,7 +54,7 @@ function sendMessages(date, time, input) {
             if (newMsg === '') {
                 return;
             }
-            const msg = formatMsg(JSON.parse(newMsg));
+            const msg = formatMsg(newMsg);
             $chat_window.append('<p>' + msg + '</p>');
             scrollTextWindow($chat_window);
         }
@@ -69,24 +70,19 @@ function uploadChatHistory(scroll) {
     $.ajax({
         url: 'router.php',
         type: 'POST',
-        datatype: 'JSON',
+        dataType: 'json',
         data: {
             route: 'upload_chat_history'
         },
-
         success: history => {
-            console.log(history);
+            //clear chat window
+            $chat_window.empty();
             if (history === '') {
                 return;
             }
-            //clear chat window
-            $chat_window.empty();
-            const json_history = JSON.parse(history);
-            for (const key of Object.keys(history)) {
-               
-                console.log(msg);
-                $chat_window.append('<p>' + formatMsg(history[key]) + '</p>');
-            }
+            $.each(history, (key, element) => {
+                $chat_window.append('<p>' + formatMsg(element) + '</p>');
+            });
             if (scroll) {
                 scrollTextWindow($chat_window);
             }

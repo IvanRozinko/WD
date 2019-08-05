@@ -1,6 +1,9 @@
 <?php
 session_start();
-$name = $_SESSION['user_name'];
+if (!isset($_SESSION['user_name'])) {
+    header('Location: index.php');
+}
+
 $_SESSION['chat_modified_time'] = time();
 ?>
 <!doctype html>
@@ -17,7 +20,7 @@ $_SESSION['chat_modified_time'] = time();
 <div class='frame'></div>
 <section>
     <header>Easy Chat</header>
-    <h3>Hey, <?=$name ?> !</h3>
+    <h3>Hey, <?=$_SESSION['user_name'] ?> !</h3>
     <div id='chat_window'></div>
     <form>
         <div class='message_block'>

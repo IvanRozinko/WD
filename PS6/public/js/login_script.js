@@ -1,3 +1,7 @@
+const nameErrorSelect = '#name_error';
+const passErrorSelect = '#pass_error';
+const wrongPassSelect = '#wrong_pass';
+
 $(() => {
     $('form').on('submit', (event) => {
 
@@ -5,8 +9,8 @@ $(() => {
         const $name = $('#name');
         const $pass = $('#pass');
         clearErrors();
-        const isValidName = validate($name, /^[A-Za-z]{1,20}$/, $('#name_error'));
-        const isValidPass = validate($pass, /^\w{8,16}$/, $('#pass_error'));
+        const isValidName = validate($name, /^[A-Za-z]{1,20}$/, $(nameErrorSelect));
+        const isValidPass = validate($pass, /^\w{8,16}$/, $(passErrorSelect));
 
         if (isValidName && isValidPass) {
             login($name, $pass);
@@ -41,31 +45,43 @@ function validate(input, regExp, error) {
 function login(name, pass) {
     $.ajax({
         url: 'router.php',
+        dataType: 'json',
         type: 'POST',
         data: {
             name: name.val(),
             pass: pass.val(),
             route: 'login'
         },
-        success:  data => {
-            if (data === 'exist' || data === 'new_user') {
+        success: errors => {
+            if (isEmpty(errors)) {
                 window.location = 'chat.php';
             } else {
-                const errors = JSON.parse(data);
-                $('#wrong_pass').text(errors.name_error);
-                $('#name_error').text(errors.pass_error);
-                $('#pass_error').text(errors.wrong_pass);
+                $(wrongPassSelect).text(errors.name_error);
+                $(nameErrorSelect).text(errors.pass_error);
+                $(passErrorSelect).text(errors.wrong_pass);
             }
-        }
+        },
+        error: () => {
+            $(wrongPassSelect).text("Request failed, try again later");
+        },
     });
+}
+
+/**
+ * Checking if object is empty
+ * @param obj
+ * @returns {boolean}
+ */
+function isEmpty(obj) {
+    return Object.entries(obj).length === 0;
 }
 
 /**
  * Clearing all error fields
  */
 function clearErrors() {
-    $('#wrong_pass').text();
-    $('#name_error').text();
-    $('#pass_error').text();
+    $(wrongPassSelect).text();
+    $(nameErrorSelect).text();
+    $(passErrorSelect).text();
 
 }

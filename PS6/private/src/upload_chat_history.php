@@ -7,12 +7,12 @@ get  time of last message in msc table db_chat if its differs from time saved in
 send last hour messages to chat.php
 */
 
-$error = [];
+$errors = [];
 //connect to database
 $con = mysqli_connect('localhost', 'root', '', 'chat_db');
 
 if ($con_error = mysqli_connect_errno()) {
-    $error['db_connection'] = 'Can`t connect database' . $con_error;
+    $errors['db_connection'] = 'Can`t connect database' . $con_error;
 }
 
 //get date and time of last saved message in table msg
@@ -37,8 +37,8 @@ $msg_last_hour = array_filter($full_history, 'getLastHourMsg');
 //save to session new value of last msg
 $_SESSION['chat_modified_time'] = $last_msg_time;
 
-if (!empty($error)) {
-    array_merge($error, $msg_last_hour);
+if (!empty($errors)) {
+    array_merge($errors, $msg_last_hour);
 }
 //send to user site last hour messages
 echo json_encode($msg_last_hour, JSON_PRETTY_PRINT);
