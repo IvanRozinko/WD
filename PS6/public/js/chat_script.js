@@ -86,7 +86,10 @@ function uploadChatHistory(scroll) {
             if (scroll) {
                 scrollTextWindow($chat_window);
             }
-        }
+        },
+        error: () => {
+            $('#con_error').text("Request failed, try again later");
+        },
     })
 }
 

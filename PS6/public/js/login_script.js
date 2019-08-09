@@ -45,7 +45,7 @@ function validate(input, regExp, error) {
 function login(name, pass) {
     $.ajax({
         url: 'router.php',
-        dataType: 'json',
+        // dataType: 'json',
         type: 'POST',
         data: {
             name: name.val(),
@@ -53,11 +53,12 @@ function login(name, pass) {
             route: 'login'
         },
         success: errors => {
+            console.log(errors);
             if (isEmpty(errors)) {
-                window.location = 'chat.php';
+                // window.location = 'chat.php';
             } else {
-                $(wrongPassSelect).text(errors.name_error);
-                $(nameErrorSelect).text(errors.pass_error);
+                $(wrongPassSelect).text(errors.pass_error);
+                $(nameErrorSelect).text(errors.name_error);
                 $(passErrorSelect).text(errors.wrong_pass);
             }
         },
@@ -73,7 +74,7 @@ function login(name, pass) {
  * @returns {boolean}
  */
 function isEmpty(obj) {
-    return Object.entries(obj).length === 0;
+    return Object.keys(obj).length === 0;
 }
 
 /**

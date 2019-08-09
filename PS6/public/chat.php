@@ -21,6 +21,7 @@ $_SESSION['chat_modified_time'] = time();
 <section>
     <header>Easy Chat</header>
     <h3>Hey, <?=$_SESSION['user_name'] ?> !</h3>
+    <p id='con_error'></p>
     <div id='chat_window'></div>
     <form>
         <div class='message_block'>
