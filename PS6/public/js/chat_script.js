@@ -42,22 +42,20 @@ function sendMessages(date, time, input) {
     $.ajax({
         url: 'router.php',
         type: 'POST',
-        dataType: 'json',
+        // dataType: 'json',
         data: {
-            send_date: date,
-            send_time: time,
             input: input,
             route: 'send_message'
         },
 
-        success: newMsg => {
-            if (newMsg === '') {
-                return;
-            }
-            const msg = formatMsg(newMsg);
-            $chat_window.append('<p>' + msg + '</p>');
-            scrollTextWindow($chat_window);
-        }
+        // success: newMsg => {
+        //     if (newMsg === '') {
+        //         return;
+        //     }
+        //     const msg = formatMsg(newMsg);
+        //     $chat_window.append('<p>' + msg + '</p>');
+        //     scrollTextWindow($chat_window);
+        // }
     });
 }
 
@@ -76,10 +74,10 @@ function uploadChatHistory(scroll) {
         },
         success: history => {
             //clear chat window
-            $chat_window.empty();
-            if (history === '') {
+            if (history.length === 0) {
                 return;
             }
+            $chat_window.empty();
             $.each(history, (key, element) => {
                 $chat_window.append('<p>' + formatMsg(element) + '</p>');
             });

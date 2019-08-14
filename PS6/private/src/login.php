@@ -2,7 +2,7 @@
 session_start();
 include_once('config.php');
 include_once('create_db.php');
-//include_once('get_users_from_db.php');
+
 
 $name = $_POST['name'];
 $pass = $_POST['pass'];
@@ -38,6 +38,8 @@ if (empty($errors)) {
         $errors['wrong_pass'] = 'Wrong password';
     }
 }
+
+
 
 echo json_encode($errors, JSON_PRETTY_PRINT);
 

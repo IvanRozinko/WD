@@ -6,8 +6,10 @@ $(() => {
     $('form').on('submit', (event) => {
 
         event.preventDefault();
+
         const $name = $('#name');
         const $pass = $('#pass');
+
         clearErrors();
         const isValidName = validate($name, /^[A-Za-z]{1,20}$/, $(nameErrorSelect));
         const isValidPass = validate($pass, /^\w{8,16}$/, $(passErrorSelect));

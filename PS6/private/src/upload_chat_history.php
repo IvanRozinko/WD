@@ -1,47 +1,35 @@
 <?php
-include_once('get_last_hour_msg.php');
+include_once ('connect_db.php');
 session_start();
 
-/*
-get  time of last message in msc table db_chat if its differs from time saved in SESSION -> read all messages from file and
-send last hour messages to chat.php
-*/
-
-$errors = [];
-//connect to database
-$con = mysqli_connect('localhost', 'root', '', 'chat_db');
-
-if ($con_error = mysqli_connect_errno()) {
-    $errors['db_connection'] = 'Can`t connect database' . $con_error;
-}
-
 //get date and time of last saved message in table msg
-$sql_get_last_msg_time = mysqli_query($con, 'SELECT date, time FROM msg WHERE id=(SELECT  MAX(id) FROM msg)');
+$sql_get_last_msg_time = mysqli_query($con, 'SELECT time FROM msg WHERE id=(SELECT  MAX(id) FROM msg)');
 $last_msg_time = mysqli_fetch_all($sql_get_last_msg_time, MYSQLI_ASSOC);
 
 
+
 if ($_SESSION['chat_modified_time'] == $last_msg_time) {
-    exit();
+    exit(json_encode([]));
 }
 
-//get all messages from database
-$sql_get_full_history = mysqli_query($con, 'SELECT * FROM msg');
-$full_history = mysqli_fetch_all($sql_get_full_history, MYSQLI_ASSOC);
 
-if (empty($full_history)) {
-    exit();
+//get last hour messages from database
+date_default_timezone_set('Europe/Kiev');
+$min_time = date('Y-m-d H:i:s', time() - 3600);
+
+$sql_last_hour_msgs = mysqli_query($con, "SELECT * FROM msg WHERE time >= '{$min_time}'");
+$msgs = mysqli_fetch_all($sql_last_hour_msgs, MYSQLI_ASSOC);
+
+if (empty($msgs)) {
+    exit(json_encode([]));
 }
 
-//filter array with file content to get only last hour messages
-$msg_last_hour = array_filter($full_history, 'getLastHourMsg');
 //save to session new value of last msg
 $_SESSION['chat_modified_time'] = $last_msg_time;
 
-if (!empty($errors)) {
-    array_merge($errors, $msg_last_hour);
-}
+
 //send to user site last hour messages
-echo json_encode($msg_last_hour, JSON_PRETTY_PRINT);
+echo json_encode($msgs, JSON_PRETTY_PRINT);
 
 
 
