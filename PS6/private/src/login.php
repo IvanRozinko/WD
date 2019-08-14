@@ -2,7 +2,7 @@
 session_start();
 include_once('config.php');
 include_once('create_db.php');
-include_once('get_users_from_db.php');
+//include_once('get_users_from_db.php');
 
 $name = $_POST['name'];
 $pass = $_POST['pass'];
@@ -18,22 +18,23 @@ if (!preg_match('/^[\w]{8,16}$/', $pass)) {
     $errors['pass_error'] = 'Your password should be 8 to 16 chars';
 }
 
-
 if (empty($errors)) {
     $_SESSION['user_name'] = $name;
+    $name = strtolower($name);
 
-    //if it is new user add him to database //TODO: zdes huynya vashe kakayaa-to!!!
+    //if it is new user add him to database
+    $user_exist = mysqli_query($con, "SELECT name, pass FROM users WHERE name = '{$name}'");
 
+    if (mysqli_num_rows($user_exist) == 0) {
 
-    $user_exist = mysqli_query($con, "SELECT name FROM users WHERE name = {$name}");
-    print_r($user_exist);
-
-    if (!$user_exist) {
         $hash_pass = password_hash($pass, PASSWORD_DEFAULT);
-        $sql_insert_user = "INSERT INTO users (name, pass) VALUES ({$name}, {$hash_pass})";
+        $sql_insert_user = "INSERT INTO users (name, pass) VALUES ('{$name}', '{$hash_pass}')";
+
         mysqli_query($con, $sql_insert_user);
-    //if it is existing user, check entered password
-    } else if (!password_verify($pass, $users[$name])) {
+
+         //if it is existing user, check entered password
+    } else if (!password_verify($pass,  mysqli_fetch_assoc($user_exist)['pass'])) {
+
         $errors['wrong_pass'] = 'Wrong password';
     }
 }

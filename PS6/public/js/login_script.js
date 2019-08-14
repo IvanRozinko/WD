@@ -45,7 +45,7 @@ function validate(input, regExp, error) {
 function login(name, pass) {
     $.ajax({
         url: 'router.php',
-        // dataType: 'json',
+        dataType: 'json',
         type: 'POST',
         data: {
             name: name.val(),
@@ -55,7 +55,7 @@ function login(name, pass) {
         success: errors => {
             console.log(errors);
             if (isEmpty(errors)) {
-                // window.location = 'chat.php';
+                window.location = 'chat.php';
             } else {
                 $(wrongPassSelect).text(errors.pass_error);
                 $(nameErrorSelect).text(errors.name_error);
