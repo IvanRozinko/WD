@@ -12,12 +12,8 @@ if ($_SESSION['chat_modified_time'] == $last_msg_time) {
     exit(json_encode([]));
 }
 
-
-//get last hour messages from database
-date_default_timezone_set('Europe/Kiev');
-$min_time = date('Y-m-d H:i:s', time() - 3600);
-
-$sql_last_hour_msgs = mysqli_query($con, "SELECT * FROM msg WHERE time >= '{$min_time}'");
+//get messages from db for last hour
+$sql_last_hour_msgs = mysqli_query($con, "SELECT * FROM msg WHERE time >= NOW() - INTERVAL 1 HOUR");
 $msgs = mysqli_fetch_all($sql_last_hour_msgs, MYSQLI_ASSOC);
 
 if (empty($msgs)) {

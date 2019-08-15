@@ -1,15 +1,29 @@
+
+const MESSAGE_MAX_LENGTH = 100; //message longer then 100 characters sends automatically
+
+
 $(() => {
     const $msg_input = $('#msg_input');
-    $('#btn_send').bind('click', event => {
+    $('form').bind('submit', event => {
         event.preventDefault();
-        const input = $msg_input.val();
-        const sendTime = msgTime();
-        sendMessages(sendTime[0], sendTime[1], input);
+        sendMessage($msg_input.val());
         $msg_input.val('');
+    });
+
+
+    $msg_input.on('keypress', () => {
+        if ($msg_input.val().length > MESSAGE_MAX_LENGTH) {
+            sendMessage($msg_input.val());
+            $msg_input.val('');
+        }
+    });
+
+    $('#btn_logout').on('click', () => {
+        logout();
     });
 });
 
-const $chat_window = $('#chat_window');
+
 
 uploadChatHistory(true);
 // upload chat history every 1 sec
@@ -17,45 +31,32 @@ setInterval(() => {
     uploadChatHistory(false)
 }, 1000);
 
+
 /**
- * Returning array with current date and time in format  [yyyy-mm-dd, hh:mm:ss]
- * @returns array : [date, time]
+ * Logging out current user
  */
-function msgTime() {
-    const today = new Date();
-    const time = formatT(today.getHours()) + ':'
-        + formatT(today.getMinutes()) + ':'
-        + formatT(today.getSeconds());
-    const date = today.getFullYear() + '-'
-        + (today.getMonth() + 1) + '-'
-        + today.getDate();
-    return [date, time];
+function logout() {
+    $.ajax({
+        url: 'router.php',
+        type: 'POST',
+        data: {
+            route: 'logout'
+        }
+    });
 }
 
 /**
  * Sending message to database, using ajax request
- * @param date
- * @param time
  * @param input
  */
-function sendMessages(date, time, input) {
+function sendMessage(input) {
     $.ajax({
         url: 'router.php',
         type: 'POST',
-        // dataType: 'json',
         data: {
             input: input,
             route: 'send_message'
-        },
-
-        // success: newMsg => {
-        //     if (newMsg === '') {
-        //         return;
-        //     }
-        //     const msg = formatMsg(newMsg);
-        //     $chat_window.append('<p>' + msg + '</p>');
-        //     scrollTextWindow($chat_window);
-        // }
+        }
     });
 }
 
@@ -64,7 +65,7 @@ function sendMessages(date, time, input) {
  * @param scroll
  */
 function uploadChatHistory(scroll) {
-
+    const $chat_window = $('#chat_window');
     $.ajax({
         url: 'router.php',
         type: 'POST',
@@ -73,10 +74,11 @@ function uploadChatHistory(scroll) {
             route: 'upload_chat_history'
         },
         success: history => {
-            //clear chat window
+
             if (history.length === 0) {
                 return;
             }
+            //clear chat window
             $chat_window.empty();
             $.each(history, (key, element) => {
                 $chat_window.append('<p>' + formatMsg(element) + '</p>');
@@ -107,14 +109,7 @@ function insertSmiles(msg) {
     return msg;
 }
 
-/**
- * Formatting time output to get correct hh:mm:ss
- * @param value
- * @returns {string}
- */
-function formatT(value) {
-    return value.toString().padStart(2, '0');
-}
+
 
 /**
  * Formatting user message

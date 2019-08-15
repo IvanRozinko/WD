@@ -55,7 +55,7 @@ function login(name, pass) {
             route: 'login'
         },
         success: errors => {
-            console.log(errors);
+
             if (isEmpty(errors)) {
                 window.location = 'chat.php';
             } else {

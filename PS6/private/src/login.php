@@ -23,22 +23,21 @@ if (empty($errors)) {
     $name = strtolower($name);
 
     //if it is new user add him to database
-    $user_exist = mysqli_query($con, "SELECT name, pass FROM users WHERE name = '{$name}'");
+    $num_of_users = mysqli_query($con, "SELECT name, pass FROM users WHERE name = '{$name}'");
 
-    if (mysqli_num_rows($user_exist) == 0) {
+    if (mysqli_num_rows($num_of_users) == 0) {
 
         $hash_pass = password_hash($pass, PASSWORD_DEFAULT);
-        $sql_insert_user = "INSERT INTO users (name, pass) VALUES ('{$name}', '{$hash_pass}')";
+        $stmt = mysqli_prepare($con, "INSERT INTO users (name, pass) VALUES (?, ?)");
+         mysqli_stmt_bind_param($stmt, 'ss', $name, $hash_pass);
+         mysqli_stmt_execute($stmt);
 
-        mysqli_query($con, $sql_insert_user);
-
-         //if it is existing user, check entered password
-    } else if (!password_verify($pass,  mysqli_fetch_assoc($user_exist)['pass'])) {
+        //if it is existing user, check entered password
+    } else if (!password_verify($pass,  mysqli_fetch_assoc($num_of_users)['pass'])) {
 
         $errors['wrong_pass'] = 'Wrong password';
     }
 }
-
 
 
 echo json_encode($errors, JSON_PRETTY_PRINT);

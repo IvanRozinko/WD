@@ -4,13 +4,13 @@ $route = $_POST['route'];
 
 switch ($route) {
     case 'login':
-        require '../private/src/login.php';
+        require dirname(__DIR__, 1) . '/private/src/login.php';
         break;
     case 'send_message':
-        require '../private/src/send_msg.php';
+        require dirname(__DIR__, 1) . '/private/src/send_msg.php';
         break;
     case 'upload_chat_history':
-        require '../private/src/upload_chat_history.php';
+        require dirname(__DIR__, 1) . '/private/src/upload_chat_history.php';
         break;
     default:
         header('Location: index.php');

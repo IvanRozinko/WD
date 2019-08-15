@@ -36,11 +36,10 @@ header {
     font-family: Pacifico, cursive;
     font-size: 3.5em;
     font-weight: lighter;
-    margin: 70px 0;
+    margin: 40px 0;
 }
 
 form {
-
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -88,11 +87,11 @@ input {
     visibility: visible;
 }
 
-input[type='submit']:hover {
+input[type='submit']:hover,  #btn_logout:hover {
     cursor: pointer;
 }
 
-input[type='submit'] {
+input[type='submit'], #btn_logout {
     background-color: #635960;
     color: #fffecd;
     font-family: Montserrat, sans-serif;
@@ -100,7 +99,13 @@ input[type='submit'] {
     margin-top: 10px;
     padding: 0 20px;
     height: 27px;
+}
+.container_logout {
+    width: 540px;
+}
 
+#btn_logout {
+    float: right;
 }
 
 .shadow {
