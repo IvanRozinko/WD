@@ -1,49 +1,44 @@
-const element = document.getElementById()
-element.onmousedown = function(event) {
+const balloon = document.getElementById('balloon');
+const imageContainer = document.getElementById('container');
 
-    let shiftX = event.clientX - element.getBoundingClientRect().left;
-    let shiftY = event.clientY - element.getBoundingClientRect().top;
+document.addEventListener('dragstart', (e) => {
+    document.addEventListener('drop', () => {
+        drop(e);
+    }, {once: true});
+});
 
-    element.style.position = 'absolute';
-    element.style.zIndex = 1000;
-    document.body.append(element);
+document.addEventListener('drag', drag);
 
-    moveAt(event.pageX, event.pageY);
+document.addEventListener("dragover", (event) => event.preventDefault());
 
-    // moves the element at (pageX, pageY) coordinates
-    // taking initial shifts into account
-    function moveAt(pageX, pageY) {
-        element.style.left = pageX - shiftX + 'px';
-        element.style.top = pageY - shiftY + 'px';
-    }
 
-    function onMouseMove(event) {
-        moveAt(event.pageX, event.pageY);
-    }
 
-    // move the element on mousemove
-    document.addEventListener('mousemove', onMouseMove);
 
-    // drop the element, remove unneeded handlers
-    element.onmouseup = function() {
-        document.removeEventListener('mousemove', onMouseMove);
-        element.onmouseup = null;
-    };
+function drag(e) {
 
-};
 
-element.ondragstart = function() {
-    return false;
-};
-// function dblClick(e) {
-//     e.preventDefault();
-//     let container = document.getElementById('container');
-//     let div = document.createElement('div');
-//
-//     div.style.left = e.clientX + 'px';
-//     div.style.top = e.clientY + 'px';
-//     div.classList.add('balloon' + counter++);
-//     div.addEventListener('mousedown', mouseDown);
-//     container.appendChild(div);
-//     divMove(e, div);
-// }
+
+}
+
+
+function drop(event) {
+
+    event.preventDefault();
+
+    console.log(event.clientX +' '+ event.clientY + ' ');
+    const elem = event.target;
+
+    // const coords = getCoord();
+    elem.style.position = 'absolute';
+    elem.style.left = event.clientX + window.pageXOffset - elem.offsetLeft + 'px';
+    elem.style.top = event.clientY + window.pageYOffset - elem.offsetTop + 'px';
+
+
+
+    // imageContainer.appendChild(elem);
+
+
+
+
+
+}
