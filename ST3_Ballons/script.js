@@ -1,51 +1,49 @@
-window.onload = addListeners;
-let counter = 0;
+const element = document.getElementById()
+element.onmousedown = function(event) {
 
-function addListeners(){
-    document.getElementById('balloon').addEventListener('mousedown', mouseDown, false);
-    document.getElementById('container').addEventListener('dblclick', dblClick, false);
-    window.addEventListener('mouseup', mouseUp, false);
+    let shiftX = event.clientX - element.getBoundingClientRect().left;
+    let shiftY = event.clientY - element.getBoundingClientRect().top;
 
-}
+    element.style.position = 'absolute';
+    element.style.zIndex = 1000;
+    document.body.append(element);
 
-function dblClick(e) {
-    e.preventDefault();
-    let container = document.getElementById('container');
-    let div = document.createElement('div');
+    moveAt(event.pageX, event.pageY);
 
-    div.style.left = e.clientX + 'px';
-    div.style.top = e.clientY + 'px';
-    div.classList.add('balloon' + counter++);
-    div.addEventListener('mousedown', mouseDown, false);
-    container.appendChild(div);
-}
+    // moves the element at (pageX, pageY) coordinates
+    // taking initial shifts into account
+    function moveAt(pageX, pageY) {
+        element.style.left = pageX - shiftX + 'px';
+        element.style.top = pageY - shiftY + 'px';
+    }
 
-function mouseUp()
-{
-    console.log('up ' + this);
-    window.removeEventListener('mousemove', divMove, true);
-}
+    function onMouseMove(event) {
+        moveAt(event.pageX, event.pageY);
+    }
 
-function mouseDown(){
-    console.log(this);
-    this.addEventListener('mousemove', divMove, true);
-}
+    // move the element on mousemove
+    document.addEventListener('mousemove', onMouseMove);
 
-function divMove(e) {
-// e.stopPropagation();
+    // drop the element, remove unneeded handlers
+    element.onmouseup = function() {
+        document.removeEventListener('mousemove', onMouseMove);
+        element.onmouseup = null;
+    };
 
+};
 
-
-    console.log(this);
-
-
-
-    let coords = this.getBoundingClientRect();
-    let shiftX = e.pageX - coords.left;
-    let shiftY = e.pageY - coords.top;
-console.log(coords);
-    this.style.position = 'absolute';
-    this.style.top = e.pageY - shiftY + 'px';
-    this.style.left = e.pageX - shiftX + 'px';
-
-}
+element.ondragstart = function() {
+    return false;
+};
+// function dblClick(e) {
+//     e.preventDefault();
+//     let container = document.getElementById('container');
+//     let div = document.createElement('div');
+//
+//     div.style.left = e.clientX + 'px';
+//     div.style.top = e.clientY + 'px';
+//     div.classList.add('balloon' + counter++);
+//     div.addEventListener('mousedown', mouseDown);
+//     container.appendChild(div);
+//     divMove(e, div);
+// }
