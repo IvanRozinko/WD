@@ -1,49 +1,72 @@
-const element = document.getElementById()
-element.onmousedown = function(event) {
+window.onload = document.addEventListener('mousedown', onMouseDown);
 
-    let shiftX = event.clientX - element.getBoundingClientRect().left;
-    let shiftY = event.clientY - element.getBoundingClientRect().top;
+document.addEventListener('dblclick', createBalloon);
 
-    element.style.position = 'absolute';
-    element.style.zIndex = 1000;
-    document.body.append(element);
 
-    moveAt(event.pageX, event.pageY);
+function createBalloon(e) {
+  const main = document.getElementById('container');
+  const balloon = document.createElement('div');
+  const label = document.createElement('p');
 
-    // moves the element at (pageX, pageY) coordinates
-    // taking initial shifts into account
-    function moveAt(pageX, pageY) {
-        element.style.left = pageX - shiftX + 'px';
-        element.style.top = pageY - shiftY + 'px';
+
+  if (e.target.className === 'balloon' || e.target.className === 'label') {
+     return;
+  }
+
+  balloon.addEventListener('dblclick', addInput);
+  label.innerText = "I'm balloon";
+  label.classList.add('label');
+
+  balloon.classList.add('balloon');
+  balloon.style.left = e.pageX + 'px';
+  balloon.style.top = e.pageY + 'px';
+
+  balloon.append(label);
+  main.append(balloon);
+}
+
+function addInput(e) {
+  const div = e.currentTarget;
+  const p = div.firstChild;
+  const input = document.createElement('input');
+  input.classList.add('input');
+  input.setAttribute('value', `${p.innerText}`);
+  input.setAttribute('type', 'text');
+  div.replaceChild(input, p);
+  input.focus();
+
+}
+
+
+function onMouseDown(e) {
+    if (e.target.id === 'container') {
+        return;
     }
 
-    function onMouseMove(event) {
-        moveAt(event.pageX, event.pageY);
+    let element = e.target;
+    let initX, initY, firstX, firstY;
+
+    element.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        initX = this.offsetLeft;
+        initY = this.offsetTop;
+        firstX = e.pageX;
+        firstY = e.pageY;
+
+        this.addEventListener('mousemove', drag);
+
+        window.addEventListener('mouseup', function () {
+            element.removeEventListener('mousemove', drag);
+        }, false);
+    }, false);
+
+    function drag(e) {
+        this.style.left = initX + e.pageX - firstX + 'px';
+        this.style.top = initY + e.pageY - firstY + 'px';
     }
+}
 
-    // move the element on mousemove
-    document.addEventListener('mousemove', onMouseMove);
 
-    // drop the element, remove unneeded handlers
-    element.onmouseup = function() {
-        document.removeEventListener('mousemove', onMouseMove);
-        element.onmouseup = null;
-    };
 
-};
 
-element.ondragstart = function() {
-    return false;
-};
-// function dblClick(e) {
-//     e.preventDefault();
-//     let container = document.getElementById('container');
-//     let div = document.createElement('div');
-//
-//     div.style.left = e.clientX + 'px';
-//     div.style.top = e.clientY + 'px';
-//     div.classList.add('balloon' + counter++);
-//     div.addEventListener('mousedown', mouseDown);
-//     container.appendChild(div);
-//     divMove(e, div);
-// }
+
