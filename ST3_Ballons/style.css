@@ -21,15 +21,31 @@ div[class^="balloon"] {
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 120px;
-    height: 80px;
+    max-width: 160px;
+    min-height: 60px;
     background-color: rgba(172, 184, 182, 0.27);
     z-index: 10;
     text-align: center;
+    border-radius: 10px;
+}
+div[class^="balloon"]:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 40px solid transparent;
+    border-top-color: rgba(172, 184, 182, 0.27);
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -20px;
+    margin-bottom: -40px;
 }
 
 .label {
-    line-height: 50px;
+    margin: 5px;
+    width: 90%;
     color: white;
 }
 
