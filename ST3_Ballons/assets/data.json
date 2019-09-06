@@ -1,0 +1,12 @@
+{
+ "0": {
+        "content": "I'm fetched balloon",
+        "posX": 100,
+        "posY": 100
+      },
+  "1": {
+        "content": "I'm fetched balloon",
+        "posX": 200,
+        "posY": 200
+      }
+}

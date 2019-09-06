@@ -1,27 +1,48 @@
-window.onload = document.addEventListener('mousedown', onMouseDown);
+window.onload = () => {
 
-document.addEventListener('dblclick', createBalloon);
+    document.addEventListener('mousedown', onMouseDown);
+
+    const URL = './assets/data.json';
+
+     fetch(URL)
+       .then(response => response.json())
+       .then(result => {
+           Object.values(result).map(balloon => {
+
+                 const { posX, posY, content } = balloon;
+                 createBalloon(posX, posY, content);
+
+             })
+       })
+};
+
+document.addEventListener('dblclick', e => {
+
+   if (e.target.id !== 'container'){
+      return;
+  }
+  createBalloon(e.pageX, e.pageY,"I'm balloon");
+}
+);
 
 
-function createBalloon(e) {
+
+function createBalloon(pageX, pageY, content ) {
+
+
   const main = document.getElementById('container');  //TODO: can refactor all code. Create object balloon with X,Y, text and so on...
   const balloon = document.createElement('div');
   const label = document.createElement('p');
   const offsetX = 30;
   const offsetY = 110;
 
-
-  if (e.target.id !== 'container'){
-    return;
-  }
-
   balloon.addEventListener('dblclick', addInput);
-  label.innerText = "I'm balloon";
+  label.innerText = content;
   label.classList.add('label');
 
   balloon.classList.add('balloon');
-  balloon.style.left = e.pageX - offsetX + 'px';
-  balloon.style.top = e.pageY - offsetY + 'px';
+  balloon.style.left = pageX - offsetX + 'px';
+  balloon.style.top = pageY - offsetY + 'px';
 
   balloon.append(label);
   main.append(balloon);
@@ -56,14 +77,17 @@ function handleInputKeyDown(e, content) {
 
 
 function onMouseDown(e) {
+    console.log('mousedown');
     if (e.target.id === 'container') {
         return;
     }
 
     let element = e.target;
+    console.log(element);
     let initX, initY, firstX, firstY;
 
     element.addEventListener('mousedown', function(e) {
+        console.log('fire');
         e.preventDefault();
         initX = this.offsetLeft;
         initY = this.offsetTop;
@@ -82,6 +106,7 @@ function onMouseDown(e) {
         this.style.top = initY + e.pageY - firstY + 'px';
     }
 }
+
 
 
 
