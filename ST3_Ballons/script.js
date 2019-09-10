@@ -1,4 +1,5 @@
 const API_URL = './assets/data.json';
+let index = 0;
 
 
 window.onload = () => {
@@ -38,6 +39,8 @@ function createBalloon(pageX, pageY, content) {
   label.innerText = content;
   label.classList.add('label');
 
+
+  balloon.id = `${index++}`;
   balloon.classList.add('balloon');
   balloon.style.left = pageX - offsetX + 'px';
   balloon.style.top = pageY - offsetY + 'px';
@@ -65,6 +68,7 @@ function handleInputKeyDown(e, content) {
     return;
   }
 
+  e.preventDefault();
   const input = e.target;
 
   if (e.which === 27 /* escape */) {
@@ -72,18 +76,29 @@ function handleInputKeyDown(e, content) {
   }
 
   if (e.which === 13 /* enter */) {
-    updateContent(input.innerText);
+    const index = input.parentElement.id;
+    console.log(e.target);
+    const newContent = {
+                        [index]: {
+                                    posX: input.parentElement.offsetLeft,
+                                    posY: input.parentElement.offsetTop,
+                                    content: input.innerText,
+                        }       
+    };
+    updateContent(newContent, );
   }
 
-  e.preventDefault();
+
   input.classList.remove('input');
   input.blur();
 }
 
+
+
 function handleMouseDown(e) {
   let balloon = e.target;
   let initX = this.offsetLeft;
-  let initY = this.offsetTop;
+  let initY =  this.offsetTop;
   let firstX = e.pageX;
   let firstY = e.pageY;
 
@@ -105,7 +120,10 @@ function updateContent(newContent) {
     type: 'POST',
     data: {
       route: 'updateContent',
-      content: newContent
+      content: newContent,
+    },
+    success: (response) => {
+      console.log(response);
     },
 
     error: () => {
