@@ -1,17 +1,19 @@
 <?php
 include_once 'config.php';
-$content = $_POST['content'];
 
+$content = $_POST['content'];
+$index = array_keys($content)[0];
 
 $file = file_get_contents(DATA);
 $data_array = json_decode($file, true);
 
-$updated_array = array_merge($data_array, $content);
-$json_obj = json_encode($updated_array, JSON_PRETTY_PRINT);
-file_put_contents(DATA, $json_obj);
+if ($content[$index]['content'] === '') {
+    unset($data_array[$index]);
+} else {
+    $data_array[$index] = $content[$index];
+}
 
-print_r($content);
-print_r($data_array);
-print_r($updated_array);
+$json_obj = json_encode($data_array, JSON_PRETTY_PRINT);
+file_put_contents(DATA, $json_obj);
 
 
